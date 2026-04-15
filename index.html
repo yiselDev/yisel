@@ -14,9 +14,9 @@
         .lang-btn { cursor: pointer; padding: 10px 20px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; transition: 0.3s; font-size: 12px; }
         .lang-btn.active { background: #333 !important; color: white !important; }
         .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
-        .photo-wrapper { position: relative; width: 300px; height: 420px; }
-        .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 40px; border: 4px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1); display: none; }
-        .photo-placeholder { width: 100%; height: 100%; background: #eee; border-radius: 40px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; color: #999; font-size: 12px; border: 4px solid white; }
+        .photo-wrapper { position: relative; width: 300px; height: 420px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; display: none; }
+        .error-msg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; color: #999; font-size: 11px; }
     </style>
 </head>
 <body>
@@ -34,7 +34,7 @@
         
         <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-20 mt-6">
             <div class="w-full md:w-2/3 text-left">
-                <h1 id="main-title" class="text-5xl md:text-8xl font-bold text-gray-900 leading-tight">Yisel Ramirez</h1>
+                <h1 class="text-5xl md:text-8xl font-bold text-gray-900 leading-tight">Yisel Ramirez</h1>
                 <div style="width: 70px; height: 6px; background: #ff9a9e; margin: 25px 0;"></div>
                 <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">Licenciada en Derecho con equivalencia académica en Alemania y Fachinformatikerin für Systemintegration i.A.</p>
                 <div class="mt-10">
@@ -44,9 +44,8 @@
             
             <div class="w-full md:w-1/3 flex justify-center md:justify-end">
                 <div class="photo-wrapper">
-                    <div class="absolute -inset-4 bg-pink-50 rounded-[50px] rotate-3 -z-10"></div>
-                    <div id="photo-loading" class="photo-placeholder">Cargando foto.jpg...</div>
-                    <img src="foto.jpg" alt="Yisel Ramirez" id="user-photo" onload="showPhoto(this)" onerror="showError(this)">
+                    <div id="photo-err" class="error-msg">Buscando foto...</div>
+                    <img src="foto.jpg" alt="Yisel" id="user-photo" onload="this.style.display='block'; document.getElementById('photo-err').style.display='none';">
                 </div>
             </div>
         </section>
@@ -94,101 +93,44 @@
                 </div>
             </div>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
-            <div class="bg-black text-white p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:scale-[1.02] transition">
-                <div><h3 id="card-cv" class="text-3xl font-serif">Curriculum Vitae</h3><p id="card-cv-sub" class="text-gray-400 text-xs uppercase mt-2 tracking-widest">Lebenslauf digital</p></div>
-                <div class="text-4xl">↓</div>
-            </div>
-            <div class="bg-pink-100 p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:scale-[1.02] transition">
-                <div><h3 id="card-cert" class="text-3xl font-serif text-gray-800">Otros Cursos</h3><p id="card-cert-sub" class="text-pink-400 text-xs uppercase mt-2 tracking-widest">Certificaciones adicionales</p></div>
-                <div class="text-4xl text-gray-800">→</div>
-            </div>
-        </div>
     </main>
 
     <script>
-        function showPhoto(img) { document.getElementById('photo-loading').style.display = 'none'; img.style.display = 'block'; }
-        function showError(img) { document.getElementById('photo-loading').innerText = 'Error: foto.jpg no encontrada'; }
+        // TRUCO PARA LA FOTO: Intenta cargar en diferentes formatos si falla
+        const img = document.getElementById('user-photo');
+        img.onerror = function() {
+            if (this.src.includes('foto.jpg')) this.src = 'foto.JPG';
+            else if (this.src.includes('foto.JPG')) this.src = 'FOTO.jpg';
+            else document.getElementById('photo-err').innerText = 'Asegúrate de que el archivo se llame foto.jpg y esté en la misma carpeta que este index.html';
+        };
 
         const content = {
             es: {
                 desc: "Licenciada en Derecho con equivalencia académica en Alemania y Fachinformatikerin für Systemintegration i.A.",
-                contact: "Contactar",
-                edu: "Formación",
-                langs: "Idiomas y Anerkennung",
-                doc: "Documentación",
-                tagNow: "Actualidad",
-                descIt: "Systemintegration (Umschulung i.A.)",
-                tagTitle: "Título Superior",
-                titleLaw: "Licenciatura en Derecho",
-                descLaw: "Equivalencia Anabin (Bachelor/Master)",
-                subLangs: "Idiomas",
-                langDe: "Alemán: B2 (Avanzado)",
-                langEn: "Inglés: A2 (Básico)",
-                langEs: "Español: Nativo",
-                subAner: "Anerkennung",
-                descAner: "Homologación de título de Derecho para reconocimiento profesional.",
-                docExp: "• Experiencia Laboral",
-                docCarta: "• Initiativbewerbung (Carta de Iniciativa)",
-                docSkills: "• Skills & Habilidades",
-                docHobbies: "• Hobbies / Intereses",
-                cardCv: "Curriculum Vitae",
-                cardCvSub: "Lebenslauf digital",
-                cardCert: "Otros Cursos",
-                cardCertSub: "Certificaciones adicionales"
+                contact: "Contactar", edu: "Formación", langs: "Idiomas y Anerkennung", doc: "Documentación",
+                tagNow: "Actualidad", descIt: "Systemintegration (Umschulung i.A.)", tagTitle: "Título Superior",
+                titleLaw: "Licenciatura en Derecho", descLaw: "Equivalencia Anabin (Bachelor/Master)",
+                subLangs: "Idiomas", langDe: "Alemán: B2 (Avanzado)", langEn: "Inglés: A2 (Básico)", langEs: "Español: Nativo",
+                subAner: "Anerkennung", descAner: "Homologación de título de Derecho para reconocimiento profesional.",
+                docExp: "• Experiencia Laboral", docCarta: "• Initiativbewerbung (Carta de Iniciativa)", docSkills: "• Skills & Habilidades", docHobbies: "• Hobbies / Intereses"
             },
             en: {
                 desc: "Law Graduate with academic equivalence in Germany and Fachinformatikerin für Systemintegration (In Training).",
-                contact: "Contact",
-                edu: "Education",
-                langs: "Languages & Recognition",
-                doc: "Documentation",
-                tagNow: "Current",
-                descIt: "System Integration (Retraining in progress)",
-                tagTitle: "Higher Degree",
-                titleLaw: "Bachelor of Laws",
-                descLaw: "Anabin Equivalence (Bachelor/Master)",
-                subLangs: "Languages",
-                langDe: "German: B2 (Advanced)",
-                langEn: "English: A2 (Basic)",
-                langEs: "Spanish: Native",
-                subAner: "Recognition",
-                descAner: "Law degree recognition for professional practice.",
-                docExp: "• Work Experience",
-                docCarta: "• Spontaneous Application",
-                docSkills: "• Skills & Abilities",
-                docHobbies: "• Hobbies / Interests",
-                cardCv: "Curriculum Vitae",
-                cardCvSub: "Digital Resume",
-                cardCert: "Other Courses",
-                cardCertSub: "Additional Certifications"
+                contact: "Contact", edu: "Education", langs: "Languages & Recognition", doc: "Documentation",
+                tagNow: "Current", descIt: "System Integration (Retraining in progress)", tagTitle: "Higher Degree",
+                titleLaw: "Bachelor of Laws", descLaw: "Anabin Equivalence (Bachelor/Master)",
+                subLangs: "Languages", langDe: "German: B2 (Advanced)", langEn: "English: A2 (Elementary)", langEs: "Spanish: Native",
+                subAner: "Recognition", descAner: "Law degree recognition for professional practice.",
+                docExp: "• Work Experience", docCarta: "• Spontaneous Application", docSkills: "• Skills & Abilities", docHobbies: "• Hobbies / Interests"
             },
             de: {
                 desc: "Rechtswissenschaftlerin mit akademischer Gleichwertigkeit in Deutschland und Fachinformatikerin für Systemintegration i.A.",
-                contact: "Kontakt",
-                edu: "Bildung",
-                langs: "Sprachen & Anerkennung",
-                doc: "Dokumentation",
-                tagNow: "Aktuell",
-                descIt: "Systemintegration (Umschulung läuft)",
-                tagTitle: "Hochschulabschluss",
-                titleLaw: "Abschluss in Rechtswissenschaften",
-                descLaw: "Anabin-Gleichwertigkeit (Bachelor/Master)",
-                subLangs: "Sprachen",
-                langDe: "Deutsch: B2 (Fortgeschritten)",
-                langEn: "Englisch: A2 (Grundkenntnisse)",
-                langEs: "Spanisch: Muttersprache",
-                subAner: "Anerkennung",
-                descAner: "Anerkennung des Jurastudiums für die berufliche Praxis.",
-                docExp: "• Berufserfahrung",
-                docCarta: "• Initiativbewerbung",
-                docSkills: "• Skills & Fähigkeiten",
-                docHobbies: "• Hobbies / Interessen",
-                cardCv: "Curriculum Vitae",
-                cardCvSub: "Digitaler Lebenslauf",
-                cardCert: "Weitere Kurse",
-                cardCertSub: "Zusätzliche Zertifikate"
+                contact: "Kontakt", edu: "Bildung", langs: "Sprachen & Anerkennung", doc: "Dokumentation",
+                tagNow: "Aktuell", descIt: "Systemintegration (Umschulung läuft)", tagTitle: "Hochschulabschluss",
+                titleLaw: "Abschluss in Rechtswissenschaften", descLaw: "Anabin-Gleichwertigkeit (Bachelor/Master)",
+                subLangs: "Sprachen", langDe: "Deutsch: B2 (Fortgeschritten)", langEn: "Englisch: A2 (Grundkenntnisse)", langEs: "Spanisch: Muttersprache",
+                subAner: "Anerkennung", descAner: "Anerkennung des Jurastudiums für die berufliche Praxis.",
+                docExp: "• Berufserfahrung", docCarta: "• Initiativbewerbung", docSkills: "• Skills & Fähigkeiten", docHobbies: "• Hobbies / Interessen"
             }
         };
 
@@ -213,11 +155,6 @@
             document.getElementById('doc-carta').innerText = content[lang].docCarta;
             document.getElementById('doc-skills').innerText = content[lang].docSkills;
             document.getElementById('doc-hobbies').innerText = content[lang].docHobbies;
-            document.getElementById('card-cv').innerText = content[lang].cardCv;
-            document.getElementById('card-cv-sub').innerText = content[lang].cardCvSub;
-            document.getElementById('card-cert').innerText = content[lang].cardCert;
-            document.getElementById('card-cert-sub').innerText = content[lang].cardCertSub;
-
             ['es', 'en', 'de'].forEach(l => document.getElementById('btn-' + l).classList.toggle('active', l === lang));
         }
     </script>
