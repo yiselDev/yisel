@@ -3,135 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yisel | Historial Académico</title>
+    <title>Yisel | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #fdfdfd; color: #555; font-family: 'Quicksand', sans-serif; }
-        
-        /* Cursor armonioso */
-        .cursor { width: 10px; height: 10px; background: #a5f3fc; border-radius: 50%; position: fixed; pointer-events: none; z-index: 999; }
-        .cursor-follower { width: 40px; height: 40px; border: 2px solid #a5f3fc; border-radius: 50%; position: fixed; pointer-events: none; z-index: 998; transition: transform 0.15s ease-out; }
-
-        /* Carrusel infinito y suave */
-        .carousel-track {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 20px 0;
-            scroll-behavior: smooth;
-            -webkit-overflow-scrolling: touch;
+        :root {
+            --accent: #ff9a9e; /* Un rosa melocotón suave */
+            --bg-gradient: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
         }
-        .carousel-track::-webkit-scrollbar { height: 6px; }
-        .carousel-track::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
 
-        .card {
-            flex: 0 0 300px; /* Ancho fijo para que entren muchas */
-            background: white;
-            border-radius: 25px;
-            padding: 30px;
-            border: 1px solid #f1f5f9;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 350px;
+        body { 
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            color: #333; 
+            font-family: 'Montserrat', sans-serif;
         }
-        .card:hover { border-color: #bae6fd; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(186, 230, 253, 0.4); }
 
-        .lang-btn { cursor: pointer; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; transition: 0.3s; border: 1px solid #eee; }
-        .lang-btn.active { background: #bae6fd; border-color: #bae6fd; color: white; }
+        h1, h2, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Ruleta con diseño de lujo */
+        .carousel-track { 
+            display: flex; 
+            gap: 30px; 
+            overflow-x: auto; 
+            padding: 40px 20px; 
+            scroll-snap-type: x mandatory;
+        }
+
+        .card { 
+            flex: 0 0 350px; 
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 40px 10px 40px 10px; /* Diseño asimétrico elegante */
+            padding: 40px; 
+            border: none;
+            box-shadow: 20px 20px 60px #d1d1d1, -20px -20px 60px #ffffff;
+            scroll-snap-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card:hover { 
+            transform: translateY(-10px) rotate(1deg);
+            background: #ffffff;
+        }
+
+        /* Botones de Idioma Estilo "Bubble" */
+        .lang-btn { 
+            cursor: pointer; 
+            padding: 10px 20px; 
+            border-radius: 15px; 
+            font-size: 13px; 
+            font-weight: 600; 
+            border: 2px solid transparent;
+            background: #fff;
+            color: #888;
+            transition: 0.3s;
+        }
+
+        .lang-btn.active { 
+            background: #333;
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-contact {
+            background: #333;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-contact:hover {
+            background: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* Línea decorativa */
+        .line {
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 20px 0;
+        }
     </style>
 </head>
 <body>
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-follower" id="follower"></div>
 
-    <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold text-gray-700 tracking-tighter italic">Yisel <span class="text-sky-300">Dev.</span></div>
-        <div class="flex gap-4 items-center">
-            <div class="flex gap-2 bg-gray-50 p-1 rounded-full">
-                <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
-                <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
-                <button onclick="changeLang('de')" id="btn-de" class="lang-btn">DE</button>
-            </div>
-            <a href="mailto:tu-correo@ejemplo.com" id="nav-contact" class="bg-sky-200 text-sky-700 px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-sky-300 transition">Contacto</a>
+    <nav class="p-10 max-w-7xl mx-auto flex justify-between items-center">
+        <div class="text-3xl font-serif italic tracking-tighter">Yisel.</div>
+        <div class="flex gap-4">
+            <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">Español</button>
+            <button onclick="changeLang('en')" id="btn-en" class="lang-btn">English</button>
+            <button onclick="changeLang('de')" id="btn-de" class="lang-btn">Deutsch</button>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 mt-10">
-        <section class="flex flex-col md:flex-row items-center gap-10 mb-20 bg-sky-50/50 p-10 rounded-[40px] border border-sky-100">
-            <div class="w-44 h-44 rounded-full overflow-hidden border-4 border-white shadow-xl flex-shrink-0">
-                <img src="foto.jpg" alt="Yisel" class="w-full h-full object-cover" onerror="this.parentNode.style.background='#bae6fd'">
+    <main class="max-w-7xl mx-auto px-6 pb-20">
+        <section class="grid md:grid-cols-2 gap-10 items-center mb-24">
+            <div class="order-2 md:order-1">
+                <h1 id="main-title" class="text-6xl md:text-8xl font-bold leading-none mb-6 text-gray-900">Historial</h1>
+                <div class="line"></div>
+                <p id="main-desc" class="text-xl text-gray-500 font-light leading-relaxed mb-10 italic">Mi camino académico detallado con elegancia.</p>
+                <a href="mailto:tu-correo@ejemplo.com" id="nav-contact" class="btn-contact uppercase text-xs">Ponerse en contacto</a>
             </div>
-            <div class="text-center md:text-left">
-                <h1 id="main-title" class="text-4xl md:text-6xl font-bold text-gray-800">Mi Historial Académico</h1>
-                <p id="main-desc" class="text-gray-500 mt-4 text-lg font-light max-w-xl">Aquí registro toda mi formación, cursos y logros educativos de manera detallada.</p>
+            
+            <div class="order-1 md:order-2 flex justify-center">
+                <div class="relative w-64 h-80">
+                    <div class="absolute inset-0 bg-pink-200 rounded-[60px] rotate-6"></div>
+                    <img src="foto.jpg" alt="Yisel" class="absolute inset-0 w-full h-full object-cover rounded-[60px] shadow-2xl transition-transform hover:rotate-0" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=300'">
+                </div>
             </div>
         </section>
 
-        <div class="mb-5 flex justify-between items-end">
-            <h2 id="section-title" class="text-2xl font-semibold text-gray-700">Formación Académica</h2>
-            <span class="text-gray-300 text-sm italic">Desliza para ver más →</span>
-        </div>
-
-        <div class="carousel-track" id="track">
-            <div class="card" data-aos="fade-left">
-                <div>
-                    <span class="text-sky-400 font-bold text-sm uppercase">2023 - 2026</span>
-                    <h3 class="text-xl font-bold text-gray-800 mt-2">Grado Universitario</h3>
-                </div>
-                <div class="mt-4 text-gray-500 text-sm leading-relaxed">Descripción detallada de tus estudios en Alemania.</div>
-                <div class="mt-6 pt-4 border-t border-gray-50 font-semibold text-gray-600 italic">Universidad de...</div>
-            </div>
-
-            <div class="card" data-aos="fade-left" data-aos-delay="100">
-                <div>
-                    <span class="text-sky-400 font-bold text-sm uppercase">2022</span>
-                    <h3 class="text-xl font-bold text-gray-800 mt-2">Certificado Alemán C1</h3>
-                </div>
-                <div class="mt-4 text-gray-500 text-sm leading-relaxed">Dominio avanzado del idioma para entorno profesional.</div>
-                <div class="mt-6 pt-4 border-t border-gray-50 font-semibold text-gray-600 italic">Instituto Goethe</div>
-            </div>
-
-            <div class="card" data-aos="fade-left" data-aos-delay="200">
-                <div>
-                    <span class="text-sky-400 font-bold text-sm uppercase">2021</span>
-                    <h3 class="text-xl font-bold text-gray-800 mt-2">Curso Especializado</h3>
-                </div>
-                <div class="mt-4 text-gray-500 text-sm leading-relaxed">Formación adicional en diseño y gestión.</div>
-                <div class="mt-6 pt-4 border-t border-gray-50 font-semibold text-gray-600 italic">Online Academy</div>
-            </div>
-
+        <h2 id="section-title" class="text-4xl font-serif mb-10 text-gray-800">Formación Seleccionada</h2>
+        
+        <div class="carousel-track" id="academic-track">
             </div>
     </main>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 800, once: true });
-
-        // Función para cambiar idiomas
-        const texts = {
-            es: { title: "Mi Historial Académico", contact: "Contacto", section: "Formación Académica" },
-            en: { title: "Academic Background", contact: "Contact", section: "Education History" },
-            de: { title: "Akademischer Werdegang", contact: "Kontakt", section: "Bildungsweg" }
+        const content = {
+            es: {
+                title: "Trayectoria",
+                section: "Formación Académica",
+                desc: "Un registro armonioso de mi camino educativo.",
+                contact: "Ponerse en contacto",
+                cards: [
+                    { year: "2023", title: "Grado Superior", info: "Enfocado en la excelencia y el desarrollo de habilidades en Alemania.", inst: "Hochschule Berlin" },
+                    { year: "2022", title: "Idioma Alemán", info: "Certificación C1 - Dominio fluido para entornos profesionales.", inst: "Goethe Institut" },
+                    { year: "2021", title: "Bachillerato", info: "Mención honorífica en ciencias sociales y humanidades.", inst: "Colegio Nacional" }
+                ]
+            },
+            en: {
+                title: "Background",
+                section: "Educational Journey",
+                desc: "A harmonious record of my educational path.",
+                contact: "Get in touch",
+                cards: [
+                    { year: "2023", title: "Higher Education", info: "Focused on excellence and skill development in Germany.", inst: "University of Berlin" },
+                    { year: "2022", title: "German Language", info: "C1 Certification - Fluent proficiency for professional environments.", inst: "Goethe Institute" },
+                    { year: "2021", title: "High School", info: "Honorable mention in social sciences and humanities.", inst: "National School" }
+                ]
+            },
+            de: {
+                title: "Werdegang",
+                section: "Bildungsweg",
+                desc: "Eine harmonische Aufzeichnung meines Bildungsweges.",
+                contact: "Kontakt aufnehmen",
+                cards: [
+                    { year: "2023", title: "Studium", info: "Fokus auf Exzellenz und Kompetenzentwicklung in Deutschland.", inst: "Hochschule Berlin" },
+                    { year: "2022", title: "Deutschprüfung", info: "C1 Zertifikat - Verhandlungssichere Sprachkenntnisse.", inst: "Goethe Institut" },
+                    { year: "2021", title: "Abitur", info: "Ehrenvolle Erwähnung in Sozial- und Geisteswissenschaften.", inst: "Nationale Schule" }
+                ]
+            }
         };
 
-        function changeLang(l) {
-            document.getElementById('main-title').innerText = texts[l].title;
-            document.getElementById('nav-contact').innerText = texts[l].contact;
-            document.getElementById('section-title').innerText = texts[l].section;
-            ['es', 'en', 'de'].forEach(btn => document.getElementById('btn-'+btn).classList.toggle('active', btn === l));
+        function changeLang(lang) {
+            document.getElementById('main-title').innerText = content[lang].title;
+            document.getElementById('main-desc').innerText = content[lang].desc;
+            document.getElementById('section-title').innerText = content[lang].section;
+            document.getElementById('nav-contact').innerText = content[lang].contact;
+
+            const track = document.getElementById('academic-track');
+            track.innerHTML = ''; 
+
+            content[lang].cards.forEach((card, index) => {
+                track.innerHTML += `
+                    <div class="card">
+                        <span class="text-xs font-semibold tracking-widest text-pink-400 uppercase">${card.year}</span>
+                        <h3 class="text-3xl font-serif mt-4 mb-6 text-gray-800 leading-tight">${card.title}</h3>
+                        <p class="text-gray-500 font-light leading-relaxed text-sm mb-8">${card.info}</p>
+                        <div class="mt-auto pt-6 border-t border-gray-100 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+                             <span class="w-2 h-2 rounded-full bg-pink-200"></span> ${card.inst}
+                        </div>
+                    </div>
+                `;
+            });
+
+            ['es', 'en', 'de'].forEach(btn => {
+                document.getElementById('btn-' + btn).classList.toggle('active', btn === lang);
+            });
         }
 
-        // Mouse Tracker
-        const c = document.getElementById('cursor'), f = document.getElementById('follower');
-        document.addEventListener('mousemove', (e) => {
-            c.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-            f.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
-        });
+        changeLang('es');
     </script>
 </body>
 </html>
