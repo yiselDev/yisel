@@ -91,6 +91,24 @@
                 </div>
             </div>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+            <div class="bg-black text-white p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:scale-[1.02] transition duration-300">
+                <div>
+                    <h3 id="card-cv" class="text-3xl font-serif">Curriculum Vitae</h3>
+                    <p id="card-cv-sub" class="text-gray-400 text-xs uppercase mt-2 tracking-widest">Lebenslauf digital</p>
+                </div>
+                <div class="text-4xl">↓</div>
+            </div>
+            <div class="bg-pink-100 p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:scale-[1.02] transition duration-300">
+                <div>
+                    <h3 id="card-cert" class="text-3xl font-serif text-gray-800">Otros Cursos</h3>
+                    <p id="card-cert-sub" class="text-pink-400 text-xs uppercase mt-2 tracking-widest">Certificaciones adicionales</p>
+                </div>
+                <div class="text-4xl text-gray-800">→</div>
+            </div>
+        </div>
+
     </main>
 
     <script>
@@ -101,7 +119,8 @@
                 tagTitle: "Título Superior", titleLaw: "Licenciatura en Derecho", descLaw: "Anerkennung: Nivel Bachelor / Master",
                 tagNow: "Actualidad", titleIt: "Umschulung IT", descIt: "Fachinformatikerin (i.A.)",
                 langDe: "Alemán: B2 (Avanzado)", langEn: "Inglés: A2 (Básico)", langEs: "Español: Nativo",
-                subAner: "Reconocimiento", descAner: "Título extranjero homologado para el mercado laboral alemán."
+                subAner: "Reconocimiento", descAner: "Título extranjero homologado para el mercado laboral alemán.",
+                cardCv: "Curriculum Vitae", cardCvSub: "Lebenslauf digital", cardCert: "Otros Cursos", cardCertSub: "Certificaciones adicionales"
             },
             en: {
                 desc: "Law Graduate with academic equivalence in Germany (Bachelor and Master level).",
@@ -109,7 +128,8 @@
                 tagTitle: "Higher Degree", titleLaw: "Bachelor of Laws", descLaw: "Anerkennung: Bachelor / Master Level",
                 tagNow: "Current", titleIt: "IT Retraining", descIt: "IT Specialist (In training)",
                 langDe: "German: B2 (Advanced)", langEn: "English: A2 (Elementary)", langEs: "Spanish: Native",
-                subAner: "Recognition", descAner: "Foreign degree recognized for the German labor market."
+                subAner: "Recognition", descAner: "Foreign degree recognized for the German labor market.",
+                cardCv: "Curriculum Vitae", cardCvSub: "Digital Resume", cardCert: "Other Courses", cardCertSub: "Additional Certifications"
             },
             de: {
                 desc: "Rechtswissenschaftlerin mit akademischer Gleichwertigkeit in Deutschland (Bachelor- und Masterniveau).",
@@ -117,7 +137,8 @@
                 tagTitle: "Hochschulabschluss", titleLaw: "Abschluss in Rechtswissenschaften", descLaw: "Anerkennung: Bachelor- / Masterniveau",
                 tagNow: "Aktuell", titleIt: "IT-Umschulung", descIt: "Fachinformatikerin (i.A.)",
                 langDe: "Deutsch: B2 (Fortgeschritten)", langEn: "Englisch: A2 (Grundkenntnisse)", langEs: "Spanisch: Muttersprache",
-                subAner: "Anerkennung", descAner: "Ausländischer Abschluss anerkannt für den deutschen Arbeitsmarkt."
+                subAner: "Anerkennung", descAner: "Ausländischer Abschluss anerkannt für den deutschen Arbeitsmarkt.",
+                cardCv: "Curriculum Vitae", cardCvSub: "Digitaler Lebenslauf", cardCert: "Weitere Kurse", cardCertSub: "Zusätzliche Zertifikate"
             }
         };
 
@@ -138,6 +159,10 @@
             document.getElementById('lang-es').innerText = content[lang].langEs;
             document.getElementById('sub-aner').innerText = content[lang].subAner;
             document.getElementById('desc-aner').innerText = content[lang].descAner;
+            document.getElementById('card-cv').innerText = content[lang].cardCv;
+            document.getElementById('card-cv-sub').innerText = content[lang].cardCvSub;
+            document.getElementById('card-cert').innerText = content[lang].cardCert;
+            document.getElementById('card-cert-sub').innerText = content[lang].cardCertSub;
             ['es', 'en', 'de'].forEach(l => document.getElementById('btn-' + l).classList.toggle('active', l === lang));
         }
     </script>
