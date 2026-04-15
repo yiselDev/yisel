@@ -3,46 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yisel Ramirez | Portfolio</title>
+    <title>Yisel Ramirez</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfbfb; min-height: 100vh; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; }
+        body { background: #fdfbfb; min-height: 100vh; font-family: 'Montserrat', sans-serif; color: #333; }
         h1, h2, .font-serif { font-family: 'Playfair Display', serif; }
-        
-        /* Estilo de las tarjetas de la ruleta */
-        .card { 
-            flex: 0 0 320px; 
-            background: white; 
-            border-radius: 40px 10px; 
-            padding: 35px; 
-            box-shadow: 15px 15px 40px rgba(0,0,0,0.03); 
-            transition: all 0.4s ease;
-            border: 1px solid #f1f1f1;
-        }
-        .card:hover { transform: translateY(-10px); border-color: #ff9a9e; }
-        
-        /* Contenedor de la ruleta */
-        .carousel-track { 
-            display: flex; 
-            gap: 25px; 
-            overflow-x: auto; 
-            padding: 30px 10px; 
-            cursor: grab;
-        }
-        .carousel-track::-webkit-scrollbar { height: 5px; }
-        .carousel-track::-webkit-scrollbar-thumb { background: #ff9a9e; border-radius: 10px; }
-
-        .lang-btn { cursor: pointer; padding: 8px 18px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; transition: 0.3s; font-size: 12px; }
-        .lang-btn.active { background: #333; color: white; border-color: #333; }
-        
-        .line-decor { width: 80px; height: 4px; background: #ff9a9e; margin: 25px 0; border-radius: 2px; }
+        .card { flex: 0 0 320px; background: white; border-radius: 30px; padding: 30px; box-shadow: 10px 10px 30px rgba(0,0,0,0.05); }
+        .carousel-track { display: flex; gap: 20px; overflow-x: auto; padding: 20px; scroll-behavior: smooth; }
+        .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; transition: 0.3s; }
+        .lang-btn.active { background: #333; color: white; }
     </style>
 </head>
 <body>
     <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-serif italic font-bold tracking-tighter text-gray-800">Y. Ramirez</div>
-        <div class="flex gap-2 bg-white p-1 rounded-full shadow-sm border border-gray-100">
+        <div class="text-2xl font-serif italic font-bold">Yisel R.</div>
+        <div class="flex gap-2">
             <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
             <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
             <button onclick="changeLang('de')" id="btn-de" class="lang-btn">DE</button>
@@ -50,87 +26,54 @@
     </nav>
 
     <main class="max-w-7xl mx-auto px-6">
-        <section class="flex flex-col md:flex-row justify-between items-center gap-12 mb-24 mt-12">
+        <section class="flex flex-col md:flex-row items-center gap-12 mb-20 mt-10">
             
-            <div class="text-left w-full md:w-3/5">
-                <span class="text-xs font-bold tracking-[0.3em] text-pink-400 uppercase">Portfolio Académico</span>
-                <h1 id="main-title" class="text-6xl md:text-8xl font-bold text-gray-900 leading-[0.9] mt-4">
-                    Yisel<br>Ramirez
-                </h1>
-                <div class="line-decor"></div>
-                <p id="main-desc" class="text-xl text-gray-400 italic font-light max-w-md">
-                    Mi historial educativo y profesional presentado con claridad y armonía.
-                </p>
-                <div class="mt-10">
-                    <a href="mailto:tu-correo@ejemplo.com" id="nav-contact" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-700 transition shadow-xl">
-                        Contacto
-                    </a>
+            <div class="w-full md:w-1/3 flex justify-center md:justify-start">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-pink-100 rounded-[50px] -rotate-3"></div>
+                    <div class="relative w-64 h-80 overflow-hidden rounded-[40px] shadow-2xl bg-gray-200">
+                        <img src="IMG_20260413_102249.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Yisel+Ramirez';">
+                    </div>
                 </div>
             </div>
-            
-            <div class="w-full md:w-2/5 flex justify-center md:justify-end">
-                <div class="relative group">
-                    <div class="absolute -inset-4 bg-gradient-to-tr from-pink-100 to-orange-50 rounded-[60px] rotate-3 transition-transform group-hover:rotate-0"></div>
-                    <div class="relative w-72 h-96 overflow-hidden rounded-[50px] shadow-2xl bg-gray-100">
-                        <img src="IMG_20260413_102249.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-500" onerror="this.src='https://via.placeholder.com/400x500?text=Yisel+Ramirez';">
-                    </div>
+
+            <div class="text-left w-full md:w-2/3">
+                <h1 id="main-title" class="text-6xl md:text-8xl font-bold text-gray-900 leading-tight">Yisel<br>Ramirez</h1>
+                <div style="width: 50px; height: 5px; background: #ff9a9e; margin: 25px 0;"></div>
+                <p id="main-desc" class="text-xl text-gray-400 italic font-light">Perfil académico y profesional.</p>
+                <div class="mt-8">
+                    <a href="mailto:tu-correo@ejemplo.com" id="nav-contact" class="bg-black text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition">Contacto</a>
                 </div>
             </div>
 
         </section>
 
-        <div class="flex items-end justify-between mb-8 px-2">
-            <div>
-                <h2 id="section-title" class="text-4xl font-serif text-gray-800">Historial Académico</h2>
-            </div>
-            <span class="text-gray-300 text-xs italic mb-2 tracking-widest uppercase">Desliza para explorar →</span>
-        </div>
-
+        <h2 id="section-title" class="text-3xl font-serif mb-8 border-b pb-4">Historial Académico</h2>
         <div class="carousel-track" id="academic-track">
             </div>
     </main>
 
-    <footer class="p-20 text-center text-gray-300 text-xs tracking-widest uppercase">
-        &copy; 2026 Yisel Ramirez — Braunschweig, Alemania
-    </footer>
-
     <script>
-        // Aquí puedes editar tus datos reales fácilmente
         const content = {
-            es: { 
-                title: "Yisel<br>Ramirez", 
-                section: "Historial Académico", 
-                desc: "Mi historial educativo y profesional presentado con claridad y armonía.", 
-                contact: "Contacto",
+            es: { title: "Yisel<br>Ramirez", section: "Historial Académico", desc: "Perfil académico y profesional.", contact: "Contacto",
                 cards: [
-                    { year: "2023 - 2026", title: "Grado Superior", info: "Estudios avanzados enfocados en el desarrollo de competencias profesionales.", inst: "Universidad / Institución" },
-                    { year: "2022", title: "Certificación C1", info: "Dominio avanzado del idioma alemán para entornos académicos.", inst: "Instituto Goethe" },
-                    { year: "2021", title: "Bachillerato", info: "Culminación de estudios de educación media superior.", inst: "Colegio Nacional" },
-                    { year: "2020", title: "Reconocimiento", info: "Mención por excelencia académica y liderazgo.", inst: "Institución Educativa" }
+                    { year: "2023 - 2026", title: "Estudios Actuales", info: "Descripción de tu formación en Alemania.", inst: "Institución" },
+                    { year: "2022", title: "Idioma Alemán", info: "Nivel avanzado C1.", inst: "Goethe Institut" },
+                    { year: "2021", title: "Bachillerato", info: "Formación académica previa.", inst: "Colegio" }
                 ]
             },
-            en: { 
-                title: "Yisel<br>Ramirez", 
-                section: "Academic Background", 
-                desc: "My educational and professional journey presented with clarity and harmony.", 
-                contact: "Contact",
+            en: { title: "Yisel<br>Ramirez", section: "Academic Background", desc: "Academic and professional profile.", contact: "Contact",
                 cards: [
-                    { year: "2023 - 2026", title: "Higher Degree", info: "Advanced studies focused on professional skill development.", inst: "University / Institution" },
-                    { year: "2022", title: "C1 Certification", info: "Advanced German language proficiency for academic environments.", inst: "Goethe Institute" },
-                    { year: "2021", title: "High School", info: "Completion of upper secondary education studies.", inst: "National School" },
-                    { year: "2020", title: "Award", info: "Mention for academic excellence and leadership.", inst: "Educational Institution" }
+                    { year: "2023 - 2026", title: "Current Studies", info: "Description of your training in Germany.", inst: "Institution" },
+                    { year: "2022", title: "German Language", info: "Advanced C1 level.", inst: "Goethe Institut" },
+                    { year: "2021", title: "High School", info: "Previous academic background.", inst: "College" }
                 ]
             },
-            de: { 
-                title: "Yisel<br>Ramirez", 
-                section: "Akademischer Werdegang", 
-                desc: "Mein Bildungs- und Berufsweg, klar und harmonisch dokumentiert.", 
-                contact: "Kontakt",
+            de: { title: "Yisel<br>Ramirez", section: "Bildungsweg", desc: "Akademisches und berufliches Profil.", contact: "Kontakt",
                 cards: [
-                    { year: "2023 - 2026", title: "Studium", info: "Fortgeschrittenes Studium mit Fokus auf berufliche Kompetenzentwicklung.", inst: "Universität / Hochschule" },
-                    { year: "2022", title: "C1 Zertifikat", info: "Fortgeschrittene Deutschkenntnisse für das akademische Umfeld.", inst: "Goethe-Institut" },
-                    { year: "2021", title: "Abitur", info: "Abschluss der Sekundarstufe II.", inst: "Nationale Schule" },
-                    { year: "2020", title: "Auszeichnung", info: "Ehrung für akademische Exzellenz und Führungsqualität.", inst: "Bildungseinrichtung" }
+                    { year: "2023 - 2026", title: "Aktuelles Studium", info: "Beschreibung Ihrer Ausbildung in Deutschland.", inst: "Hochschule" },
+                    { year: "2022", title: "Deutschkurs", info: "Fortgeschrittenes C1-Niveau.", inst: "Goethe-Institut" },
+                    { year: "2021", title: "Abitur", info: "Bisheriger akademischer Hintergrund.", inst: "Schule" }
                 ]
             }
         };
@@ -140,29 +83,19 @@
             document.getElementById('main-desc').innerText = content[lang].desc;
             document.getElementById('section-title').innerText = content[lang].section;
             document.getElementById('nav-contact').innerText = content[lang].contact;
-            
             const track = document.getElementById('academic-track');
             track.innerHTML = ''; 
-            
             content[lang].cards.forEach(card => {
                 track.innerHTML += `
                     <div class="card">
-                        <span class="text-xs font-bold text-pink-300 uppercase tracking-widest">${card.year}</span>
-                        <h3 class="text-2xl font-serif mt-4 mb-4 text-gray-800 leading-tight">${card.title}</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">${card.info}</p>
-                        <div class="mt-auto pt-4 border-t border-gray-50 flex items-center gap-2">
-                             <div class="w-1.5 h-1.5 rounded-full bg-pink-200"></div>
-                             <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">${card.inst}</span>
-                        </div>
+                        <span class="text-xs font-bold text-pink-400 uppercase tracking-widest">${card.year}</span>
+                        <h3 class="text-2xl font-serif mt-2 mb-4">${card.title}</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">${card.info}</p>
+                        <div class="mt-auto pt-4 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase">${card.inst}</div>
                     </div>`;
             });
-
-            ['es', 'en', 'de'].forEach(btn => {
-                document.getElementById('btn-' + btn).classList.toggle('active', btn === lang);
-            });
+            ['es', 'en', 'de'].forEach(btn => document.getElementById('btn-' + btn).classList.toggle('active', btn === lang));
         }
-        
-        // Inicializar
         changeLang('es');
     </script>
 </body>
