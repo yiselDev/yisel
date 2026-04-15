@@ -15,8 +15,7 @@
         .lang-btn.active { background: #333 !important; color: white !important; }
         .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
         .photo-wrapper { position: relative; width: 300px; height: 420px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; display: none; }
-        .error-msg { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; color: #999; font-size: 11px; }
+        .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
     </style>
 </head>
 <body>
@@ -36,7 +35,7 @@
             <div class="w-full md:w-2/3 text-left">
                 <h1 class="text-5xl md:text-8xl font-bold text-gray-900 leading-tight">Yisel Ramirez</h1>
                 <div style="width: 70px; height: 6px; background: #ff9a9e; margin: 25px 0;"></div>
-                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">Licenciada en Derecho con equivalencia académica en Alemania y Fachinformatikerin für Systemintegration i.A.</p>
+                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">Licenciada en Derecho con equivalencia académica en Alemania y actualmente realizando un Umschulung en IT.</p>
                 <div class="mt-10">
                     <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition shadow-lg">Contactar</a>
                 </div>
@@ -44,8 +43,7 @@
             
             <div class="w-full md:w-1/3 flex justify-center md:justify-end">
                 <div class="photo-wrapper">
-                    <div id="photo-err" class="error-msg">Buscando foto...</div>
-                    <img src="foto.jpg" alt="Yisel" id="user-photo" onload="this.style.display='block'; document.getElementById('photo-err').style.display='none';">
+                    <img src="foto.jpg" alt="Yisel Ramirez" id="user-photo">
                 </div>
             </div>
         </section>
@@ -56,8 +54,8 @@
                 <div class="space-y-4">
                     <div>
                         <span id="tag-now" class="tag">Actualidad</span>
-                        <h3 class="font-bold text-lg mt-1">Fachinformatiker</h3>
-                        <p id="desc-it" class="text-gray-500 text-sm">Systemintegration (Umschulung i.A.)</p>
+                        <h3 class="font-bold text-lg mt-1">Umschulung IT</h3>
+                        <p id="desc-it" class="text-gray-500 text-sm">Fachinformatiker (En formación / i.A.)</p>
                     </div>
                     <div>
                         <span id="tag-title" class="tag">Título Superior</span>
@@ -78,7 +76,7 @@
                     </div>
                     <div>
                         <h3 id="sub-aner" class="font-bold">Anerkennung</h3>
-                        <p id="desc-aner" class="text-gray-400 text-xs italic mt-1 leading-relaxed">Homologación de título de Derecho para reconocimiento profesional.</p>
+                        <p id="desc-aner" class="text-gray-400 text-xs italic mt-1 leading-relaxed">Homologación de título de Derecho para reconocimiento profesional en Alemania.</p>
                     </div>
                 </div>
             </div>
@@ -96,40 +94,32 @@
     </main>
 
     <script>
-        // TRUCO PARA LA FOTO: Intenta cargar en diferentes formatos si falla
-        const img = document.getElementById('user-photo');
-        img.onerror = function() {
-            if (this.src.includes('foto.jpg')) this.src = 'foto.JPG';
-            else if (this.src.includes('foto.JPG')) this.src = 'FOTO.jpg';
-            else document.getElementById('photo-err').innerText = 'Asegúrate de que el archivo se llame foto.jpg y esté en la misma carpeta que este index.html';
-        };
-
         const content = {
             es: {
-                desc: "Licenciada en Derecho con equivalencia académica en Alemania y Fachinformatikerin für Systemintegration i.A.",
+                desc: "Licenciada en Derecho con equivalencia académica en Alemania y actualmente realizando un Umschulung en IT.",
                 contact: "Contactar", edu: "Formación", langs: "Idiomas y Anerkennung", doc: "Documentación",
-                tagNow: "Actualidad", descIt: "Systemintegration (Umschulung i.A.)", tagTitle: "Título Superior",
+                tagNow: "Actualidad", descIt: "Fachinformatiker (En formación / i.A.)", tagTitle: "Título Superior",
                 titleLaw: "Licenciatura en Derecho", descLaw: "Equivalencia Anabin (Bachelor/Master)",
                 subLangs: "Idiomas", langDe: "Alemán: B2 (Avanzado)", langEn: "Inglés: A2 (Básico)", langEs: "Español: Nativo",
-                subAner: "Anerkennung", descAner: "Homologación de título de Derecho para reconocimiento profesional.",
+                subAner: "Anerkennung", descAner: "Homologación de título de Derecho para reconocimiento profesional en Alemania.",
                 docExp: "• Experiencia Laboral", docCarta: "• Initiativbewerbung (Carta de Iniciativa)", docSkills: "• Skills & Habilidades", docHobbies: "• Hobbies / Intereses"
             },
             en: {
-                desc: "Law Graduate with academic equivalence in Germany and Fachinformatikerin für Systemintegration (In Training).",
+                desc: "Law Graduate with academic equivalence in Germany, currently undergoing IT Retraining (Umschulung).",
                 contact: "Contact", edu: "Education", langs: "Languages & Recognition", doc: "Documentation",
-                tagNow: "Current", descIt: "System Integration (Retraining in progress)", tagTitle: "Higher Degree",
+                tagNow: "Current", descIt: "IT Specialist (In training / i.A.)", tagTitle: "Higher Degree",
                 titleLaw: "Bachelor of Laws", descLaw: "Anabin Equivalence (Bachelor/Master)",
                 subLangs: "Languages", langDe: "German: B2 (Advanced)", langEn: "English: A2 (Elementary)", langEs: "Spanish: Native",
-                subAner: "Recognition", descAner: "Law degree recognition for professional practice.",
+                subAner: "Recognition", descAner: "Law degree recognition for professional practice in Germany.",
                 docExp: "• Work Experience", docCarta: "• Spontaneous Application", docSkills: "• Skills & Abilities", docHobbies: "• Hobbies / Interests"
             },
             de: {
-                desc: "Rechtswissenschaftlerin mit akademischer Gleichwertigkeit in Deutschland und Fachinformatikerin für Systemintegration i.A.",
+                desc: "Rechtswissenschaftlerin mit akademischer Gleichwertigkeit in Deutschland, derzeit in IT-Umschulung.",
                 contact: "Kontakt", edu: "Bildung", langs: "Sprachen & Anerkennung", doc: "Dokumentation",
-                tagNow: "Aktuell", descIt: "Systemintegration (Umschulung läuft)", tagTitle: "Hochschulabschluss",
+                tagNow: "Aktuell", descIt: "Fachinformatiker (in Ausbildung / i.A.)", tagTitle: "Hochschulabschluss",
                 titleLaw: "Abschluss in Rechtswissenschaften", descLaw: "Anabin-Gleichwertigkeit (Bachelor/Master)",
                 subLangs: "Sprachen", langDe: "Deutsch: B2 (Fortgeschritten)", langEn: "Englisch: A2 (Grundkenntnisse)", langEs: "Spanisch: Muttersprache",
-                subAner: "Anerkennung", descAner: "Anerkennung des Jurastudiums für die berufliche Praxis.",
+                subAner: "Anerkennung", descAner: "Anerkennung des Jurastudiums für die berufliche Praxis en Deutschland.",
                 docExp: "• Berufserfahrung", docCarta: "• Initiativbewerbung", docSkills: "• Skills & Fähigkeiten", docHobbies: "• Hobbies / Interessen"
             }
         };
