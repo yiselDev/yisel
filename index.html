@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Expert Multi-Language</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * { cursor: none; }
+        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .cursor { width: 8px; height: 8px; background: #3b82f6; border-radius: 50%; position: fixed; pointer-events: none; z-index: 999; transition: transform 0.1s ease; }
+        .cursor-follower { width: 35px; height: 35px; border: 1px solid rgba(59, 130, 246, 0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 998; transition: transform 0.2s ease; }
+        .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 32px; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden; }
+        .bento-card:hover { border-color: #3b82f6; background: rgba(59, 130, 246, 0.05); transform: translateY(-10px); }
+        .lang-btn { cursor: pointer; padding: 4px 12px; border-radius: 8px; transition: all 0.3s; font-size: 0.7rem; border: 1px solid rgba(255,255,255,0.1); font-weight: bold; color: #666; }
+        .lang-btn.active { background: #3b82f6; border-color: #3b82f6; color: white; }
+    </style>
+</head>
+<body>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="follower"></div>
+
+    <nav class="p-10 flex justify-between items-center relative z-10">
+        <div class="text-xl font-black tracking-tighter uppercase italic">YISEL.PRO</div>
+        
+        <div class="flex gap-4 items-center">
+            <div class="flex gap-1 bg-white/5 p-1 rounded-xl">
+                <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
+                <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
+                <button onclick="changeLang('de')" id="btn-de" class="lang-btn">DE</button>
+            </div>
+            <a href="mailto:tu-correo@ejemplo.com" id="nav-contact" class="bg-blue-600 px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition text-[10px] uppercase tracking-widest ml-4">Contacto</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-6 mt-16">
+        <section class="mb-32 text-center md:text-left">
+            <h1 data-aos="fade-up" id="hero-title" class="text-6xl md:text-[8.5rem] font-bold tracking-tighter leading-none uppercase italic">Diseño <br> <span class="text-blue-600">Activo.</span></h1>
+            <p data-aos="fade-up" data-aos-delay="200" id="hero-desc" class="text-gray-500 mt-10 text-xl max-w-lg mx-auto md:mx-0">Experiencias interactivas y soluciones web modernas. Enfoque en rendimiento y estética global.</p>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
+            <div data-aos="zoom-in" class="md:col-span-2 h-96 bento-card p-12 flex flex-col justify-end">
+                <span id="card1-tag" class="text-blue-500 text-xs font-bold mb-2 uppercase tracking-widest">Portafolio 2026</span>
+                <h3 id="card1-title" class="text-4xl font-bold italic">Proyectos Seleccionados</h3>
+                <p id="card1-desc" class="text-gray-500 mt-2 italic">Click para ver detalles</p>
+            </div>
+            <div data-aos="zoom-in" data-aos-delay="100" class="h-96 bento-card p-12 flex flex-col justify-end">
+                <span id="card2-tag" class="text-blue-500 text-xs font-bold mb-2 uppercase tracking-widest">Sobre Mí</span>
+                <h3 id="card2-title" class="text-3xl font-bold">Experiencia</h3>
+                <p id="card2-desc" class="text-gray-500 mt-2 italic">Basada en Alemania</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000 });
+
+        const translations = {
+            es: {
+                navContact: 'Contacto',
+                heroTitle: 'Diseño <br> <span class="text-blue-600">Activo.</span>',
+                heroDesc: 'Experiencias interactivas y soluciones web modernas. Enfoque en rendimiento y estética global.',
+                card1Tag: 'Portafolio 2026',
+                card1Title: 'Proyectos Seleccionados',
+                card1Desc: 'Click para ver detalles',
+                card2Tag: 'Sobre Mí',
+                card2Title: 'Experiencia',
+                card2Desc: 'Basada en Alemania'
+            },
+            en: {
+                navContact: 'Contact',
+                heroTitle: 'Active <br> <span class="text-blue-600">Design.</span>',
+                heroDesc: 'Interactive experiences and modern web solutions. Focus on performance and global aesthetics.',
+                card1Tag: 'Portfolio 2026',
+                card1Title: 'Selected Projects',
+                card1Desc: 'Click for details',
+                card2Tag: 'About Me',
+                card2Title: 'Expertise',
+                card2Desc: 'Based in Germany'
+            },
+            de: {
+                navContact: 'Kontakt',
+                heroTitle: 'Aktives <br> <span class="text-blue-600">Design.</span>',
+                heroDesc: 'Interaktive Erlebnisse und moderne Web-Lösungen. Fokus auf Performance und globale Ästhetik.',
+                card1Tag: 'Portfolio 2026',
+                card1Title: 'Ausgewählte Projekte',
+                card1Desc: 'Klicken für Details',
+                card2Tag: 'Über Mich',
+                card2Title: 'Expertise',
+                card2Desc: 'Standort: Deutschland'
+            }
+        };
+
+        function changeLang(lang) {
+            document.getElementById('nav-contact').innerText = translations[lang].navContact;
+            document.getElementById('hero-title').innerHTML = translations[lang].heroTitle;
+            document.getElementById('hero-desc').innerText = translations[lang].heroDesc;
+            document.getElementById('card1-tag').innerText = translations[lang].card1Tag;
+            document.getElementById('card1-title').innerText = translations[lang].card1Title;
+            document.getElementById('card1-desc').innerText = translations[lang].card1Desc;
+            document.getElementById('card2-tag').innerText = translations[lang].card2Tag;
+            document.getElementById('card2-title').innerText = translations[lang].card2Title;
+            document.getElementById('card2-desc').innerText = translations[lang].card2Desc;
+
+            ['es', 'en', 'de'].forEach(l => {
+                document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+            });
+        }
+
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('follower');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            follower.style.transform = `translate3d(${e.clientX - 14}px, ${e.clientY - 14}px, 0)`;
+        });
+    </script>
+</body>
+</html>
