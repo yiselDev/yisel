@@ -1,10 +1,3 @@
-Es frustrante cuando el código parece estar bien pero no muestra lo que queremos. El error suele estar en un pequeño detalle: si el JavaScript intenta buscar un ID que aún no se ha dibujado en la pantalla, falla.
-
-Para solucionarlo de una vez por todas, aquí tienes el código completo. He organizado el HTML para asegurar que los IDs coincidan exactamente con lo que el JavaScript busca.
-
-Copia y pega este código sustituyendo todo el contenido de tu archivo:
-
-HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -40,7 +33,9 @@ HTML
         <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
             <div class="w-full md:w-2/3">
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
-                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">Licenciada en Derecho con equivalencia académica en Alemania (Nivel Bachelor y Master).</p>
+                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">
+                    Licenciada en Derecho con equivalencia académica en Alemania (Nivel entre Bachelor y Master).
+                </p>
                 <div class="mt-8">
                     <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition shadow-lg">Contactar</a>
                 </div>
@@ -53,29 +48,29 @@ HTML
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div class="section-box">
                 <h2 id="head-edu" class="text-2xl font-bold mb-6 italic">Formación</h2>
-                <div class="space-y-4">
+                <div class="space-y-6">
+                    <div>
+                        <span id="tag-now" class="tag">Actualidad</span>
+                        <h3 class="font-bold text-lg mt-1">Fachinformatikerin</h3>
+                        <p id="desc-it" class="text-gray-500 text-sm italic">Systemintegration (Umschulung i.A.)</p>
+                    </div>
                     <div>
                         <span id="tag-title" class="tag">Título Superior</span>
                         <h3 class="font-bold text-lg mt-1">Licenciatura en Derecho</h3>
-                        <p id="desc-law" class="text-gray-400 text-[10px] font-bold">Anerkennung: Nivel Bachelor / Master</p>
-                    </div>
-                    <div>
-                        <span id="tag-now" class="tag">Actualidad</span>
-                        <h3 class="font-bold text-lg mt-1">Umschulung IT</h3>
-                        <p id="desc-it" class="text-gray-500 text-sm">Fachinformatikerin (i.A.)</p>
+                        <p id="desc-law" class="text-gray-400 text-[10px] font-bold italic">Equivalencia Anabin (Bachelor/Master)</p>
                     </div>
                 </div>
             </div>
 
             <div class="section-box">
-                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic">Idiomas</h2>
+                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic">Idiomas e Idiomas</h2>
                 <div class="space-y-3">
                     <p id="lang-de" class="text-gray-500 text-sm italic">Alemán: B2 (Avanzado)</p>
                     <p id="lang-en" class="text-gray-500 text-sm italic">Inglés: A2 (Básico)</p>
                     <p id="lang-es" class="text-gray-500 text-sm italic">Español: Nativo</p>
                     <hr class="my-4">
-                    <h3 id="sub-aner" class="font-bold">Reconocimiento</h3>
-                    <p id="desc-aner" class="text-gray-400 text-xs italic">Título homologado para el mercado laboral alemán.</p>
+                    <h3 id="sub-aner" class="font-bold">Anerkennung</h3>
+                    <p id="desc-aner" class="text-gray-400 text-xs italic">Homologación de título de Derecho para reconocimiento profesional.</p>
                 </div>
             </div>
 
@@ -83,7 +78,7 @@ HTML
                 <h2 id="head-doc" class="text-2xl font-bold mb-6 italic">Documentación</h2>
                 <div class="space-y-4 text-sm font-medium">
                     <p id="doc-exp">• Experiencia Laboral</p>
-                    <p id="doc-carta">• Initiativbewerbung</p>
+                    <p id="doc-carta">• Initiativbewerbung (Carta de Iniciativa)</p>
                     <p id="doc-skills">• Skills & Habilidades</p>
                     <p id="doc-hobbies">• Hobbies / Intereses</p>
                 </div>
@@ -112,42 +107,41 @@ HTML
     <script>
         const content = {
             es: {
-                desc: "Licenciada en Derecho con equivalencia académica en Alemania (Nivel Bachelor y Master).",
-                contact: "Contactar", edu: "Formación", langs: "Idiomas", doc: "Documentación",
-                tagTitle: "Título Superior", descLaw: "Anerkennung: Nivel Bachelor / Master",
-                tagNow: "Actualidad", descIt: "Fachinformatikerin (i.A.)",
+                desc: "Licenciada en Derecho con equivalencia académica en Alemania (Nivel entre Bachelor y Master).",
+                contact: "Contactar", edu: "Formación", langs: "Idiomas e Idiomas", doc: "Documentación",
+                tagTitle: "Título Superior", descLaw: "Equivalencia Anabin (Bachelor/Master)",
+                tagNow: "Actualidad", descIt: "Systemintegration (Umschulung i.A.)",
                 langDe: "Alemán: B2 (Avanzado)", langEn: "Inglés: A2 (Básico)", langEs: "Español: Nativo",
-                subAner: "Reconocimiento", descAner: "Título homologado para el mercado laboral alemán.",
-                docExp: "• Experiencia Laboral", docCarta: "• Carta de Presentación", docSkills: "• Habilidades", docHobbies: "• Intereses",
+                subAner: "Anerkennung", descAner: "Homologación de título de Derecho para reconocimiento profesional.",
+                docExp: "• Experiencia Laboral", docCarta: "• Initiativbewerbung (Carta de Iniciativa)", docSkills: "• Skills & Habilidades", docHobbies: "• Hobbies / Intereses",
                 cardCv: "Curriculum Vitae", cardCvSub: "Lebenslauf digital", 
                 cardCert: "Otros Cursos", cardCertSub: "Certificaciones adicionales"
             },
             en: {
-                desc: "Law Graduate with academic equivalence in Germany (Bachelor and Master level).",
-                contact: "Contact", edu: "Education", langs: "Languages", doc: "Documentation",
-                tagTitle: "Higher Degree", descLaw: "Anerkennung: Bachelor / Master Level",
-                tagNow: "Current", descIt: "IT Specialist (In training)",
+                desc: "Law Graduate with academic equivalence in Germany (Level between Bachelor and Master).",
+                contact: "Contact", edu: "Education", langs: "Languages & Recognition", doc: "Documentation",
+                tagTitle: "Higher Degree", descLaw: "Anabin Equivalence (Bachelor/Master)",
+                tagNow: "Current", descIt: "IT Specialist (System Integration Training)",
                 langDe: "German: B2 (Advanced)", langEn: "English: A2 (Elementary)", langEs: "Spanish: Native",
-                subAner: "Recognition", descAner: "Foreign degree recognized for the German labor market.",
-                docExp: "• Work Experience", docCarta: "• Cover Letter", docSkills: "• Skills", docHobbies: "• Interests",
+                subAner: "Recognition", descAner: "Law degree homologation for professional recognition.",
+                docExp: "• Work Experience", docCarta: "• Spontaneous Application", docSkills: "• Skills & Abilities", docHobbies: "• Hobbies / Interests",
                 cardCv: "Curriculum Vitae", cardCvSub: "Digital Resume", 
                 cardCert: "Other Courses", cardCertSub: "Additional Certifications"
             },
             de: {
-                desc: "Rechtswissenschaftlerin mit akademischer Gleichwertigkeit in Deutschland (Bachelor- und Masterniveau).",
-                contact: "Kontakt", edu: "Bildung", langs: "Sprachen", doc: "Dokumentation",
-                tagTitle: "Hochschulabschluss", descLaw: "Anerkennung: Bachelor- / Masterniveau",
-                tagNow: "Aktuell", descIt: "Fachinformatikerin (i.A.)",
+                desc: "Rechtswissenschaftlerin mit akademischer Gleichwertigkeit in Deutschland (Zwischen Bachelor- und Masterniveau).",
+                contact: "Kontakt", edu: "Bildung", langs: "Sprachen & Anerkennung", doc: "Dokumentation",
+                tagTitle: "Hochschulabschluss", descLaw: "Anabin-Gleichwertigkeit (Bachelor/Master)",
+                tagNow: "Aktuell", descIt: "Fachinformatikerin Systemintegration (Umschulung i.A.)",
                 langDe: "Deutsch: B2 (Fortgeschritten)", langEn: "Englisch: A2 (Grundkenntnisse)", langEs: "Spanisch: Muttersprache",
-                subAner: "Anerkennung", descAner: "Ausländischer Abschluss anerkannt für den deutschen Arbeitsmarkt.",
-                docExp: "• Berufserfahrung", docCarta: "• Initiativbewerbung", docSkills: "• Fähigkeiten", docHobbies: "• Interessen",
+                subAner: "Anerkennung", descAner: "Anerkennung des Jurastudiums für die berufliche Zulassung.",
+                docExp: "• Berufserfahrung", docCarta: "• Initiativbewerbung", docSkills: "• Fähigkeiten", docHobbies: "• Hobbys / Interessen",
                 cardCv: "Curriculum Vitae", cardCvSub: "Digitaler Lebenslauf", 
                 cardCert: "Weitere Kurse", cardCertSub: "Zusätzliche Zertifikate"
             }
         };
 
         function changeLang(lang) {
-            // Actualizar todos los elementos por su ID
             document.getElementById('main-desc').innerText = content[lang].desc;
             document.getElementById('btn-contact').innerText = content[lang].contact;
             document.getElementById('head-edu').innerText = content[lang].edu;
@@ -163,25 +157,21 @@ HTML
             document.getElementById('sub-aner').innerText = content[lang].subAner;
             document.getElementById('desc-aner').innerText = content[lang].descAner;
             
-            // Documentación
             document.getElementById('doc-exp').innerText = content[lang].docExp;
             document.getElementById('doc-carta').innerText = content[lang].docCarta;
             document.getElementById('doc-skills').innerText = content[lang].docSkills;
             document.getElementById('doc-hobbies').innerText = content[lang].docHobbies;
 
-            // Tarjetas inferiores (ESTO ES LO QUE TE FALTABA)
             document.getElementById('card-cv').innerText = content[lang].cardCv;
             document.getElementById('card-cv-sub').innerText = content[lang].cardCvSub;
             document.getElementById('card-cert').innerText = content[lang].cardCert;
             document.getElementById('card-cert-sub').innerText = content[lang].cardCertSub;
 
-            // Botones
             ['es', 'en', 'de'].forEach(l => {
                 document.getElementById('btn-' + l).classList.toggle('active', l === lang);
             });
         }
 
-        // Ejecutar al cargar la página para que no aparezcan huecos vacíos
         window.onload = () => changeLang('es');
     </script>
 </body>
