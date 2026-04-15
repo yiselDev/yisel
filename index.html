@@ -8,26 +8,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; overflow-x: hidden; }
+        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        
-        /* Efecto de movimiento en las casillas */
-        .clickable-card { 
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            cursor: pointer;
-            position: relative;
+
+        /* ESTA ES LA MAGIA DEL MOVIMIENTO */
+        .tarjeta-movil {
+            transition: all 0.4s ease;
+            display: block; /* Para que toda la casilla sea clicable */
+            height: 100%;
         }
 
-        .clickable-card:hover { 
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
+        /* Cuando el ratón está encima de la casilla */
+        .tarjeta-movil:hover {
+            transform: translateY(-15px); /* Se eleva */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Sombra elegante */
+            filter: brightness(1.05); /* Brilla un poco */
         }
 
-        /* Movimiento extra en el texto cuando pasas el ratón por la casilla */
-        .clickable-card:hover h3 {
+        /* Cuando el ratón está encima, el título se mueve a la derecha */
+        .tarjeta-movil:hover h3 {
             transform: translateX(10px);
-            transition: 0.3s;
+            color: #ff9a9e; /* Cambia a color rosado */
         }
+
+        h3 { transition: all 0.3s ease; }
 
         .lang-btn { 
             cursor: pointer; padding: 8px 16px; border-radius: 20px; 
@@ -35,8 +39,6 @@
             transition: 0.3s; 
         }
         .lang-btn.active { background: #333 !important; color: white !important; }
-
-        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; }
     </style>
 </head>
 <body class="pb-20">
@@ -59,62 +61,33 @@
                     Licenciada en Derecho con equivalencia académica en Alemania (Nivel entre Bachelor y Master).
                 </p>
                 <div class="mt-8">
-                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition transform hover:-translate-y-1 shadow-lg">Contactar</a>
+                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition-all transform hover:-translate-y-1">Contactar</a>
                 </div>
             </div>
-            <div class="photo-wrapper w-[300px] h-[400px] overflow-hidden rounded-[40px] border-4 border-white shadow-xl">
+            <div class="w-[300px] h-[400px] rounded-[40px] overflow-hidden border-4 border-white shadow-lg">
                 <img src="foto.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover">
             </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div class="clickable-card bg-white p-8 rounded-[30px] border border-gray-100 shadow-sm">
-                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic">Formación</h2>
-                <div class="space-y-6">
-                    <div>
-                        <span id="tag-now" class="tag">Actualidad</span>
-                        <h3 class="font-bold text-lg mt-1 transition-all">Fachinformatikerin</h3>
-                        <p id="desc-it" class="text-gray-500 text-sm italic">Systemintegration (Umschulung i.A.)</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="clickable-card bg-white p-8 rounded-[30px] border border-gray-100 shadow-sm">
-                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic">Idiomas</h2>
-                <div class="space-y-3">
-                    <p id="lang-de" class="text-gray-500 text-sm italic">Alemán: B2 (Avanzado)</p>
-                    <p id="lang-es" class="text-gray-500 text-sm italic">Español: Nativo</p>
-                    <hr class="my-4">
-                    <h3 id="sub-aner" class="font-bold transition-all">Anerkennung</h3>
-                    <p id="desc-aner" class="text-gray-400 text-xs italic">Título homologado en Alemania.</p>
-                </div>
-            </div>
-
-            <div class="clickable-card bg-white p-8 rounded-[30px] border border-gray-100 shadow-sm">
-                <h2 id="head-doc" class="text-2xl font-bold mb-6 italic">Documentación</h2>
-                <div class="space-y-4 text-sm font-medium">
-                    <p id="doc-exp">• Experiencia Laboral</p>
-                    <p id="doc-carta">• Initiativbewerbung</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <a href="tu-cv.pdf" target="_blank" class="clickable-card bg-black text-white p-10 rounded-[40px] flex justify-between items-center shadow-xl">
-                <div>
-                    <h3 id="card-cv" class="text-3xl font-serif">Curriculum Vitae</h3>
-                    <p id="card-cv-sub" class="text-gray-400 text-xs uppercase mt-2 tracking-widest">Ver Lebenslauf digital</p>
-                </div>
-                <div class="text-4xl">↓</div>
+            <div class="tarjeta-movil bg-white p-10 rounded-[40px] border border-gray-100 shadow-sm">
+                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic">Formación</h2>
+                <span class="bg-pink-50 text-pink-400 px-3 py-1 rounded-full text-[10px] font-bold">ACTUALIDAD</span>
+                <h3 class="text-xl font-bold mt-2">Fachinformatikerin</h3>
+                <p id="desc-it" class="text-gray-500 text-sm">Systemintegration (Umschulung i.A.)</p>
+            </div>
+
+            <a href="tu-cv.pdf" target="_blank" class="tarjeta-movil bg-black text-white p-10 rounded-[40px] shadow-xl">
+                <h2 class="text-gray-400 text-xs uppercase tracking-widest mb-4">Documento</h2>
+                <h3 id="card-cv" class="text-3xl font-serif">Curriculum Vitae</h3>
+                <p id="card-cv-sub" class="text-gray-500 text-sm mt-4">Haga clic para ver el Lebenslauf digital ↓</p>
             </a>
 
-            <a href="tus-certificados.pdf" target="_blank" class="clickable-card bg-pink-100 p-10 rounded-[40px] flex justify-between items-center shadow-xl">
-                <div>
-                    <h3 id="card-cert" class="text-3xl font-serif text-gray-800">Otros Cursos</h3>
-                    <p id="card-cert-sub" class="text-pink-400 text-xs uppercase mt-2 tracking-widest">Ver Certificaciones</p>
-                </div>
-                <div class="text-4xl text-gray-800 transition-transform">→</div>
+            <a href="tus-certificados.pdf" target="_blank" class="tarjeta-movil bg-pink-100 p-10 rounded-[40px] shadow-lg text-gray-800">
+                <h2 class="text-pink-400 text-xs uppercase tracking-widest mb-4">Certificaciones</h2>
+                <h3 id="card-cert" class="text-3xl font-serif">Otros Cursos</h3>
+                <p id="card-cert-sub" class="text-pink-500 text-sm mt-4">Ver diplomas y certificados →</p>
             </a>
 
         </div>
@@ -125,36 +98,24 @@
         const content = {
             es: {
                 desc: "Licenciada en Derecho con equivalencia académica en Alemania (Nivel entre Bachelor y Master).",
-                contact: "Contactar", edu: "Formación", langs: "Idiomas", doc: "Documentación",
-                tagTitle: "Título Superior", descLaw: "Equivalencia Anabin (Bachelor/Master)",
-                tagNow: "Actualidad", descIt: "Systemintegration (Umschulung i.A.)",
-                langDe: "Alemán: B2 (Avanzado)", langEn: "Inglés: A2 (Básico)", langEs: "Español: Nativo",
-                subAner: "Anerkennung", descAner: "Título homologado en Alemania.",
-                docExp: "• Experiencia Laboral", docCarta: "• Initiativbewerbung", docSkills: "• Skills", docHobbies: "• Intereses",
-                cardCv: "Curriculum Vitae", cardCvSub: "Ver Lebenslauf digital", 
-                cardCert: "Otros Cursos", cardCertSub: "Ver Certificaciones"
+                contact: "Contactar", edu: "Formación", 
+                descIt: "Systemintegration (Umschulung i.A.)",
+                cardCv: "Curriculum Vitae", cardCvSub: "Haga clic para ver el Lebenslauf digital ↓", 
+                cardCert: "Otros Cursos", cardCertSub: "Ver diplomas y certificados →"
             },
             en: {
-                desc: "Law Graduate with academic equivalence in Germany (Bachelor/Master level).",
-                contact: "Contact", edu: "Education", langs: "Languages", doc: "Documentation",
-                tagTitle: "Degree", descLaw: "Anabin Equivalence",
-                tagNow: "Current", descIt: "IT Specialist Training",
-                langDe: "German: B2", langEn: "English: A2", langEs: "Spanish: Native",
-                subAner: "Recognition", descAner: "Officially recognized degree.",
-                docExp: "• Work Experience", docCarta: "• Spontaneous Application", docSkills: "• Skills", docHobbies: "• Interests",
-                cardCv: "Curriculum Vitae", cardCvSub: "View Digital CV", 
-                cardCert: "Other Courses", cardCertSub: "View Certificates"
+                desc: "Law Graduate with academic equivalence in Germany (Level between Bachelor and Master).",
+                contact: "Contact", edu: "Education",
+                descIt: "IT Specialist (System Integration Training)",
+                cardCv: "Curriculum Vitae", cardCvSub: "Click to view Digital Resume ↓", 
+                cardCert: "Other Courses", cardCertSub: "View diplomas and certificates →"
             },
             de: {
                 desc: "Rechtswissenschaftlerin mit akademischer Gleichwertigkeit in Deutschland (Bachelor/Master).",
-                contact: "Kontakt", edu: "Bildung", langs: "Sprachen", doc: "Dokumentation",
-                tagTitle: "Abschluss", descLaw: "Anabin-Gleichwertigkeit",
-                tagNow: "Aktuell", descIt: "Fachinformatikerin Systemintegration",
-                langDe: "Deutsch: B2", langEn: "Englisch: A2", langEs: "Spanisch: Muttersprache",
-                subAner: "Anerkennung", descAner: "Anerkannter Abschluss in Deutschland.",
-                docExp: "• Berufserfahrung", docCarta: "• Initiativbewerbung", docSkills: "• Skills", docHobbies: "• Interessen",
-                cardCv: "Curriculum Vitae", cardCvSub: "Digitaler Lebenslauf", 
-                cardCert: "Weitere Kurse", cardCertSub: "Zertifikate ansehen"
+                contact: "Kontakt", edu: "Bildung",
+                descIt: "Fachinformatikerin Systemintegration (i.A.)",
+                cardCv: "Curriculum Vitae", cardCvSub: "Digitaler Lebenslauf ansehen ↓", 
+                cardCert: "Weitere Kurse", cardCertSub: "Zertifikate ansehen →"
             }
         };
 
@@ -162,16 +123,7 @@
             document.getElementById('main-desc').innerText = content[lang].desc;
             document.getElementById('btn-contact').innerText = content[lang].contact;
             document.getElementById('head-edu').innerText = content[lang].edu;
-            document.getElementById('head-langs').innerText = content[lang].langs;
-            document.getElementById('head-doc').innerText = content[lang].doc;
-            document.getElementById('tag-now').innerText = content[lang].tagNow;
             document.getElementById('desc-it').innerText = content[lang].descIt;
-            document.getElementById('lang-de').innerText = content[lang].langDe;
-            document.getElementById('lang-es').innerText = content[lang].langEs;
-            document.getElementById('sub-aner').innerText = content[lang].subAner;
-            document.getElementById('desc-aner').innerText = content[lang].descAner;
-            document.getElementById('doc-exp').innerText = content[lang].docExp;
-            document.getElementById('doc-carta').innerText = content[lang].docCarta;
             document.getElementById('card-cv').innerText = content[lang].cardCv;
             document.getElementById('card-cv-sub').innerText = content[lang].cardCvSub;
             document.getElementById('card-cert').innerText = content[lang].cardCert;
