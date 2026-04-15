@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yisel Ramirez | Dossier Profesional</title>
+    <title>Yisel Ramirez | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        .section-box { background: white; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; transition: 0.3s; height: 100%; cursor: pointer; }
-        .section-box:hover { border-color: #ff9a9e; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .section-box { background: white; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; transition: 0.4s ease; height: 100%; }
+        .section-box:hover { border-color: #ff9a9e; transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
         .lang-btn { cursor: pointer; padding: 10px 20px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; transition: 0.3s; font-size: 12px; }
-        .lang-btn.active { background: #333; color: white; border-color: #333; }
-        .skill-tag { background: #f8f8f8; padding: 5px 12px; border-radius: 10px; font-size: 11px; font-weight: 600; margin: 3px; display: inline-block; border: 1px solid #eee; }
+        .lang-btn.active { background: #333 !important; color: white !important; }
+        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
     </style>
 </head>
 <body>
@@ -31,86 +31,84 @@
         
         <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-20 mt-6">
             <div class="w-full md:w-2/3 text-left">
-                <h1 id="main-title" class="text-5xl md:text-8xl font-bold text-gray-900 whitespace-nowrap">Yisel Ramirez</h1>
+                <h1 id="main-title" class="text-5xl md:text-8xl font-bold text-gray-900 leading-tight">Yisel Ramirez</h1>
                 <div style="width: 70px; height: 6px; background: #ff9a9e; margin: 25px 0;"></div>
-                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">Profesional con Licenciatura, nivel B2 de alemán y actualmente realizando un Umschulung.</p>
+                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">Licenciada en Derecho con equivalencia académica en Alemania, nivel B2 de alemán y en proceso de Umschulung.</p>
                 <div class="mt-10">
-                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition">Contactar</a>
+                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition shadow-lg">Contactar</a>
                 </div>
             </div>
             
             <div class="w-full md:w-1/3 flex justify-center md:justify-end">
                 <div class="relative">
                     <div class="absolute -inset-4 bg-pink-50 rounded-[60px] rotate-3"></div>
-                    <div class="relative w-72 h-[420px] overflow-hidden rounded-[50px] shadow-2xl bg-gray-100 border-4 border-white">
-                        <img src="IMG_20260413_102249.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x600?text=Cargar+Foto+JPG';">
+                    <div class="relative w-72 h-[450px] overflow-hidden rounded-[50px] shadow-2xl bg-gray-100 border-4 border-white">
+                        <img src="IMG_20260413_102249.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x600?text=Cargar+Foto';">
                     </div>
                 </div>
             </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             
-            <div class="section-box" onclick="alert('Sección Académica')">
+            <div class="section-box">
                 <h2 id="head-edu" class="text-2xl font-bold mb-6 italic">Formación</h2>
                 <div class="space-y-4">
                     <div>
-                        <p class="text-pink-400 text-[10px] font-bold uppercase tracking-tighter">Actualidad</p>
-                        <h3 class="font-bold text-lg">Umschulung</h3>
+                        <span class="tag">Título Superior</span>
+                        <h3 class="font-bold text-lg mt-1">Licenciatura en Derecho</h3>
+                        <p class="text-gray-400 text-[10px] font-bold">Nivel: Bachelor / Master (Equivalencia Anabin)</p>
                     </div>
                     <div>
-                        <p class="text-gray-400 text-[10px] font-bold uppercase">Título</p>
-                        <h3 class="font-bold text-lg">Licenciatura</h3>
+                        <span class="tag">Actualidad</span>
+                        <h3 class="font-bold text-lg mt-1">Umschulung</h3>
                     </div>
                     <div>
-                        <p class="text-gray-400 text-[10px] font-bold uppercase">Base</p>
-                        <h3 class="font-bold text-lg">Bachillerato</h3>
+                        <span class="tag">Educación</span>
+                        <h3 class="font-bold text-lg mt-1">Bachillerato</h3>
                     </div>
                 </div>
             </div>
 
-            <div class="section-box" onclick="alert('Documentos de Alemania')">
-                <h2 id="head-de" class="text-2xl font-bold mb-6 italic">Alemania</h2>
-                <div class="space-y-4">
-                    <div class="flex justify-between">
-                        <h3 class="font-bold">Idioma Alemán</h3>
-                        <span class="text-pink-400 font-bold">B2</span>
+            <div class="section-box">
+                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic">Idiomas y Anerkennung</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="font-bold">Idiomas</h3>
+                        <p class="text-gray-500 text-sm italic">Alemán: B2 (Avanzado)</p>
+                        <p class="text-gray-500 text-sm italic">Español: Nativo</p>
                     </div>
                     <div>
-                        <h3 class="font-bold">Anerkennung</h3>
-                        <p class="text-gray-400 text-xs italic">Estado de homologación.</p>
-                    </div>
-                    <div class="pt-4">
-                        <div class="skill-tag">Adaptabilidad</div>
-                        <div class="skill-tag">Integración</div>
+                        <h3 class="font-bold">Anerkennung in Deutschland</h3>
+                        <p class="text-gray-400 text-xs italic mt-1 leading-relaxed">Homologación de título de Derecho para reconocimiento profesional en el mercado alemán.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="section-box" onclick="alert('Experiencia Laboral')">
-                <h2 id="head-work" class="text-2xl font-bold mb-6 italic">Profesional</h2>
-                <div class="space-y-4 text-sm">
-                    <p class="font-bold underline">Experiencia Laboral</p>
-                    <p class="font-bold underline italic">Carta Iniciativa (Solicitud)</p>
-                    <p class="font-bold underline">Skills & Habilidades</p>
-                    <p class="font-bold underline">Hobbies</p>
+            <div class="section-box">
+                <h2 id="head-work" class="text-2xl font-bold mb-6 italic">Documentación</h2>
+                <div class="space-y-4 text-sm font-medium">
+                    <p class="hover:text-pink-400 transition cursor-pointer">• Experiencia Laboral</p>
+                    <p class="hover:text-pink-400 transition cursor-pointer">• Initiativbewerbung (Carta de Iniciativa)</p>
+                    <p class="hover:text-pink-400 transition cursor-pointer">• Skills & Habilidades</p>
+                    <p class="hover:text-pink-400 transition cursor-pointer">• Hobbies / Intereses</p>
                 </div>
             </div>
 
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
-            <div class="bg-black text-white p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:bg-gray-800 transition">
+            <div class="bg-black text-white p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:scale-[1.02] transition duration-300">
                 <div>
-                    <h3 class="text-2xl font-serif">Curriculum Vitae</h3>
-                    <p class="text-gray-400 text-xs uppercase mt-2">Descargar Lebenslauf</p>
+                    <h3 class="text-3xl font-serif">Curriculum Vitae</h3>
+                    <p class="text-gray-400 text-xs uppercase mt-2 tracking-widest">Lebenslauf digital</p>
                 </div>
                 <div class="text-4xl">↓</div>
             </div>
-            <div class="bg-pink-100 p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:bg-pink-200 transition">
+            <div class="bg-pink-100 p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:scale-[1.02] transition duration-300">
                 <div>
-                    <h3 class="text-2xl font-serif text-gray-800">Otros Cursos</h3>
-                    <p class="text-pink-400 text-xs uppercase mt-2">Ver Certificaciones</p>
+                    <h3 class="text-3xl font-serif text-gray-800">Otros Cursos</h3>
+                    <p class="text-pink-400 text-xs uppercase mt-2 tracking-widest">Certificaciones adicionales</p>
                 </div>
                 <div class="text-4xl text-gray-800">→</div>
             </div>
@@ -118,31 +116,35 @@
 
     </main>
 
+    <footer class="p-10 text-center text-gray-300 text-xs tracking-widest uppercase">
+        &copy; 2026 Yisel Ramirez
+    </footer>
+
     <script>
         const content = {
             es: {
                 title: "Yisel Ramirez",
-                desc: "Profesional con Licenciatura, nivel B2 de alemán y actualmente realizando un Umschulung.",
+                desc: "Licenciada en Derecho con equivalencia académica en Alemania, nivel B2 de alemán y en proceso de Umschulung.",
                 contact: "Contactar",
                 edu: "Formación",
-                germany: "Alemania",
-                work: "Profesional"
+                langs: "Idiomas y Anerkennung",
+                work: "Documentación"
             },
             en: {
                 title: "Yisel Ramirez",
-                desc: "Professional with a University Degree, B2 German level, currently undergoing Umschulung.",
-                contact: "Contact Me",
+                desc: "Law Degree with academic equivalence in Germany, B2 German level, currently undergoing Umschulung.",
+                contact: "Contact",
                 edu: "Education",
-                germany: "Germany",
-                work: "Professional"
+                langs: "Languages & Recognition",
+                work: "Documentation"
             },
             de: {
                 title: "Yisel Ramirez",
-                desc: "Fachkraft mit Universitätsabschluss, Deutsch B2, derzeit in einer Umschulung.",
+                desc: "Abschluss in Rechtswissenschaften mit akademischer Gleichwertigkeit en Deutschland, Deutsch B2, derzeit in Umschulung.",
                 contact: "Kontakt",
                 edu: "Bildung",
-                germany: "Deutschland",
-                work: "Berufserfahrung"
+                langs: "Sprachen & Anerkennung",
+                work: "Dokumentation"
             }
         };
 
@@ -151,7 +153,7 @@
             document.getElementById('main-desc').innerText = content[lang].desc;
             document.getElementById('btn-contact').innerText = content[lang].contact;
             document.getElementById('head-edu').innerText = content[lang].edu;
-            document.getElementById('head-de').innerText = content[lang].germany;
+            document.getElementById('head-langs').innerText = content[lang].langs;
             document.getElementById('head-work').innerText = content[lang].work;
 
             ['es', 'en', 'de'].forEach(l => {
