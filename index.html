@@ -3,118 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Expert Multi-Language</title>
+    <title>Yisel | Historial Académico</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        * { cursor: none; }
-        body { background-color: #050505; color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        .cursor { width: 8px; height: 8px; background: #3b82f6; border-radius: 50%; position: fixed; pointer-events: none; z-index: 999; transition: transform 0.1s ease; }
-        .cursor-follower { width: 35px; height: 35px; border: 1px solid rgba(59, 130, 246, 0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 998; transition: transform 0.2s ease; }
-        .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 32px; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); position: relative; overflow: hidden; }
-        .bento-card:hover { border-color: #3b82f6; background: rgba(59, 130, 246, 0.05); transform: translateY(-10px); }
-        .lang-btn { cursor: pointer; padding: 4px 12px; border-radius: 8px; transition: all 0.3s; font-size: 0.7rem; border: 1px solid rgba(255,255,255,0.1); font-weight: bold; color: #666; }
-        .lang-btn.active { background: #3b82f6; border-color: #3b82f6; color: white; }
+        body { background-color: #fdfdfd; color: #555; font-family: 'Quicksand', sans-serif; }
+        
+        /* Cursor armonioso */
+        .cursor { width: 10px; height: 10px; background: #a5f3fc; border-radius: 50%; position: fixed; pointer-events: none; z-index: 999; }
+        .cursor-follower { width: 40px; height: 40px; border: 2px solid #a5f3fc; border-radius: 50%; position: fixed; pointer-events: none; z-index: 998; transition: transform 0.15s ease-out; }
+
+        /* Carrusel infinito y suave */
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+        .carousel-track::-webkit-scrollbar { height: 6px; }
+        .carousel-track::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+
+        .card {
+            flex: 0 0 300px; /* Ancho fijo para que entren muchas */
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 350px;
+        }
+        .card:hover { border-color: #bae6fd; transform: translateY(-5px); box-shadow: 0 15px 30px rgba(186, 230, 253, 0.4); }
+
+        .lang-btn { cursor: pointer; padding: 5px 15px; border-radius: 20px; font-size: 12px; font-weight: bold; transition: 0.3s; border: 1px solid #eee; }
+        .lang-btn.active { background: #bae6fd; border-color: #bae6fd; color: white; }
     </style>
 </head>
 <body>
     <div class="cursor" id="cursor"></div>
     <div class="cursor-follower" id="follower"></div>
 
-    <nav class="p-10 flex justify-between items-center relative z-10">
-        <div class="text-xl font-black tracking-tighter uppercase italic">YISEL.PRO</div>
-        
+    <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
+        <div class="text-2xl font-bold text-gray-700 tracking-tighter italic">Yisel <span class="text-sky-300">Dev.</span></div>
         <div class="flex gap-4 items-center">
-            <div class="flex gap-1 bg-white/5 p-1 rounded-xl">
+            <div class="flex gap-2 bg-gray-50 p-1 rounded-full">
                 <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
                 <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
                 <button onclick="changeLang('de')" id="btn-de" class="lang-btn">DE</button>
             </div>
-            <a href="mailto:tu-correo@ejemplo.com" id="nav-contact" class="bg-blue-600 px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition text-[10px] uppercase tracking-widest ml-4">Contacto</a>
+            <a href="mailto:tu-correo@ejemplo.com" id="nav-contact" class="bg-sky-200 text-sky-700 px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-sky-300 transition">Contacto</a>
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-6 mt-16">
-        <section class="mb-32 text-center md:text-left">
-            <h1 data-aos="fade-up" id="hero-title" class="text-6xl md:text-[8.5rem] font-bold tracking-tighter leading-none uppercase italic">Diseño <br> <span class="text-blue-600">Activo.</span></h1>
-            <p data-aos="fade-up" data-aos-delay="200" id="hero-desc" class="text-gray-500 mt-10 text-xl max-w-lg mx-auto md:mx-0">Experiencias interactivas y soluciones web modernas. Enfoque en rendimiento y estética global.</p>
+    <main class="max-w-7xl mx-auto px-6 mt-10">
+        <section class="flex flex-col md:flex-row items-center gap-10 mb-20 bg-sky-50/50 p-10 rounded-[40px] border border-sky-100">
+            <div class="w-44 h-44 rounded-full overflow-hidden border-4 border-white shadow-xl flex-shrink-0">
+                <img src="foto.jpg" alt="Yisel" class="w-full h-full object-cover" onerror="this.parentNode.style.background='#bae6fd'">
+            </div>
+            <div class="text-center md:text-left">
+                <h1 id="main-title" class="text-4xl md:text-6xl font-bold text-gray-800">Mi Historial Académico</h1>
+                <p id="main-desc" class="text-gray-500 mt-4 text-lg font-light max-w-xl">Aquí registro toda mi formación, cursos y logros educativos de manera detallada.</p>
+            </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
-            <div data-aos="zoom-in" class="md:col-span-2 h-96 bento-card p-12 flex flex-col justify-end">
-                <span id="card1-tag" class="text-blue-500 text-xs font-bold mb-2 uppercase tracking-widest">Portafolio 2026</span>
-                <h3 id="card1-title" class="text-4xl font-bold italic">Proyectos Seleccionados</h3>
-                <p id="card1-desc" class="text-gray-500 mt-2 italic">Click para ver detalles</p>
-            </div>
-            <div data-aos="zoom-in" data-aos-delay="100" class="h-96 bento-card p-12 flex flex-col justify-end">
-                <span id="card2-tag" class="text-blue-500 text-xs font-bold mb-2 uppercase tracking-widest">Sobre Mí</span>
-                <h3 id="card2-title" class="text-3xl font-bold">Experiencia</h3>
-                <p id="card2-desc" class="text-gray-500 mt-2 italic">Basada en Alemania</p>
-            </div>
+        <div class="mb-5 flex justify-between items-end">
+            <h2 id="section-title" class="text-2xl font-semibold text-gray-700">Formación Académica</h2>
+            <span class="text-gray-300 text-sm italic">Desliza para ver más →</span>
         </div>
+
+        <div class="carousel-track" id="track">
+            <div class="card" data-aos="fade-left">
+                <div>
+                    <span class="text-sky-400 font-bold text-sm uppercase">2023 - 2026</span>
+                    <h3 class="text-xl font-bold text-gray-800 mt-2">Grado Universitario</h3>
+                </div>
+                <div class="mt-4 text-gray-500 text-sm leading-relaxed">Descripción detallada de tus estudios en Alemania.</div>
+                <div class="mt-6 pt-4 border-t border-gray-50 font-semibold text-gray-600 italic">Universidad de...</div>
+            </div>
+
+            <div class="card" data-aos="fade-left" data-aos-delay="100">
+                <div>
+                    <span class="text-sky-400 font-bold text-sm uppercase">2022</span>
+                    <h3 class="text-xl font-bold text-gray-800 mt-2">Certificado Alemán C1</h3>
+                </div>
+                <div class="mt-4 text-gray-500 text-sm leading-relaxed">Dominio avanzado del idioma para entorno profesional.</div>
+                <div class="mt-6 pt-4 border-t border-gray-50 font-semibold text-gray-600 italic">Instituto Goethe</div>
+            </div>
+
+            <div class="card" data-aos="fade-left" data-aos-delay="200">
+                <div>
+                    <span class="text-sky-400 font-bold text-sm uppercase">2021</span>
+                    <h3 class="text-xl font-bold text-gray-800 mt-2">Curso Especializado</h3>
+                </div>
+                <div class="mt-4 text-gray-500 text-sm leading-relaxed">Formación adicional en diseño y gestión.</div>
+                <div class="mt-6 pt-4 border-t border-gray-50 font-semibold text-gray-600 italic">Online Academy</div>
+            </div>
+
+            </div>
     </main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000 });
+        AOS.init({ duration: 800, once: true });
 
-        const translations = {
-            es: {
-                navContact: 'Contacto',
-                heroTitle: 'Diseño <br> <span class="text-blue-600">Activo.</span>',
-                heroDesc: 'Experiencias interactivas y soluciones web modernas. Enfoque en rendimiento y estética global.',
-                card1Tag: 'Portafolio 2026',
-                card1Title: 'Proyectos Seleccionados',
-                card1Desc: 'Click para ver detalles',
-                card2Tag: 'Sobre Mí',
-                card2Title: 'Experiencia',
-                card2Desc: 'Basada en Alemania'
-            },
-            en: {
-                navContact: 'Contact',
-                heroTitle: 'Active <br> <span class="text-blue-600">Design.</span>',
-                heroDesc: 'Interactive experiences and modern web solutions. Focus on performance and global aesthetics.',
-                card1Tag: 'Portfolio 2026',
-                card1Title: 'Selected Projects',
-                card1Desc: 'Click for details',
-                card2Tag: 'About Me',
-                card2Title: 'Expertise',
-                card2Desc: 'Based in Germany'
-            },
-            de: {
-                navContact: 'Kontakt',
-                heroTitle: 'Aktives <br> <span class="text-blue-600">Design.</span>',
-                heroDesc: 'Interaktive Erlebnisse und moderne Web-Lösungen. Fokus auf Performance und globale Ästhetik.',
-                card1Tag: 'Portfolio 2026',
-                card1Title: 'Ausgewählte Projekte',
-                card1Desc: 'Klicken für Details',
-                card2Tag: 'Über Mich',
-                card2Title: 'Expertise',
-                card2Desc: 'Standort: Deutschland'
-            }
+        // Función para cambiar idiomas
+        const texts = {
+            es: { title: "Mi Historial Académico", contact: "Contacto", section: "Formación Académica" },
+            en: { title: "Academic Background", contact: "Contact", section: "Education History" },
+            de: { title: "Akademischer Werdegang", contact: "Kontakt", section: "Bildungsweg" }
         };
 
-        function changeLang(lang) {
-            document.getElementById('nav-contact').innerText = translations[lang].navContact;
-            document.getElementById('hero-title').innerHTML = translations[lang].heroTitle;
-            document.getElementById('hero-desc').innerText = translations[lang].heroDesc;
-            document.getElementById('card1-tag').innerText = translations[lang].card1Tag;
-            document.getElementById('card1-title').innerText = translations[lang].card1Title;
-            document.getElementById('card1-desc').innerText = translations[lang].card1Desc;
-            document.getElementById('card2-tag').innerText = translations[lang].card2Tag;
-            document.getElementById('card2-title').innerText = translations[lang].card2Title;
-            document.getElementById('card2-desc').innerText = translations[lang].card2Desc;
-
-            ['es', 'en', 'de'].forEach(l => {
-                document.getElementById('btn-' + l).classList.toggle('active', l === lang);
-            });
+        function changeLang(l) {
+            document.getElementById('main-title').innerText = texts[l].title;
+            document.getElementById('nav-contact').innerText = texts[l].contact;
+            document.getElementById('section-title').innerText = texts[l].section;
+            ['es', 'en', 'de'].forEach(btn => document.getElementById('btn-'+btn).classList.toggle('active', btn === l));
         }
 
-        const cursor = document.getElementById('cursor');
-        const follower = document.getElementById('follower');
+        // Mouse Tracker
+        const c = document.getElementById('cursor'), f = document.getElementById('follower');
         document.addEventListener('mousemove', (e) => {
-            cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-            follower.style.transform = `translate3d(${e.clientX - 14}px, ${e.clientY - 14}px, 0)`;
+            c.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            f.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
         });
     </script>
 </body>
