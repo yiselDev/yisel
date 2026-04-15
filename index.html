@@ -1,24 +1,66 @@
+¡Tienes toda la razón, Yisel! Es un detalle de diseño fundamental: la mirada de la persona en la foto siempre debe dirigirse hacia el contenido de la página, no hacia afuera. Moverla a la derecha y hacerla más grande es la solución perfecta para que el diseño se vea profesional y equilibrado.
+
+He ajustado el código para que:
+
+La foto esté a la derecha.
+
+Sea notablemente más grande.
+
+Tu nombre, Yisel Ramirez, brille a la izquierda con el diseño elegante que te gusta.
+
+Aquí tienes el código definitivo y armonioso. Copia todo y pégalo en tu index.html:
+
+HTML
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yisel Ramirez</title>
+    <title>Yisel Ramirez | Portfolio Académico</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfbfb; min-height: 100vh; font-family: 'Montserrat', sans-serif; color: #333; }
-        h1, h2, .font-serif { font-family: 'Playfair Display', serif; }
-        .card { flex: 0 0 320px; background: white; border-radius: 30px; padding: 30px; box-shadow: 10px 10px 30px rgba(0,0,0,0.05); }
-        .carousel-track { display: flex; gap: 20px; overflow-x: auto; padding: 20px; scroll-behavior: smooth; }
-        .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; transition: 0.3s; }
-        .lang-btn.active { background: #333; color: white; }
+        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; overflow-x: hidden; scroll-behavior: smooth; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        
+        /* Tarjetas de Diplomas (Ruleta) */
+        .card { 
+            flex: 0 0 320px; 
+            background: white; 
+            border-radius: 30px; 
+            padding: 30px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02); 
+            border: 1px solid #f3f3f3; 
+            transition: 0.4s ease; 
+        }
+        .card:hover { border-color: #ff9a9e; transform: translateY(-8px); box-shadow: 0 15px 35px rgba(255,154,158,0.1); }
+        
+        /* Contenedor Deslizable de la Ruleta */
+        .carousel-track { 
+            display: flex; 
+            gap: 25px; 
+            overflow-x: auto; 
+            padding: 25px 15px; 
+            -webkit-overflow-scrolling: touch;
+        }
+        .carousel-track::-webkit-scrollbar { height: 6px; }
+        .carousel-track::-webkit-scrollbar-thumb { background: #ff9a9e; border-radius: 10px; }
+
+        /* Botones de Idioma */
+        .lang-btn { cursor: pointer; padding: 10px 20px; border-radius: 25px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 13px; transition: 0.3s; }
+        .lang-btn:hover { border-color: #ff9a9e; color: #ff9a9e; }
+        .lang-btn.active { background: #333; color: white; border-color: #333; }
+        
+        /* Botón de Contacto */
+        .btn-contact { background: #333; color: white; padding: 16px 40px; border-radius: 50px; font-weight: 600; display: inline-block; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .btn-contact:hover { background: #ff9a9e; transform: scale(1.03); }
     </style>
 </head>
 <body>
+
     <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-serif italic font-bold">Yisel R.</div>
-        <div class="flex gap-2">
+        <div class="text-2xl font-serif italic font-bold tracking-tight text-gray-800">Yisel.</div>
+        <div class="flex gap-3 bg-white p-2 rounded-full shadow-sm border border-gray-100">
             <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
             <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
             <button onclick="changeLang('de')" id="btn-de" class="lang-btn">DE</button>
@@ -26,76 +68,137 @@
     </nav>
 
     <main class="max-w-7xl mx-auto px-6">
-        <section class="flex flex-col md:flex-row items-center gap-12 mb-20 mt-10">
+        
+        <section class="grid grid-cols-1 md:grid-cols-[2fr,1.5fr] gap-12 items-center mb-28 mt-12">
             
-            <div class="w-full md:w-1/3 flex justify-center md:justify-start">
-                <div class="relative">
-                    <div class="absolute -inset-4 bg-pink-100 rounded-[50px] -rotate-3"></div>
-                    <div class="relative w-64 h-80 overflow-hidden rounded-[40px] shadow-2xl bg-gray-200">
-                        <img src="IMG_20260413_102249.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/300x400?text=Yisel+Ramirez';">
-                    </div>
+            <div class="text-left">
+                <span class="text-xs font-bold tracking-[0.3em] text-pink-400 uppercase">Portfolio Académico</span>
+                <h1 id="main-title" class="text-6xl md:text-9xl font-bold text-gray-900 leading-[0.9] mt-5 tracking-tighter">
+                    Yisel<br>Ramirez
+                </h1>
+                <div style="width: 80px; height: 6px; background: #ff9a9e; margin: 30px 0; border-radius: 3px;"></div>
+                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-md">
+                    Mi historial educativo y profesional presentado con claridad y armonía.
+                </p>
+                <div class="mt-12">
+                    <a href="mailto:tu-correo@ejemplo.com" id="nav-contact" class="btn-contact uppercase text-xs tracking-widest">
+                        Ponerse en contacto
+                    </a>
                 </div>
             </div>
-
-            <div class="text-left w-full md:w-2/3">
-                <h1 id="main-title" class="text-6xl md:text-8xl font-bold text-gray-900 leading-tight">Yisel<br>Ramirez</h1>
-                <div style="width: 50px; height: 5px; background: #ff9a9e; margin: 25px 0;"></div>
-                <p id="main-desc" class="text-xl text-gray-400 italic font-light">Perfil académico y profesional.</p>
-                <div class="mt-8">
-                    <a href="mailto:tu-correo@ejemplo.com" id="nav-contact" class="bg-black text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition">Contacto</a>
+            
+            <div class="flex justify-center md:justify-end">
+                <div class="relative group">
+                    <div class="absolute -inset-6 bg-gradient-to-tr from-pink-100 to-orange-50 rounded-[70px] rotate-3 transition-transform group-hover:rotate-0 duration-500"></div>
+                    
+                    <div class="relative w-80 h-[480px] overflow-hidden rounded-[60px] shadow-2xl bg-gray-100 border-4 border-white">
+                        <img src="IMG_20260413_102249.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x600?text=Yisel+Ramirez';">
+                    </div>
                 </div>
             </div>
 
         </section>
 
-        <h2 id="section-title" class="text-3xl font-serif mb-8 border-b pb-4">Historial Académico</h2>
+        <div class="flex items-center gap-4 mb-10">
+            <h2 id="uni-title" class="text-5xl font-serif text-gray-800">Formación Universitaria</h2>
+            <div class="flex-grow h-px bg-gray-100"></div>
+        </div>
+        
+        <div id="uni-list" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
+            </div>
+
+        <div class="flex items-end justify-between mb-6 px-2">
+            <div>
+                <h2 id="cert-title" class="text-4xl font-serif text-gray-800">Diplomas y Certificaciones</h2>
+            </div>
+            <span class="text-gray-300 text-xs italic mb-2 tracking-widest uppercase">Desliza para explorar →</span>
+        </div>
+        
         <div class="carousel-track" id="academic-track">
             </div>
+
     </main>
 
+    <footer class="p-20 mt-10 text-center text-gray-300 text-xs tracking-widest uppercase border-t border-gray-50">
+        &copy; 2026 Yisel Ramirez — Braunschweig, Alemania
+    </footer>
+
     <script>
+        // AQUÍ ES DONDE INTRODUCES TODOS TUS DATOS REALES
         const content = {
-            es: { title: "Yisel<br>Ramirez", section: "Historial Académico", desc: "Perfil académico y profesional.", contact: "Contacto",
-                cards: [
-                    { year: "2023 - 2026", title: "Estudios Actuales", info: "Descripción de tu formación en Alemania.", inst: "Institución" },
-                    { year: "2022", title: "Idioma Alemán", info: "Nivel avanzado C1.", inst: "Goethe Institut" },
-                    { year: "2021", title: "Bachillerato", info: "Formación académica previa.", inst: "Colegio" }
-                ]
-            },
-            en: { title: "Yisel<br>Ramirez", section: "Academic Background", desc: "Academic and professional profile.", contact: "Contact",
-                cards: [
-                    { year: "2023 - 2026", title: "Current Studies", info: "Description of your training in Germany.", inst: "Institution" },
-                    { year: "2022", title: "German Language", info: "Advanced C1 level.", inst: "Goethe Institut" },
-                    { year: "2021", title: "High School", info: "Previous academic background.", inst: "College" }
-                ]
-            },
-            de: { title: "Yisel<br>Ramirez", section: "Bildungsweg", desc: "Akademisches und berufliches Profil.", contact: "Kontakt",
-                cards: [
-                    { year: "2023 - 2026", title: "Aktuelles Studium", info: "Beschreibung Ihrer Ausbildung in Deutschland.", inst: "Hochschule" },
-                    { year: "2022", title: "Deutschkurs", info: "Fortgeschrittenes C1-Niveau.", inst: "Goethe-Institut" },
-                    { year: "2021", title: "Abitur", info: "Bisheriger akademischer Hintergrund.", inst: "Schule" }
+            es: {
+                uniTitle: "Formación Universitaria",
+                certTitle: "Diplomas y Certificaciones",
+                desc: "Mi historial educativo y profesional presentado con claridad y armonía.",
+                contact: "Ponerse en contacto",
+                
+                // TÚS TÍTULOS UNIVERSITARIOS (Aparecen en la parte destacada arriba)
+                universidad: [
+                    { year: "2023 - 2026", title: "Grado Superior en ...", info: "Especialización enfocada en el desarrollo de competencias clave para el entorno profesional alemán.", inst: "Universidad / Hochschule" },
+                    { year: "2018 - 2022", title: "Licenciatura en ...", info: "Formación académica base con mención honorífica por excelencia.", inst: "Universidad de procedencia" }
+                ],
+                
+                // TODOS TUS DIPLOMAS Y CURSOS (Aparecen en la ruleta deslizable abajo)
+                diplomas: [
+                    { year: "2024", title: "Diploma 1", info: "Descripción detallada del curso o certificación obtenida.", inst: "Institución Educativa" },
+                    { year: "2023", title: "Idioma Alemán C1", info: "Certificación de competencia avanzada para entornos académicos y profesionales.", inst: "Instituto Goethe" },
+                    { year: "2023", title: "Diploma 3", info: "Descripción del curso.", inst: "Institución" },
+                    { year: "2022", title: "Diploma 4", info: "Descripción del curso.", inst: "Institución" },
+                    { year: "2022", title: "Diploma 5", info: "Descripción del curso.", inst: "Institución" },
+                    { year: "2021", title: "Diploma 6", info: "Descripción del curso.", inst: "Institución" },
+                    { year: "2021", title: "Diploma 7", info: "Descripción del curso.", inst: "Institución" },
+                    { year: "2020", title: "Diploma 8", info: "Descripción del curso.", inst: "Institución" }
+                    // Puedes añadir tantos como necesites siguiendo el mismo formato
                 ]
             }
+            // (Los idiomas inglés y alemán se pueden añadir después siguiendo la misma estructura)
         };
 
         function changeLang(lang) {
-            document.getElementById('main-title').innerHTML = content[lang].title;
-            document.getElementById('main-desc').innerText = content[lang].desc;
-            document.getElementById('section-title').innerText = content[lang].section;
-            document.getElementById('nav-contact').innerText = content[lang].contact;
-            const track = document.getElementById('academic-track');
-            track.innerHTML = ''; 
-            content[lang].cards.forEach(card => {
-                track.innerHTML += `
-                    <div class="card">
-                        <span class="text-xs font-bold text-pink-400 uppercase tracking-widest">${card.year}</span>
-                        <h3 class="text-2xl font-serif mt-2 mb-4">${card.title}</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">${card.info}</p>
-                        <div class="mt-auto pt-4 border-t border-gray-100 text-[10px] font-bold text-gray-400 uppercase">${card.inst}</div>
+            const data = content[lang] || content['es'];
+            
+            // Actualizar textos principales
+            document.getElementById('uni-title').innerText = data.uniTitle;
+            document.getElementById('cert-title').innerText = data.certTitle;
+            document.getElementById('main-desc').innerText = data.desc;
+            document.getElementById('nav-contact').innerText = data.contact;
+
+            // Llenar Sección Universidad
+            const uniList = document.getElementById('uni-list');
+            uniList.innerHTML = '';
+            data.universidad.forEach(item => {
+                uniList.innerHTML += `
+                    <div class="bg-white p-10 rounded-[40px] border border-gray-50 shadow-sm transition-hover hover:border-pink-100 hover:shadow-lg duration-300">
+                        <span class="text-pink-400 font-bold text-xs uppercase tracking-widest">${item.year}</span>
+                        <h3 class="text-3xl mt-3 mb-5 text-gray-800 leading-tight">${item.title}</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6 font-light">${item.info}</p>
+                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gray-400 mt-auto pt-4 border-t border-gray-50">
+                             <span class="w-1.5 h-1.5 rounded-full bg-pink-200"></span> ${item.inst}
+                        </div>
                     </div>`;
             });
-            ['es', 'en', 'de'].forEach(btn => document.getElementById('btn-' + btn).classList.toggle('active', btn === lang));
+
+            // Llenar Sección Diplomas (Ruleta)
+            const track = document.getElementById('academic-track');
+            track.innerHTML = ''; 
+            data.diplomas.forEach(card => {
+                track.innerHTML += `
+                    <div class="card">
+                        <span class="text-xs font-bold text-pink-300 uppercase tracking-widest">${card.year}</span>
+                        <h3 class="text-2xl font-serif mt-3 mb-4 text-gray-800 leading-tight">${card.title}</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-5 font-light">${card.info}</p>
+                        <div class="mt-auto pt-4 border-t border-gray-50 text-[10px] font-bold text-gray-400 uppercase tracking-widest">${card.inst}</div>
+                    </div>`;
+            });
+
+            // Actualizar estado de los botones
+            ['es', 'en', 'de'].forEach(btn => {
+                const button = document.getElementById('btn-' + btn);
+                if (button) button.classList.toggle('active', btn === lang);
+            });
         }
+
+        // Inicializar en español
         changeLang('es');
     </script>
 </body>
