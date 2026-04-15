@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yisel Ramirez | Portfolio</title>
+    <title>Yisel Ramirez | Derecho</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -14,6 +14,8 @@
         .lang-btn { cursor: pointer; padding: 10px 20px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; transition: 0.3s; font-size: 12px; }
         .lang-btn.active { background: #333 !important; color: white !important; }
         .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+        .photo-wrapper { position: relative; width: 300px; height: 420px; }
+        .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 40px; border: 4px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
@@ -40,17 +42,14 @@
             </div>
             
             <div class="w-full md:w-1/3 flex justify-center md:justify-end">
-                <div class="relative">
-                    <div class="absolute -inset-4 bg-pink-50 rounded-[60px] rotate-3"></div>
-                    <div class="relative w-72 h-[450px] overflow-hidden rounded-[50px] shadow-2xl bg-gray-100 border-4 border-white">
-                        <img src="IMG_20260413_102249.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x600?text=Cargar+Foto';">
-                    </div>
+                <div class="photo-wrapper">
+                    <div class="absolute -inset-4 bg-pink-100 rounded-[50px] rotate-3 -z-10"></div>
+                    <img src="foto.jpg" alt="Yisel Ramirez" id="user-photo">
                 </div>
             </div>
         </section>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            
             <div class="section-box">
                 <h2 id="head-edu" class="text-2xl font-bold mb-6 italic">Formación</h2>
                 <div class="space-y-4">
@@ -94,58 +93,25 @@
                     <p class="hover:text-pink-400 transition cursor-pointer">• Hobbies / Intereses</p>
                 </div>
             </div>
-
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
             <div class="bg-black text-white p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:scale-[1.02] transition duration-300">
-                <div>
-                    <h3 class="text-3xl font-serif">Curriculum Vitae</h3>
-                    <p class="text-gray-400 text-xs uppercase mt-2 tracking-widest">Lebenslauf digital</p>
-                </div>
+                <div><h3 class="text-3xl font-serif">Curriculum Vitae</h3><p class="text-gray-400 text-xs uppercase mt-2 tracking-widest">Lebenslauf digital</p></div>
                 <div class="text-4xl">↓</div>
             </div>
             <div class="bg-pink-100 p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:scale-[1.02] transition duration-300">
-                <div>
-                    <h3 class="text-3xl font-serif text-gray-800">Otros Cursos</h3>
-                    <p class="text-pink-400 text-xs uppercase mt-2 tracking-widest">Certificaciones adicionales</p>
-                </div>
+                <div><h3 class="text-3xl font-serif text-gray-800">Otros Cursos</h3><p class="text-pink-400 text-xs uppercase mt-2 tracking-widest">Certificaciones adicionales</p></div>
                 <div class="text-4xl text-gray-800">→</div>
             </div>
         </div>
-
     </main>
-
-    <footer class="p-10 text-center text-gray-300 text-xs tracking-widest uppercase">
-        &copy; 2026 Yisel Ramirez
-    </footer>
 
     <script>
         const content = {
-            es: {
-                title: "Yisel Ramirez",
-                desc: "Licenciada en Derecho con equivalencia académica en Alemania, nivel B2 de alemán y en proceso de Umschulung.",
-                contact: "Contactar",
-                edu: "Formación",
-                langs: "Idiomas y Anerkennung",
-                work: "Documentación"
-            },
-            en: {
-                title: "Yisel Ramirez",
-                desc: "Law Degree with academic equivalence in Germany, B2 German level, currently undergoing Umschulung.",
-                contact: "Contact",
-                edu: "Education",
-                langs: "Languages & Recognition",
-                work: "Documentation"
-            },
-            de: {
-                title: "Yisel Ramirez",
-                desc: "Abschluss in Rechtswissenschaften mit akademischer Gleichwertigkeit en Deutschland, Deutsch B2, derzeit in Umschulung.",
-                contact: "Kontakt",
-                edu: "Bildung",
-                langs: "Sprachen & Anerkennung",
-                work: "Dokumentation"
-            }
+            es: { title: "Yisel Ramirez", desc: "Licenciada en Derecho con equivalencia académica en Alemania, nivel B2 de alemán y en proceso de Umschulung.", contact: "Contactar", edu: "Formación", langs: "Idiomas y Anerkennung", work: "Documentación" },
+            en: { title: "Yisel Ramirez", desc: "Law Degree with academic equivalence in Germany, B2 German level, currently undergoing Umschulung.", contact: "Contact", edu: "Education", langs: "Languages & Recognition", work: "Documentation" },
+            de: { title: "Yisel Ramirez", desc: "Abschluss in Rechtswissenschaften mit akademischer Gleichwertigkeit in Deutschland, Deutsch B2, derzeit in Umschulung.", contact: "Kontakt", edu: "Bildung", langs: "Sprachen & Anerkennung", work: "Dokumentation" }
         };
 
         function changeLang(lang) {
@@ -155,10 +121,7 @@
             document.getElementById('head-edu').innerText = content[lang].edu;
             document.getElementById('head-langs').innerText = content[lang].langs;
             document.getElementById('head-work').innerText = content[lang].work;
-
-            ['es', 'en', 'de'].forEach(l => {
-                document.getElementById('btn-' + l).classList.toggle('active', l === lang);
-            });
+            ['es', 'en', 'de'].forEach(l => document.getElementById('btn-' + l).classList.toggle('active', l === lang));
         }
     </script>
 </body>
