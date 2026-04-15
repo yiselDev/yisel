@@ -38,77 +38,166 @@
                     </div>
                 </div>
             </div>
+      <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yisel Ramirez | Dossier Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .section-box { background: white; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; transition: 0.3s; height: 100%; cursor: pointer; }
+        .section-box:hover { border-color: #ff9a9e; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .lang-btn { cursor: pointer; padding: 10px 20px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; transition: 0.3s; font-size: 12px; }
+        .lang-btn.active { background: #333; color: white; border-color: #333; }
+        .skill-tag { background: #f8f8f8; padding: 5px 12px; border-radius: 10px; font-size: 11px; font-weight: 600; margin: 3px; display: inline-block; border: 1px solid #eee; }
+    </style>
+</head>
+<body>
+
+    <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
+        <div class="text-2xl font-bold italic">Y. Ramirez</div>
+        <div class="flex gap-2">
+            <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
+            <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
+            <button onclick="changeLang('de')" id="btn-de" class="lang-btn">DE</button>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6">
+        
+        <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-20 mt-6">
+            <div class="w-full md:w-2/3 text-left">
+                <h1 id="main-title" class="text-5xl md:text-8xl font-bold text-gray-900 whitespace-nowrap">Yisel Ramirez</h1>
+                <div style="width: 70px; height: 6px; background: #ff9a9e; margin: 25px 0;"></div>
+                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">Profesional con Licenciatura, nivel B2 de alemán y actualmente realizando un Umschulung.</p>
+                <div class="mt-10">
+                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition">Contactar</a>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-1/3 flex justify-center md:justify-end">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-pink-50 rounded-[60px] rotate-3"></div>
+                    <div class="relative w-72 h-[420px] overflow-hidden rounded-[50px] shadow-2xl bg-gray-100 border-4 border-white">
+                        <img src="IMG_20260413_102249.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x600?text=Cargar+Foto+JPG';">
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div class="section-box">
-                <h2 class="text-3xl font-bold mb-6 border-b pb-2">Formación</h2>
-                <div class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+            
+            <div class="section-box" onclick="alert('Sección Académica')">
+                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic">Formación</h2>
+                <div class="space-y-4">
                     <div>
-                        <span class="text-pink-400 text-xs font-bold uppercase">Actualmente</span>
-                        <h3 class="text-xl font-bold">Umschulung</h3>
-                        <p class="text-gray-500 text-sm italic">Reorientación profesional en el sistema alemán.</p>
+                        <p class="text-pink-400 text-[10px] font-bold uppercase tracking-tighter">Actualidad</p>
+                        <h3 class="font-bold text-lg">Umschulung</h3>
                     </div>
                     <div>
-                        <span class="text-gray-400 text-xs font-bold uppercase">Título</span>
-                        <h3 class="text-xl font-bold">Licenciatura</h3>
-                        <p class="text-gray-500 text-sm italic">Estudios universitarios completados.</p>
+                        <p class="text-gray-400 text-[10px] font-bold uppercase">Título</p>
+                        <h3 class="font-bold text-lg">Licenciatura</h3>
                     </div>
                     <div>
-                        <span class="text-gray-400 text-xs font-bold uppercase">Escolaridad</span>
-                        <h3 class="text-lg font-bold">Bachillerato</h3>
+                        <p class="text-gray-400 text-[10px] font-bold uppercase">Base</p>
+                        <h3 class="font-bold text-lg">Bachillerato</h3>
                     </div>
                 </div>
             </div>
 
-            <div class="section-box">
-                <h2 class="text-3xl font-bold mb-6 border-b pb-2">Estatus en Alemania</h2>
-                <div class="space-y-6">
-                    <div class="flex justify-between items-center">
-                        <h3 class="text-xl font-bold">Alemán B2</h3>
-                        <span class="bg-green-100 text-green-700 text-[10px] px-2 py-1 rounded-md font-bold uppercase">Nivel Actual</span>
+            <div class="section-box" onclick="alert('Documentos de Alemania')">
+                <h2 id="head-de" class="text-2xl font-bold mb-6 italic">Alemania</h2>
+                <div class="space-y-4">
+                    <div class="flex justify-between">
+                        <h3 class="font-bold">Idioma Alemán</h3>
+                        <span class="text-pink-400 font-bold">B2</span>
                     </div>
                     <div>
-                        <h3 class="text-xl font-bold">Anerkennung</h3>
-                        <p class="text-gray-500 text-sm italic">Proceso de homologación de títulos extranjeros.</p>
+                        <h3 class="font-bold">Anerkennung</h3>
+                        <p class="text-gray-400 text-xs italic">Estado de homologación.</p>
                     </div>
-                    <div>
-                        <h3 class="text-xl font-bold">Experiencia Laboral</h3>
-                        <p class="text-gray-500 text-sm">Resumen de trayectoria profesional previa.</p>
+                    <div class="pt-4">
+                        <div class="skill-tag">Adaptabilidad</div>
+                        <div class="skill-tag">Integración</div>
                     </div>
                 </div>
             </div>
+
+            <div class="section-box" onclick="alert('Experiencia Laboral')">
+                <h2 id="head-work" class="text-2xl font-bold mb-6 italic">Profesional</h2>
+                <div class="space-y-4 text-sm">
+                    <p class="font-bold underline">Experiencia Laboral</p>
+                    <p class="font-bold underline italic">Carta Iniciativa (Solicitud)</p>
+                    <p class="font-bold underline">Skills & Habilidades</p>
+                    <p class="font-bold underline">Hobbies</p>
+                </div>
+            </div>
+
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="section-box">
-                <h3 class="text-xl font-bold mb-4">Habilidades (Skills)</h3>
-                <div class="flex flex-wrap">
-                    <span class="skill-tag">Adaptabilidad</span>
-                    <span class="skill-tag">Comunicación</span>
-                    <span class="skill-tag">Responsabilidad</span>
-                    <span class="skill-tag">Trabajo en Equipo</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+            <div class="bg-black text-white p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:bg-gray-800 transition">
+                <div>
+                    <h3 class="text-2xl font-serif">Curriculum Vitae</h3>
+                    <p class="text-gray-400 text-xs uppercase mt-2">Descargar Lebenslauf</p>
                 </div>
+                <div class="text-4xl">↓</div>
             </div>
-            <div class="section-box">
-                <h3 class="text-xl font-bold mb-4">Hobbies</h3>
-                <p class="text-gray-500 text-sm italic">Menciona aquí lo que te gusta hacer (Viajar, lectura, arte, etc.)</p>
-            </div>
-            <div class="section-box bg-black text-white">
-                <h3 class="text-xl font-bold mb-4">Documentos</h3>
-                <ul class="text-sm space-y-2 opacity-80">
-                    <li>• Lebenslauf (CV)</li>
-                    <li>• Anschreiben</li>
-                    <li>• Diplomas / Cursos</li>
-                </ul>
+            <div class="bg-pink-100 p-10 rounded-[40px] flex justify-between items-center cursor-pointer hover:bg-pink-200 transition">
+                <div>
+                    <h3 class="text-2xl font-serif text-gray-800">Otros Cursos</h3>
+                    <p class="text-pink-400 text-xs uppercase mt-2">Ver Certificaciones</p>
+                </div>
+                <div class="text-4xl text-gray-800">→</div>
             </div>
         </div>
 
     </main>
 
-    <footer class="p-10 text-center text-gray-300 text-xs tracking-widest uppercase">
-        &copy; 2026 Yisel Ramirez — Portfolio Profesional
-    </footer>
+    <script>
+        const content = {
+            es: {
+                title: "Yisel Ramirez",
+                desc: "Profesional con Licenciatura, nivel B2 de alemán y actualmente realizando un Umschulung.",
+                contact: "Contactar",
+                edu: "Formación",
+                germany: "Alemania",
+                work: "Profesional"
+            },
+            en: {
+                title: "Yisel Ramirez",
+                desc: "Professional with a University Degree, B2 German level, currently undergoing Umschulung.",
+                contact: "Contact Me",
+                edu: "Education",
+                germany: "Germany",
+                work: "Professional"
+            },
+            de: {
+                title: "Yisel Ramirez",
+                desc: "Fachkraft mit Universitätsabschluss, Deutsch B2, derzeit in einer Umschulung.",
+                contact: "Kontakt",
+                edu: "Bildung",
+                germany: "Deutschland",
+                work: "Berufserfahrung"
+            }
+        };
 
+        function changeLang(lang) {
+            document.getElementById('main-title').innerText = content[lang].title;
+            document.getElementById('main-desc').innerText = content[lang].desc;
+            document.getElementById('btn-contact').innerText = content[lang].contact;
+            document.getElementById('head-edu').innerText = content[lang].edu;
+            document.getElementById('head-de').innerText = content[lang].germany;
+            document.getElementById('head-work').innerText = content[lang].work;
+
+            ['es', 'en', 'de'].forEach(l => {
+                document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+            });
+        }
+    </script>
 </body>
 </html>
