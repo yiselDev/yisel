@@ -11,117 +11,85 @@
         body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-        /* ESTA ES LA MAGIA DEL MOVIMIENTO */
-        .tarjeta-movil {
-            transition: all 0.4s ease;
-            display: block; /* Para que toda la casilla sea clicable */
-            height: 100%;
+        /* Forzamos el movimiento por CSS por si Tailwind falla en tu navegador */
+        .box-link {
+            transition: all 0.3s ease-in-out !important;
+            display: block !important;
+        }
+        
+        /* Esto hará que el cuadro suba y se vea la mano del ratón */
+        .box-link:hover {
+            transform: translateY(-15px) !important;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+            cursor: pointer !important;
         }
 
-        /* Cuando el ratón está encima de la casilla */
-        .tarjeta-movil:hover {
-            transform: translateY(-15px); /* Se eleva */
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1); /* Sombra elegante */
-            filter: brightness(1.05); /* Brilla un poco */
-        }
-
-        /* Cuando el ratón está encima, el título se mueve a la derecha */
-        .tarjeta-movil:hover h3 {
-            transform: translateX(10px);
-            color: #ff9a9e; /* Cambia a color rosado */
-        }
-
-        h3 { transition: all 0.3s ease; }
-
-        .lang-btn { 
-            cursor: pointer; padding: 8px 16px; border-radius: 20px; 
-            font-weight: 600; background: #fff; border: 1px solid #eee; 
-            transition: 0.3s; 
-        }
-        .lang-btn.active { background: #333 !important; color: white !important; }
+        .lang-btn { cursor: pointer; padding: 6px 12px; border-radius: 20px; border: 1px solid #ddd; }
+        .lang-btn.active { background: #000; color: #fff; }
     </style>
 </head>
-<body class="pb-20">
+<body class="p-4 md:p-10">
 
-    <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold italic">Y. Ramirez</div>
-        <div class="flex gap-2">
-            <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
-            <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
-            <button onclick="changeLang('de')" id="btn-de" class="lang-btn">DE</button>
+    <div class="flex justify-end gap-2 mb-10">
+        <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
+        <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
+        <button onclick="changeLang('de')" id="btn-de" class="lang-btn">DE</button>
+    </div>
+
+    <main class="max-w-6xl mx-auto">
+        <div class="mb-16">
+            <h1 class="text-6xl font-bold mb-4">Yisel Ramirez</h1>
+            <p id="main-desc" class="text-2xl text-gray-400 italic">Licenciada en Derecho con equivalencia académica en Alemania.</p>
         </div>
-    </nav>
-
-    <main class="max-w-7xl mx-auto px-6">
-        
-        <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
-            <div class="w-full md:w-2/3">
-                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
-                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">
-                    Licenciada en Derecho con equivalencia académica en Alemania (Nivel entre Bachelor y Master).
-                </p>
-                <div class="mt-8">
-                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition-all transform hover:-translate-y-1">Contactar</a>
-                </div>
-            </div>
-            <div class="w-[300px] h-[400px] rounded-[40px] overflow-hidden border-4 border-white shadow-lg">
-                <img src="foto.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover">
-            </div>
-        </section>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            <div class="tarjeta-movil bg-white p-10 rounded-[40px] border border-gray-100 shadow-sm">
-                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic">Formación</h2>
-                <span class="bg-pink-50 text-pink-400 px-3 py-1 rounded-full text-[10px] font-bold">ACTUALIDAD</span>
-                <h3 class="text-xl font-bold mt-2">Fachinformatikerin</h3>
-                <p id="desc-it" class="text-gray-500 text-sm">Systemintegration (Umschulung i.A.)</p>
+            <div class="bg-white p-8 rounded-[30px] border border-gray-100 shadow-sm">
+                <h2 id="head-edu" class="text-2xl font-bold mb-4 italic">Formación</h2>
+                <p class="text-pink-400 font-bold text-xs mb-2">ACTUALIDAD</p>
+                <h3 class="text-xl font-bold">Fachinformatikerin</h3>
+                <p id="desc-it" class="text-gray-500">Systemintegration (Umschulung i.A.)</p>
             </div>
 
-            <a href="tu-cv.pdf" target="_blank" class="tarjeta-movil bg-black text-white p-10 rounded-[40px] shadow-xl">
-                <h2 class="text-gray-400 text-xs uppercase tracking-widest mb-4">Documento</h2>
+            <a href="tu-cv.pdf" target="_blank" class="box-link bg-black text-white p-8 rounded-[30px] shadow-xl">
+                <h2 class="text-gray-500 text-xs uppercase mb-4">Click para abrir</h2>
                 <h3 id="card-cv" class="text-3xl font-serif">Curriculum Vitae</h3>
-                <p id="card-cv-sub" class="text-gray-500 text-sm mt-4">Haga clic para ver el Lebenslauf digital ↓</p>
+                <p id="card-cv-sub" class="mt-4 text-gray-400 text-sm">Lebenslauf digital ↓</p>
             </a>
 
-            <a href="tus-certificados.pdf" target="_blank" class="tarjeta-movil bg-pink-100 p-10 rounded-[40px] shadow-lg text-gray-800">
-                <h2 class="text-pink-400 text-xs uppercase tracking-widest mb-4">Certificaciones</h2>
-                <h3 id="card-cert" class="text-3xl font-serif">Otros Cursos</h3>
-                <p id="card-cert-sub" class="text-pink-500 text-sm mt-4">Ver diplomas y certificados →</p>
+            <a href="tus-certificados.pdf" target="_blank" class="box-link bg-pink-100 p-8 rounded-[30px] shadow-lg">
+                <h2 class="text-pink-400 text-xs uppercase mb-4">Certificaciones</h2>
+                <h3 id="card-cert" class="text-3xl font-serif text-gray-800">Otros Cursos</h3>
+                <p id="card-cert-sub" class="mt-4 text-pink-600 text-sm">Ver diplomas →</p>
             </a>
 
         </div>
-
     </main>
 
     <script>
         const content = {
             es: {
                 desc: "Licenciada en Derecho con equivalencia académica en Alemania (Nivel entre Bachelor y Master).",
-                contact: "Contactar", edu: "Formación", 
-                descIt: "Systemintegration (Umschulung i.A.)",
-                cardCv: "Curriculum Vitae", cardCvSub: "Haga clic para ver el Lebenslauf digital ↓", 
-                cardCert: "Otros Cursos", cardCertSub: "Ver diplomas y certificados →"
+                edu: "Formación", descIt: "Systemintegration (Umschulung i.A.)",
+                cardCv: "Curriculum Vitae", cardCvSub: "Lebenslauf digital ↓",
+                cardCert: "Otros Cursos", cardCertSub: "Ver diplomas →"
             },
             en: {
-                desc: "Law Graduate with academic equivalence in Germany (Level between Bachelor and Master).",
-                contact: "Contact", edu: "Education",
-                descIt: "IT Specialist (System Integration Training)",
-                cardCv: "Curriculum Vitae", cardCvSub: "Click to view Digital Resume ↓", 
-                cardCert: "Other Courses", cardCertSub: "View diplomas and certificates →"
+                desc: "Law Graduate with academic equivalence in Germany (Bachelor/Master level).",
+                edu: "Education", descIt: "IT Specialist (System Integration)",
+                cardCv: "Curriculum Vitae", cardCvSub: "Digital Resume ↓",
+                cardCert: "Other Courses", cardCertSub: "View certificates →"
             },
             de: {
                 desc: "Rechtswissenschaftlerin mit akademischer Gleichwertigkeit in Deutschland (Bachelor/Master).",
-                contact: "Kontakt", edu: "Bildung",
-                descIt: "Fachinformatikerin Systemintegration (i.A.)",
-                cardCv: "Curriculum Vitae", cardCvSub: "Digitaler Lebenslauf ansehen ↓", 
+                edu: "Bildung", descIt: "Fachinformatikerin Systemintegration (i.A.)",
+                cardCv: "Curriculum Vitae", cardCvSub: "Lebenslauf ansehen ↓",
                 cardCert: "Weitere Kurse", cardCertSub: "Zertifikate ansehen →"
             }
         };
 
         function changeLang(lang) {
             document.getElementById('main-desc').innerText = content[lang].desc;
-            document.getElementById('btn-contact').innerText = content[lang].contact;
             document.getElementById('head-edu').innerText = content[lang].edu;
             document.getElementById('desc-it').innerText = content[lang].descIt;
             document.getElementById('card-cv').innerText = content[lang].cardCv;
@@ -129,12 +97,10 @@
             document.getElementById('card-cert').innerText = content[lang].cardCert;
             document.getElementById('card-cert-sub').innerText = content[lang].cardCertSub;
 
-            ['es', 'en', 'de'].forEach(l => {
-                document.getElementById('btn-' + l).classList.toggle('active', l === lang);
-            });
+            // Cambiar botones
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
         }
-
-        window.onload = () => changeLang('es');
     </script>
 </body>
 </html>
