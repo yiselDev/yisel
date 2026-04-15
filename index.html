@@ -3,124 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yisel Ramirez | Portfolio Profesional</title>
+    <title>Yisel Ramirez | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        .section-box { background: white; border-radius: 30px; padding: 40px; border: 1px solid #f3f3f3; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
-        .skill-tag { background: #333; color: white; padding: 5px 15px; border-radius: 15px; font-size: 12px; display: inline-block; margin: 5px; }
-        .photo-frame { width: 320px; height: 450px; overflow: hidden; rounded: 50px; shadow: 2xl; position: relative; }
-        .badge { background: #ff9a9e; color: white; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+        .section-box { background: white; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; box-shadow: 0 4px 15px rgba(0,0,0,0.02); height: 100%; }
+        .skill-tag { background: #f0f0f0; color: #555; padding: 5px 12px; border-radius: 10px; font-size: 12px; font-weight: 600; display: inline-block; margin: 4px; }
+        .accent-bar { width: 60px; height: 5px; background: #ff9a9e; margin: 20px 0; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center sticky top-0 bg-[#fdfbfb]/80 backdrop-blur-md z-50">
-        <div class="text-2xl font-bold italic">Y. Ramirez</div>
-        <div class="hidden md:flex gap-6 text-xs font-bold uppercase tracking-widest text-gray-400">
-            <a href="#perfil" class="hover:text-pink-400">Perfil</a>
-            <a href="#academico" class="hover:text-pink-400">Académico</a>
-            <a href="#laboral" class="hover:text-pink-400">Laboral</a>
-            <a href="#documentos" class="hover:text-pink-400">Documentos</a>
-        </div>
-    </nav>
-
-    <main class="max-w-7xl mx-auto px-6">
+    <main class="max-w-7xl mx-auto px-6 py-12">
         
-        <section id="perfil" class="flex flex-col md:flex-row items-center justify-between gap-12 mb-24 mt-10">
-            <div class="text-left w-full md:w-2/3">
-                <h1 class="text-6xl md:text-9xl font-bold text-gray-900 leading-none">Yisel<br>Ramirez</h1>
-                <div style="width: 80px; height: 6px; background: #ff9a9e; margin: 30px 0;"></div>
-                <p class="text-2xl text-gray-400 italic font-light mb-8">Profesional enfocada en la excelencia y el crecimiento en Alemania.</p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="mailto:tu-correo@ejemplo.com" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition">Enviar Email</a>
-                    <a href="#documentos" class="border border-black px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-black hover:text-white transition">Ver Currículum</a>
+        <section class="flex flex-col md:flex-row items-center justify-between gap-10 mb-20">
+            <div class="w-full md:w-3/5 text-left">
+                <span class="text-pink-400 font-bold tracking-widest text-xs uppercase">Dossier Profesional</span>
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 whitespace-nowrap mt-4">Yisel Ramirez</h1>
+                <div class="accent-bar"></div>
+                <p class="text-xl text-gray-400 italic font-light max-w-xl">En proceso de Umschulung en Alemania. Profesional con Licenciatura y dominio de idioma B2.</p>
+                <div class="mt-8 flex gap-4">
+                    <a href="mailto:tu-correo@ejemplo.com" class="bg-black text-white px-8 py-3 rounded-full text-xs font-bold uppercase tracking-widest">Contacto</a>
+                    <span class="bg-gray-100 px-8 py-3 rounded-full text-xs font-bold uppercase text-gray-500 italic">Braunschweig, DE</span>
                 </div>
             </div>
-            
-            <div class="w-full md:w-1/3 flex justify-center md:justify-end">
-                <div class="relative">
-                    <div class="absolute -inset-4 bg-pink-100 rounded-[60px] rotate-3"></div>
-                    <div class="relative w-80 h-[480px] overflow-hidden rounded-[50px] shadow-2xl bg-gray-200">
-                        <img src="IMG_20260413_102249.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/400x600?text=Cargar+Foto';">
+
+            <div class="w-full md:w-2/5 flex justify-center md:justify-end">
+                <div class="relative group">
+                    <div class="absolute -inset-4 bg-pink-100 rounded-[50px] rotate-2"></div>
+                    <div class="relative w-72 h-[420px] overflow-hidden rounded-[40px] shadow-2xl bg-white border-4 border-white">
+                        <img src="IMG_20260413_102249.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentNode.innerHTML='<div class=\"flex items-center h-full text-center p-4 text-gray-300\">Foto: IMG_20260413_102249.jpg</div>'">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="academico" class="mb-20">
-            <h2 class="text-4xl font-bold mb-10 border-b pb-4 italic">Historial Académico</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="section-box">
-                    <span class="badge">Título Principal</span>
-                    <h3 class="text-2xl mt-4">Licenciatura</h3>
-                    <p class="text-gray-500 text-sm mt-2">Descripción de tu carrera universitaria y logros principales.</p>
-                    <p class="text-xs font-bold mt-4 text-gray-400 uppercase tracking-widest italic">Universidad</p>
-                </div>
-                <div class="section-box">
-                    <span class="badge">Idiomas</span>
-                    <h3 class="text-2xl mt-4">Alemán C1</h3>
-                    <p class="text-gray-500 text-sm mt-2">Dominio avanzado del idioma para entornos profesionales y académicos.</p>
-                    <p class="text-xs font-bold mt-4 text-gray-400 uppercase tracking-widest italic">Certificado Oficial</p>
-                </div>
-                <div class="section-box">
-                    <span class="badge">Educación</span>
-                    <h3 class="text-2xl mt-4">Bachillerato</h3>
-                    <p class="text-gray-500 text-sm mt-2">Formación académica inicial y base educativa.</p>
-                    <p class="text-xs font-bold mt-4 text-gray-400 uppercase tracking-widest italic">Institución</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="documentos" class="mb-20">
-            <h2 class="text-4xl font-bold mb-10 border-b pb-4 italic">Documentación en Alemania</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="section-box border-l-8 border-l-pink-300">
-                    <h3 class="text-2xl">Anerkennung (Homologación)</h3>
-                    <p class="text-gray-600 mt-4 leading-relaxed">Detalles sobre el proceso de reconocimiento de títulos extranjeros en Alemania y su estatus actual.</p>
-                </div>
-                <div class="section-box border-l-8 border-l-black">
-                    <h3 class="text-2xl">Carta de Iniciativa</h3>
-                    <p class="text-gray-600 mt-4 leading-relaxed">Modelo de solicitud espontánea (Initiativbewerbung) adaptada al mercado laboral alemán.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="laboral" class="mb-20">
-            <div class="grid grid-cols-1 md:grid-cols-[2fr,1fr] gap-10">
-                <div>
-                    <h2 class="text-4xl font-bold mb-10 border-b pb-4 italic">Experiencia Laboral</h2>
-                    <div class="space-y-6">
-                        <div class="section-box">
-                            <span class="text-pink-400 font-bold">202X - Actualidad</span>
-                            <h3 class="text-2xl mt-2">Puesto de Trabajo</h3>
-                            <p class="text-gray-600 mt-2">Responsabilidades clave y logros obtenidos en la empresa.</p>
-                        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div class="section-box">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-2">Formación</h2>
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-pink-400 text-xs font-bold uppercase">Actualmente</span>
+                        <h3 class="text-xl font-bold">Umschulung</h3>
+                        <p class="text-gray-500 text-sm italic">Reorientación profesional en el sistema alemán.</p>
                     </div>
-                </div>
-                <div>
-                    <h2 class="text-4xl font-bold mb-10 border-b pb-4 italic">Habilidades</h2>
-                    <div class="section-box">
-                        <div class="flex flex-wrap">
-                            <span class="skill-tag">Liderazgo</span>
-                            <span class="skill-tag">Adaptabilidad</span>
-                            <span class="skill-tag">Gestión</span>
-                            <span class="skill-tag">Alemán</span>
-                            <span class="skill-tag">Software</span>
-                        </div>
-                        <h3 class="text-xl mt-8 mb-4 italic">Hobbies</h3>
-                        <p class="text-gray-500 text-sm italic leading-relaxed">Lectura, viajes, fotografía y deportes al aire libre.</p>
+                    <div>
+                        <span class="text-gray-400 text-xs font-bold uppercase">Título</span>
+                        <h3 class="text-xl font-bold">Licenciatura</h3>
+                        <p class="text-gray-500 text-sm italic">Estudios universitarios completados.</p>
+                    </div>
+                    <div>
+                        <span class="text-gray-400 text-xs font-bold uppercase">Escolaridad</span>
+                        <h3 class="text-lg font-bold">Bachillerato</h3>
                     </div>
                 </div>
             </div>
-        </section>
+
+            <div class="section-box">
+                <h2 class="text-3xl font-bold mb-6 border-b pb-2">Estatus en Alemania</h2>
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-bold">Alemán B2</h3>
+                        <span class="bg-green-100 text-green-700 text-[10px] px-2 py-1 rounded-md font-bold uppercase">Nivel Actual</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">Anerkennung</h3>
+                        <p class="text-gray-500 text-sm italic">Proceso de homologación de títulos extranjeros.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold">Experiencia Laboral</h3>
+                        <p class="text-gray-500 text-sm">Resumen de trayectoria profesional previa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="section-box">
+                <h3 class="text-xl font-bold mb-4">Habilidades (Skills)</h3>
+                <div class="flex flex-wrap">
+                    <span class="skill-tag">Adaptabilidad</span>
+                    <span class="skill-tag">Comunicación</span>
+                    <span class="skill-tag">Responsabilidad</span>
+                    <span class="skill-tag">Trabajo en Equipo</span>
+                </div>
+            </div>
+            <div class="section-box">
+                <h3 class="text-xl font-bold mb-4">Hobbies</h3>
+                <p class="text-gray-500 text-sm italic">Menciona aquí lo que te gusta hacer (Viajar, lectura, arte, etc.)</p>
+            </div>
+            <div class="section-box bg-black text-white">
+                <h3 class="text-xl font-bold mb-4">Documentos</h3>
+                <ul class="text-sm space-y-2 opacity-80">
+                    <li>• Lebenslauf (CV)</li>
+                    <li>• Anschreiben</li>
+                    <li>• Diplomas / Cursos</li>
+                </ul>
+            </div>
+        </div>
 
     </main>
 
-    <footer class="p-20 text-center text-gray-300 text-xs tracking-widest uppercase border-t border-gray-100">
-        &copy; 2026 Yisel Ramirez — Currículum Vitae Digital
+    <footer class="p-10 text-center text-gray-300 text-xs tracking-widest uppercase">
+        &copy; 2026 Yisel Ramirez — Portfolio Profesional
     </footer>
 
 </body>
