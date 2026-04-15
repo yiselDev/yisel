@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yisel Ramirez | IT & Recht</title>
+    <title>Yisel Ramirez | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -35,7 +35,7 @@
             <div class="w-full md:w-2/3 text-left">
                 <h1 class="text-5xl md:text-8xl font-bold text-gray-900 leading-tight">Yisel Ramirez</h1>
                 <div style="width: 70px; height: 6px; background: #ff9a9e; margin: 25px 0;"></div>
-                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">Licenciada en Derecho con equivalencia académica en Alemania y actualmente realizando un Umschulung en IT.</p>
+                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">Licenciada en Derecho con equivalencia académica en Alemania (Nivel Bachelor y Master).</p>
                 <div class="mt-10">
                     <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition shadow-lg">Contactar</a>
                 </div>
@@ -53,30 +53,30 @@
                 <h2 id="head-edu" class="text-2xl font-bold mb-6 italic">Formación</h2>
                 <div class="space-y-4">
                     <div>
-                        <span id="tag-now" class="tag">Actualidad</span>
-                        <h3 class="font-bold text-lg mt-1">Umschulung IT</h3>
-                        <p id="desc-it" class="text-gray-500 text-sm">Fachinformatiker (En formación / i.A.)</p>
-                    </div>
-                    <div>
                         <span id="tag-title" class="tag">Título Superior</span>
                         <h3 id="title-law" class="font-bold text-lg mt-1">Licenciatura en Derecho</h3>
-                        <p id="desc-law" class="text-gray-400 text-[10px] font-bold">Equivalencia Anabin (Bachelor/Master)</p>
+                        <p id="desc-law" class="text-gray-400 text-[10px] font-bold">Anerkennung: Nivel Bachelor / Master</p>
+                    </div>
+                    <div>
+                        <span id="tag-now" class="tag">Actualidad</span>
+                        <h3 id="title-it" class="font-bold text-lg mt-1">Umschulung IT</h3>
+                        <p id="desc-it" class="text-gray-500 text-sm">Fachinformatikerin (i.A.)</p>
                     </div>
                 </div>
             </div>
 
             <div class="section-box">
-                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic">Idiomas y Anerkennung</h2>
+                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic">Idiomas</h2>
                 <div class="space-y-6">
                     <div>
-                        <h3 id="sub-langs" class="font-bold">Idiomas</h3>
                         <p id="lang-de" class="text-gray-500 text-sm italic">Alemán: B2 (Avanzado)</p>
                         <p id="lang-en" class="text-gray-500 text-sm italic">Inglés: A2 (Básico)</p>
                         <p id="lang-es" class="text-gray-500 text-sm italic">Español: Nativo</p>
                     </div>
+                    <hr>
                     <div>
-                        <h3 id="sub-aner" class="font-bold">Anerkennung</h3>
-                        <p id="desc-aner" class="text-gray-400 text-xs italic mt-1 leading-relaxed">Homologación de título de Derecho para reconocimiento profesional en Alemania.</p>
+                        <h3 id="sub-aner" class="font-bold">Reconocimiento</h3>
+                        <p id="desc-aner" class="text-gray-400 text-xs italic mt-1 leading-relaxed">Título extranjero homologado para el mercado laboral alemán.</p>
                     </div>
                 </div>
             </div>
@@ -84,10 +84,10 @@
             <div class="section-box">
                 <h2 id="head-doc" class="text-2xl font-bold mb-6 italic">Documentación</h2>
                 <div class="space-y-4 text-sm font-medium">
-                    <p id="doc-exp" class="hover:text-pink-400 transition cursor-pointer">• Experiencia Laboral</p>
-                    <p id="doc-carta" class="hover:text-pink-400 transition cursor-pointer">• Initiativbewerbung (Carta de Iniciativa)</p>
-                    <p id="doc-skills" class="hover:text-pink-400 transition cursor-pointer">• Skills & Habilidades</p>
-                    <p id="doc-hobbies" class="hover:text-pink-400 transition cursor-pointer">• Hobbies / Intereses</p>
+                    <p id="doc-exp">• Experiencia Laboral</p>
+                    <p id="doc-carta">• Initiativbewerbung</p>
+                    <p id="doc-skills">• Skills & Habilidades</p>
+                    <p id="doc-hobbies">• Hobbies / Intereses</p>
                 </div>
             </div>
         </div>
@@ -96,31 +96,28 @@
     <script>
         const content = {
             es: {
-                desc: "Licenciada en Derecho con equivalencia académica en Alemania y actualmente realizando un Umschulung en IT.",
-                contact: "Contactar", edu: "Formación", langs: "Idiomas y Anerkennung", doc: "Documentación",
-                tagNow: "Actualidad", descIt: "Fachinformatiker (En formación / i.A.)", tagTitle: "Título Superior",
-                titleLaw: "Licenciatura en Derecho", descLaw: "Equivalencia Anabin (Bachelor/Master)",
-                subLangs: "Idiomas", langDe: "Alemán: B2 (Avanzado)", langEn: "Inglés: A2 (Básico)", langEs: "Español: Nativo",
-                subAner: "Anerkennung", descAner: "Homologación de título de Derecho para reconocimiento profesional en Alemania.",
-                docExp: "• Experiencia Laboral", docCarta: "• Initiativbewerbung (Carta de Iniciativa)", docSkills: "• Skills & Habilidades", docHobbies: "• Hobbies / Intereses"
+                desc: "Licenciada en Derecho con equivalencia académica en Alemania (Nivel Bachelor y Master).",
+                contact: "Contactar", edu: "Formación", langs: "Idiomas", doc: "Documentación",
+                tagTitle: "Título Superior", titleLaw: "Licenciatura en Derecho", descLaw: "Anerkennung: Nivel Bachelor / Master",
+                tagNow: "Actualidad", titleIt: "Umschulung IT", descIt: "Fachinformatikerin (i.A.)",
+                langDe: "Alemán: B2 (Avanzado)", langEn: "Inglés: A2 (Básico)", langEs: "Español: Nativo",
+                subAner: "Reconocimiento", descAner: "Título extranjero homologado para el mercado laboral alemán."
             },
             en: {
-                desc: "Law Graduate with academic equivalence in Germany, currently undergoing IT Retraining (Umschulung).",
-                contact: "Contact", edu: "Education", langs: "Languages & Recognition", doc: "Documentation",
-                tagNow: "Current", descIt: "IT Specialist (In training / i.A.)", tagTitle: "Higher Degree",
-                titleLaw: "Bachelor of Laws", descLaw: "Anabin Equivalence (Bachelor/Master)",
-                subLangs: "Languages", langDe: "German: B2 (Advanced)", langEn: "English: A2 (Elementary)", langEs: "Spanish: Native",
-                subAner: "Recognition", descAner: "Law degree recognition for professional practice in Germany.",
-                docExp: "• Work Experience", docCarta: "• Spontaneous Application", docSkills: "• Skills & Abilities", docHobbies: "• Hobbies / Interests"
+                desc: "Law Graduate with academic equivalence in Germany (Bachelor and Master level).",
+                contact: "Contact", edu: "Education", langs: "Languages", doc: "Documentation",
+                tagTitle: "Higher Degree", titleLaw: "Bachelor of Laws", descLaw: "Anerkennung: Bachelor / Master Level",
+                tagNow: "Current", titleIt: "IT Retraining", descIt: "IT Specialist (In training)",
+                langDe: "German: B2 (Advanced)", langEn: "English: A2 (Elementary)", langEs: "Spanish: Native",
+                subAner: "Recognition", descAner: "Foreign degree recognized for the German labor market."
             },
             de: {
-                desc: "Rechtswissenschaftlerin mit akademischer Gleichwertigkeit in Deutschland, derzeit in IT-Umschulung.",
-                contact: "Kontakt", edu: "Bildung", langs: "Sprachen & Anerkennung", doc: "Dokumentation",
-                tagNow: "Aktuell", descIt: "Fachinformatiker (in Ausbildung / i.A.)", tagTitle: "Hochschulabschluss",
-                titleLaw: "Abschluss in Rechtswissenschaften", descLaw: "Anabin-Gleichwertigkeit (Bachelor/Master)",
-                subLangs: "Sprachen", langDe: "Deutsch: B2 (Fortgeschritten)", langEn: "Englisch: A2 (Grundkenntnisse)", langEs: "Spanisch: Muttersprache",
-                subAner: "Anerkennung", descAner: "Anerkennung des Jurastudiums für die berufliche Praxis en Deutschland.",
-                docExp: "• Berufserfahrung", docCarta: "• Initiativbewerbung", docSkills: "• Skills & Fähigkeiten", docHobbies: "• Hobbies / Interessen"
+                desc: "Rechtswissenschaftlerin mit akademischer Gleichwertigkeit in Deutschland (Bachelor- und Masterniveau).",
+                contact: "Kontakt", edu: "Bildung", langs: "Sprachen", doc: "Dokumentation",
+                tagTitle: "Hochschulabschluss", titleLaw: "Abschluss in Rechtswissenschaften", descLaw: "Anerkennung: Bachelor- / Masterniveau",
+                tagNow: "Aktuell", titleIt: "IT-Umschulung", descIt: "Fachinformatikerin (i.A.)",
+                langDe: "Deutsch: B2 (Fortgeschritten)", langEn: "Englisch: A2 (Grundkenntnisse)", langEs: "Spanisch: Muttersprache",
+                subAner: "Anerkennung", descAner: "Ausländischer Abschluss anerkannt für den deutschen Arbeitsmarkt."
             }
         };
 
@@ -130,21 +127,17 @@
             document.getElementById('head-edu').innerText = content[lang].edu;
             document.getElementById('head-langs').innerText = content[lang].langs;
             document.getElementById('head-doc').innerText = content[lang].doc;
-            document.getElementById('tag-now').innerText = content[lang].tagNow;
-            document.getElementById('desc-it').innerText = content[lang].descIt;
             document.getElementById('tag-title').innerText = content[lang].tagTitle;
             document.getElementById('title-law').innerText = content[lang].titleLaw;
             document.getElementById('desc-law').innerText = content[lang].descLaw;
-            document.getElementById('sub-langs').innerText = content[lang].subLangs;
+            document.getElementById('tag-now').innerText = content[lang].tagNow;
+            document.getElementById('title-it').innerText = content[lang].titleIt;
+            document.getElementById('desc-it').innerText = content[lang].descIt;
             document.getElementById('lang-de').innerText = content[lang].langDe;
             document.getElementById('lang-en').innerText = content[lang].langEn;
             document.getElementById('lang-es').innerText = content[lang].langEs;
             document.getElementById('sub-aner').innerText = content[lang].subAner;
             document.getElementById('desc-aner').innerText = content[lang].descAner;
-            document.getElementById('doc-exp').innerText = content[lang].docExp;
-            document.getElementById('doc-carta').innerText = content[lang].docCarta;
-            document.getElementById('doc-skills').innerText = content[lang].docSkills;
-            document.getElementById('doc-hobbies').innerText = content[lang].docHobbies;
             ['es', 'en', 'de'].forEach(l => document.getElementById('btn-' + l).classList.toggle('active', l === lang));
         }
     </script>
