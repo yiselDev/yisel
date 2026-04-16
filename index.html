@@ -17,8 +17,6 @@
             border: 1px solid #f0f0f0; 
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             height: 100%;
-            display: flex;
-            flex-direction: column;
         }
         
         .tarjeta-movil:hover { 
@@ -30,12 +28,10 @@
         .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; transition: 0.3s; }
         .lang-btn.active { background: #333 !important; color: white !important; border-color: #333; }
         
-        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; margin-right: 5px; }
+        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
         
         .photo-wrapper { width: 300px; height: 400px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-
-        .fade-text { transition: opacity 0.3s ease-in-out; }
     </style>
 </head>
 <body class="pb-20">
@@ -49,16 +45,24 @@
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 fade-text" id="main-content">
+    <main class="max-w-7xl mx-auto px-6" id="main-content">
         
         <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
             <div class="w-full md:w-2/3">
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
-                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl leading-relaxed"></p>
+                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl leading-relaxed">
+                    Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).
+                </p>
                 
+                <div class="mt-6 space-y-2">
+                    <p class="text-gray-600 font-medium">📞 +49 174 1826368</p>
+                    <p class="text-gray-600 font-medium">✉️ yisel0271@gmail.com</p>
+                </div>
+
                 <div class="mt-8">
-                    <a href="mailto:yisel0271@gmail.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition transform hover:-translate-y-1 shadow-lg"></a>
-                    <p class="mt-4 text-gray-500 font-medium">📞 +49 174 1826368</p>
+                    <a href="mailto:yisel0271@gmail.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition transform hover:-translate-y-1 shadow-lg">
+                        Contactar ahora
+                    </a>
                 </div>
             </div>
             <div class="photo-wrapper">
@@ -69,150 +73,122 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             
             <div class="tarjeta-movil">
-                <h2 id="head-it" class="text-2xl font-bold mb-6 italic"></h2>
+                <h2 id="head-it" class="text-2xl font-bold mb-6 italic">Formación IT</h2>
                 <div class="space-y-4">
-                    <span id="tag-now" class="tag"></span>
+                    <span class="tag">En Curso</span>
                     <h3 class="font-bold text-lg mt-1">Fachinformatikerin</h3>
-                    <p id="desc-it" class="text-gray-500 text-sm"></p>
-                    <a href="notas_y_certificados_it.pdf" target="_blank" class="text-pink-400 text-xs font-bold hover:underline">Ver Certificados →</a>
+                    <p id="desc-it" class="text-gray-500 text-sm">Umschulung Systemintegration. Especialización en redes y soporte técnico.</p>
                 </div>
             </div>
 
             <div class="tarjeta-movil">
-                <h2 id="head-law" class="text-2xl font-bold mb-6 italic"></h2>
+                <h2 id="head-law" class="text-2xl font-bold mb-6 italic">Leyes e Idiomas</h2>
                 <div class="space-y-3">
-                    <h3 id="sub-aner" class="font-bold text-lg"></h3>
-                    <p id="desc-aner" class="text-gray-500 text-sm italic"></p>
+                    <h3 class="font-bold text-lg">Grado en Derecho</h3>
+                    <p id="desc-law" class="text-gray-500 text-sm italic">Homologación oficial en Alemania (Anerkennung). Nivel Bachelor/Master.</p>
                     <hr class="my-4">
                     <div class="space-y-2">
-                        <div class="flex items-center gap-2"><span class="tag">B2</span> <p id="lang-de" class="text-sm font-semibold"></p></div>
-                        <div class="flex items-center gap-2"><span class="tag">A2</span> <p id="lang-en" class="text-sm font-semibold"></p></div>
-                        <div class="flex items-center gap-2"><span class="tag">Nativo</span> <p id="lang-es" class="text-sm font-semibold"></p></div>
+                        <div class="flex items-center gap-2"><span class="tag">B2</span> <p class="text-sm">Alemán</p></div>
+                        <div class="flex items-center gap-2"><span class="tag">A2</span> <p class="text-sm">Inglés</p></div>
+                        <div class="flex items-center gap-2"><span class="tag">Nativo</span> <p class="text-sm">Español</p></div>
                     </div>
                 </div>
             </div>
 
             <div class="tarjeta-movil">
-                <h2 id="head-skills" class="text-2xl font-bold mb-6 italic"></h2>
+                <h2 id="head-personal" class="text-2xl font-bold mb-6 italic">Perfil</h2>
                 <div class="space-y-4">
                     <div>
-                        <p id="title-tech" class="text-pink-400 text-[10px] font-bold uppercase"></p>
-                        <p id="list-tech" class="text-gray-600 text-sm mt-1"></p>
+                        <p class="text-pink-400 text-[10px] font-bold uppercase tracking-widest">Habilidades</p>
+                        <p id="txt-skills" class="text-gray-600 text-sm">Análisis legal, Gestión de datos, Microsoft Office, Resolución de conflictos.</p>
                     </div>
                     <div>
-                        <p id="title-hobbies" class="text-pink-400 text-[10px] font-bold uppercase"></p>
-                        <p id="list-hobbies" class="text-gray-600 text-sm mt-1"></p>
+                        <p class="text-pink-400 text-[10px] font-bold uppercase tracking-widest">Intereses</p>
+                        <p id="txt-hobbies" class="text-gray-600 text-sm">Tecnología, Lectura jurídica, Viajes, Aprendizaje de idiomas.</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-movil bg-black text-white p-10 rounded-[40px] flex-row justify-between items-center border-none hover:bg-gray-900">
+            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-movil bg-black text-white p-10 rounded-[40px] flex justify-between items-center border-none hover:bg-gray-800">
                 <div>
-                    <h3 id="card-cv" class="text-3xl font-serif text-white"></h3>
-                    <p id="card-cv-sub" class="text-gray-400 text-xs uppercase mt-2 tracking-widest"></p>
+                    <h3 id="btn-cv-text" class="text-3xl font-serif">Curriculum Vitae</h3>
+                    <p class="text-gray-400 text-xs uppercase mt-2 tracking-widest">Descargar PDF</p>
                 </div>
-                <div class="text-4xl">↓</div>
+                <div class="text-4xl text-white">↓</div>
             </a>
 
-            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-movil bg-pink-100 p-10 rounded-[40px] flex-row justify-between items-center border-none hover:bg-pink-200">
+            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-movil bg-pink-100 p-10 rounded-[40px] flex justify-between items-center border-none hover:bg-pink-200">
                 <div>
-                    <h3 id="card-letter" class="text-3xl font-serif text-gray-800"></h3>
-                    <p id="card-letter-sub" class="text-pink-400 text-xs uppercase mt-2 tracking-widest"></p>
+                    <h3 id="btn-letter-text" class="text-3xl font-serif text-gray-800">Carta Presentación</h3>
+                    <p class="text-pink-400 text-xs uppercase mt-2 tracking-widest">Leer Anschreiben</p>
                 </div>
-                <div class="text-4xl">✉️</div>
+                <div class="text-4xl text-gray-800">✉️</div>
             </a>
         </div>
-
     </main>
 
     <script>
-        const content = {
+        const translations = {
             es: {
                 desc: "Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).",
-                contact: "Contacto: yisel0271@gmail.com",
-                headIt: "Formación IT",
-                headLaw: "Derecho e Idiomas",
-                headSkills: "Skills & Hobbies",
-                tagNow: "En Curso",
-                descIt: "Umschulung Systemintegration. Especialización en redes y sistemas.",
-                subAner: "Licenciada en Derecho",
-                descAner: "Homologación oficial en Alemania (Anerkennung).",
-                langDe: "Alemán", langEn: "Inglés", langEs: "Español",
-                titleTech: "Habilidades Técnicas",
-                listTech: "Gestión legal, Análisis, Microsoft Office, Resolución de problemas.",
-                titleHobbies: "Intereses",
-                listHobbies: "Viajes, Tecnología, Lectura, Aprendizaje continuo.",
-                cardCv: "Curriculum Vitae", cardCvSub: "Descargar Lebenslauf",
-                cardLetter: "Carta de Presentación", cardLetterSub: "Ver Anschreiben"
+                contact: "Contactar ahora",
+                it: "Formación IT",
+                law: "Leyes e Idiomas",
+                per: "Perfil",
+                descIt: "Umschulung Systemintegration. Especialización en redes y soporte técnico.",
+                descLaw: "Homologación oficial en Alemania (Anerkennung). Nivel Bachelor/Master.",
+                skills: "Análisis legal, Gestión de datos, Microsoft Office, Resolución de conflictos.",
+                hobbies: "Tecnología, Lectura jurídica, Viajes, Aprendizaje de idiomas.",
+                cv: "Curriculum Vitae",
+                letter: "Carta Presentación"
             },
             en: {
                 desc: "Law Graduate with official Recognition in Germany (Level between Bachelor and Master).",
-                contact: "Contact: yisel0271@gmail.com",
-                headIt: "IT Training",
-                headLaw: "Law & Languages",
-                headSkills: "Skills & Hobbies",
-                tagNow: "Ongoing",
-                descIt: "Umschulung Systemintegration. Specialized in systems and networks.",
-                subAner: "Law Degree",
-                descAner: "Official recognition in Germany (Anerkennung).",
-                langDe: "German", langEn: "English", langEs: "Spanish",
-                titleTech: "Technical Skills",
-                listTech: "Legal Management, Analysis, Microsoft Office, Problem Solving.",
-                titleHobbies: "Interests",
-                listHobbies: "Travel, Technology, Reading, Lifelong Learning.",
-                cardCv: "Curriculum Vitae", cardCvSub: "Download CV",
-                cardLetter: "Cover Letter", cardLetterSub: "View Anschreiben"
+                contact: "Contact me",
+                it: "IT Training",
+                law: "Law & Languages",
+                per: "Profile",
+                descIt: "Umschulung Systemintegration. Specialized in networks and tech support.",
+                descLaw: "Official recognition in Germany (Anerkennung). Bachelor/Master level.",
+                skills: "Legal analysis, Data management, Microsoft Office, Conflict resolution.",
+                hobbies: "Technology, Legal reading, Traveling, Language learning.",
+                cv: "Curriculum Vitae",
+                letter: "Cover Letter"
             },
             de: {
                 desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland (Niveau zwischen Bachelor und Master).",
-                contact: "Kontakt: yisel0271@gmail.com",
-                headIt: "IT-Ausbildung",
-                headLaw: "Recht & Sprachen",
-                headSkills: "Skills & Hobbys",
-                tagNow: "In Ausbildung",
-                descIt: "Umschulung Systemintegration. Fokus auf Netzwerke und Systeme.",
-                subAner: "Abschluss in Recht",
-                descAner: "Offizielle Anerkennung in Deutschland (Anerkennung).",
-                langDe: "Deutsch", langEn: "Englisch", langEs: "Spanisch",
-                titleTech: "Fähigkeiten",
-                listTech: "Rechtsmanagement, Analyse, Microsoft Office, Problemlösung.",
-                titleHobbies: "Hobbys",
-                listHobbies: "Reisen, Technologie, Lesen, Kontinuierliches Lernen.",
-                cardCv: "Lebenslauf", cardCvSub: "Lebenslauf herunterladen",
-                cardLetter: "Anschreiben", cardLetterSub: "Anschreiben anzeigen"
+                contact: "Kontaktieren",
+                it: "IT-Ausbildung",
+                law: "Recht & Sprachen",
+                per: "Profil",
+                descIt: "Umschulung Systemintegration. Spezialisierung auf Netzwerke und Support.",
+                descLaw: "Offizielle Anerkennung in Deutschland (Anerkennung). Bachelor/Master-Niveau.",
+                skills: "Rechtsanalyse, Datenmanagement, Microsoft Office, Konfliktlösung.",
+                hobbies: "Technologie, Rechtliche Lektüre, Reisen, Sprachenlernen.",
+                cv: "Lebenslauf",
+                letter: "Anschreiben"
             }
         };
 
         function changeLang(lang) {
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`btn-${lang}`).classList.add('active');
-
-            const c = content[lang];
-            document.getElementById('main-desc').innerText = c.desc;
-            document.getElementById('btn-contact').innerText = c.contact;
-            document.getElementById('head-it').innerText = c.headIt;
-            document.getElementById('head-law').innerText = c.headLaw;
-            document.getElementById('head-skills').innerText = c.headSkills;
-            document.getElementById('tag-now').innerText = c.tagNow;
-            document.getElementById('desc-it').innerText = c.descIt;
-            document.getElementById('sub-aner').innerText = c.subAner;
-            document.getElementById('desc-aner').innerText = c.descAner;
-            document.getElementById('lang-de').innerText = c.langDe;
-            document.getElementById('lang-en').innerText = c.langEn;
-            document.getElementById('lang-es').innerText = c.langEs;
-            document.getElementById('title-tech').innerText = c.titleTech;
-            document.getElementById('list-tech').innerText = c.listTech;
-            document.getElementById('title-hobbies').innerText = c.titleHobbies;
-            document.getElementById('list-hobbies').innerText = c.listHobbies;
-            document.getElementById('card-cv').innerText = c.cardCv;
-            document.getElementById('card-cv-sub').innerText = c.cardCvSub;
-            document.getElementById('card-letter').innerText = c.cardLetter;
-            document.getElementById('card-letter-sub').innerText = c.cardLetterSub;
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+            
+            const t = translations[lang];
+            document.getElementById('main-desc').innerText = t.desc;
+            document.getElementById('btn-contact').innerText = t.contact;
+            document.getElementById('head-it').innerText = t.it;
+            document.getElementById('head-law').innerText = t.law;
+            document.getElementById('head-personal').innerText = t.per;
+            document.getElementById('desc-it').innerText = t.descIt;
+            document.getElementById('desc-law').innerText = t.descLaw;
+            document.getElementById('txt-skills').innerText = t.skills;
+            document.getElementById('txt-hobbies').innerText = t.hobbies;
+            document.getElementById('btn-cv-text').innerText = t.cv;
+            document.getElementById('btn-letter-text').innerText = t.letter;
         }
-
-        changeLang('es');
     </script>
 </body>
 </html>
