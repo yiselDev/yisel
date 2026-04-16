@@ -59,7 +59,7 @@
                 <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl leading-relaxed"></p>
                 
                 <div class="mt-4 space-y-1">
-                    <p class="text-gray-600 font-medium">📞 +49 174 1826268</p>
+                    <p class="text-gray-600 font-medium">📞 +49 174 1826368</p>
                     <p class="text-gray-600 font-medium">✉️ yisel0271@gmail.com</p>
                 </div>
 
@@ -74,44 +74,43 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             
-            <a href="notas_y_certificados_it.pdf" target="_blank" class="tarjeta-movil group">
+            <a href="reconocimiento_derecho.pdf" target="_blank" class="tarjeta-movil group">
                 <h2 id="head-edu" class="text-2xl font-bold mb-6 italic group-hover:text-pink-400 transition-colors"></h2>
                 <div class="space-y-4">
                     <div>
-                        <span id="tag-now" class="tag"></span>
-                        <h3 class="font-bold text-lg mt-1">Fachinformatikerin</h3>
-                        <p id="desc-it" class="text-gray-500 text-sm"></p>
+                        <span id="tag-legal" class="tag">Anerkennung</span>
+                        <h3 id="sub-aner" class="font-bold text-lg mt-1"></h3>
+                        <p id="desc-aner" class="text-gray-500 text-sm"></p>
                     </div>
-                </div>
-            </a>
-
-            <a href="reconocimiento_derecho.pdf" target="_blank" class="tarjeta-movil group">
-                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic group-hover:text-pink-400 transition-colors"></h2>
-                <div class="space-y-3">
-                    <h3 id="sub-aner" class="font-bold text-lg"></h3>
-                    <p id="desc-aner" class="text-gray-500 text-sm italic"></p>
-                    <hr class="my-4 border-gray-100">
-                    
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-2">
-                            <span class="tag">B2</span>
-                            <p id="lang-de" class="text-gray-700 text-sm font-semibold"></p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="tag">A2</span>
-                            <p id="lang-en" class="text-gray-700 text-sm font-semibold"></p>
-                        </div>
-                    </div>
-                    <p id="lang-es" class="text-gray-400 text-xs italic mt-2"></p>
                 </div>
             </a>
 
             <div class="tarjeta-movil">
-                <h2 id="head-doc" class="text-2xl font-bold mb-6 italic"></h2>
+                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic"></h2>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <span class="tag">B2</span>
+                        <p id="lang-de" class="text-gray-700 text-sm font-semibold"></p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="tag">A2</span>
+                        <p id="lang-en" class="text-gray-700 text-sm font-semibold"></p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="tag">Native</span>
+                        <p id="lang-es" class="text-gray-700 text-sm font-semibold"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-movil">
+                <h2 id="head-personal" class="text-2xl font-bold mb-6 italic"></h2>
                 <div class="space-y-2">
-                    <a href="experiencia_laboral.pdf" target="_blank" id="doc-exp" class="doc-link"></a>
-                    <a href="habilidades_tecnicas.pdf" target="_blank" id="doc-skills" class="doc-link"></a>
-                    <a href="hobbies_intereses.pdf" target="_blank" id="doc-hobbies" class="doc-link"></a>
+                    <p id="title-skills" class="font-bold text-sm text-pink-400 uppercase tracking-wider"></p>
+                    <p id="list-skills" class="text-gray-500 text-sm mb-4"></p>
+                    
+                    <p id="title-hobbies" class="font-bold text-sm text-pink-400 uppercase tracking-wider mt-4"></p>
+                    <p id="list-hobbies" class="text-gray-500 text-sm"></p>
                 </div>
             </div>
         </div>
@@ -139,14 +138,85 @@
     <script>
         const content = {
             es: {
-                desc: "Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).",
-                contact: "Enviar Email", edu: "Educación IT", langs: "Títulos & Idiomas", doc: "Perfil Personal",
-                tagNow: "En Curso", descIt: "Umschulung Systemintegration. Clic para ver notas y certificados actuales.",
-                langDe: "Alemán: Certificado B2", langEn: "Inglés: Nivel A2", langEs: "Español: Nativo",
-                subAner: "Grado en Derecho", descAner: "Homologación oficial en Alemania (Anerkennung).",
-                docExp: "• Experiencia Laboral", docSkills: "• Skills & Habilidades", docHobbies: "• Hobbies & Intereses",
-                cardCv: "Curriculum Vitae", cardCvSub: "Descargar Lebenslauf", 
-                cardLetter: "Carta de Presentación", cardLetterSub: "Anschreiben Ver"
+                desc: "Licenciada en Derecho con homologación en Alemania (Nivel entre Bachelor y Master).",
+                contact: "yisel0271@gmail.com",
+                edu: "Formación Académica",
+                langs: "Idiomas",
+                personal: "Perfil Técnico",
+                subAner: "Licenciada en Derecho",
+                descAner: "Título con Anerkennung oficial en Alemania. Nivel académico entre Bachelor y Master.",
+                langDe: "Alemán",
+                langEn: "Inglés",
+                langEs: "Español",
+                titleSkills: "Habilidades",
+                listSkills: "Gestión legal, Análisis de datos, Microsoft Office, Adaptabilidad cultural.",
+                titleHobbies: "Intereses",
+                listHobbies: "Tecnología, Lectura jurídica, Viajes, Aprendizaje de idiomas.",
+                cardCv: "Descargar CV",
+                cardCvSub: "Lebenslauf en PDF",
+                cardLetter: "Carta de Presentación",
+                cardLetterSub: "Anschreiben Ver"
             },
             en: {
-                desc: "Law Graduate with official Recognition in Germany (Bachelor/Master level
+                desc: "Law Graduate with official Recognition in Germany (Level between Bachelor and Master).",
+                contact: "yisel0271@gmail.com",
+                edu: "Academic Background",
+                langs: "Languages",
+                personal: "Technical Profile",
+                subAner: "Bachelor of Laws",
+                descAner: "Official Anerkennung in Germany. Academic level between Bachelor and Master.",
+                langDe: "German",
+                langEn: "English",
+                langEs: "Spanish",
+                titleSkills: "Skills",
+                listSkills: "Legal Management, Data Analysis, Microsoft Office, Cultural Adaptability.",
+                titleHobbies: "Interests",
+                listHobbies: "Technology, Legal Reading, Travel, Language Learning.",
+                cardCv: "Download CV",
+                cardCvSub: "Curriculum Vitae PDF",
+                cardLetter: "Cover Letter",
+                cardLetterSub: "View Anschreiben"
+            },
+            de: {
+                desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland (Niveau zwischen Bachelor und Master).",
+                contact: "yisel0271@gmail.com",
+                edu: "Akademische Ausbildung",
+                langs: "Sprachen",
+                personal: "Persönliches Profil",
+                subAner: "Abschluss in Rechtswissenschaften",
+                descAner: "Offizielle Anerkennung in Deutschland. Akademisches Niveau zwischen Bachelor und Master.",
+                langDe: "Deutsch",
+                langEn: "Englisch",
+                langEs: "Spanisch",
+                titleSkills: "Fähigkeiten",
+                listSkills: "Rechtsmanagement, Datenanalyse, Microsoft Office, Kulturelle Anpassungsfähigkeit.",
+                titleHobbies: "Hobbys",
+                listHobbies: "Technologie, Rechtliche Lektüre, Reisen, Sprachenlernen.",
+                cardCv: "Lebenslauf herunterladen",
+                cardCvSub: "Lebenslauf als PDF",
+                cardLetter: "Anschreiben",
+                cardLetterSub: "Anschreiben anzeigen"
+            }
+        };
+
+        function changeLang(lang) {
+            // Actualizar botones
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
+
+            // Actualizar textos
+            document.getElementById('main-desc').innerText = content[lang].desc;
+            document.getElementById('btn-contact').innerText = content[lang].contact;
+            document.getElementById('head-edu').innerText = content[lang].edu;
+            document.getElementById('head-langs').innerText = content[lang].langs;
+            document.getElementById('head-personal').innerText = content[lang].personal;
+            document.getElementById('sub-aner').innerText = content[lang].subAner;
+            document.getElementById('desc-aner').innerText = content[lang].descAner;
+            document.getElementById('lang-de').innerText = content[lang].langDe;
+            document.getElementById('lang-en').innerText = content[lang].langEn;
+            document.getElementById('lang-es').innerText = content[lang].langEs;
+            document.getElementById('title-skills').innerText = content[lang].titleSkills;
+            document.getElementById('list-skills').innerText = content[lang].listSkills;
+            document.getElementById('title-hobbies').innerText = content[lang].titleHobbies;
+            document.getElementById('list-hobbies').innerText = content[lang].listHobbies;
+            document.getElementById('card-cv').innerText = content[lang].cardCv;
