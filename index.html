@@ -7,180 +7,173 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
-        .fuente-titulo { font-family: 'Playfair Display', serif; }
+        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
-        /* FOTO A LA DERECHA */
-        .contenedor-foto { width: 300px; height: 380px; object-fit: cover; border-radius: 40px; border: 6px solid white; box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
-
-        /* TARJETAS */
-        .bloque-tarjeta { background: white; border-radius: 30px; padding: 30px; border: 1px solid #f0f0f0; transition: 0.4s ease; cursor: pointer; }
-        .bloque-tarjeta:hover { transform: translateY(-5px); border-color: #ff9a9e; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
+        /* ESTILO DE LAS TARJETAS CON MOVIMIENTO */
+        .tarjeta-movil { 
+            background: white; 
+            border-radius: 25px; 
+            padding: 30px; 
+            border: 1px solid #f0f0f0; 
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
         
-        /* BOTONES IDIOMA */
-        .boton-idioma { padding: 8px 16px; border-radius: 20px; border: 1px solid #eee; font-weight: 600; background: white; cursor: pointer; }
-        .boton-idioma.activo { background: #000 !important; color: #fff !important; }
+        .tarjeta-movil:hover { 
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: #ff9a9e;
+            cursor: pointer;
+        }
 
-        .visor-pdf { width: 100%; height: 550px; border-radius: 20px; border: 1px solid #eee; margin-top: 20px; }
-        .punto-lista { display: block; padding: 8px 0; border-bottom: 1px solid #f9f9f9; font-weight: 500; cursor: pointer; }
-        .punto-lista:hover { color: #ff9a9e; }
+        .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; transition: 0.3s; }
+        .lang-btn.active { background: #333 !important; color: white !important; }
+        
+        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+        
+        .photo-wrapper { width: 300px; height: 400px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
     </style>
 </head>
 <body class="pb-20">
 
     <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold italic">Yisel.Dev</div>
-        <div class="flex gap-3">
-            <button onclick="cambiar_idioma('es')" id="op-es" class="boton-idioma activo">ES</button>
-            <button onclick="cambiar_idioma('de')" id="op-de" class="boton-idioma">DE</button>
-            <button onclick="cambiar_idioma('en')" id="op-en" class="boton-idioma">EN</button>
+        <div class="text-2xl font-bold italic">Y. Ramirez</div>
+        <div class="flex gap-2">
+            <button onclick="cambiarIdioma('es')" id="btn-es" class="lang-btn active">ES</button>
+            <button onclick="cambiarIdioma('en')" id="btn-en" class="lang-btn">EN</button>
+            <button onclick="cambiarIdioma('de')" id="btn-de" class="lang-btn">DE</button>
         </div>
     </nav>
 
-    <main class="max-w-6xl mx-auto px-6">
+    <main class="max-w-7xl mx-auto px-6">
         
-        <section class="flex flex-col md:flex-row items-center gap-16 mb-20">
-            <div class="flex-1 text-center md:text-left">
-                <h1 class="text-6xl md:text-7xl font-bold text-gray-900 mb-6 fuente-titulo">Yisel Ramirez</h1>
-                <p id="parrafo-hero" class="text-2xl text-gray-400 italic font-light leading-relaxed"></p>
+        <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
+            <div class="w-full md:w-2/3 text-center md:text-left">
+                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
+                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl"></p>
                 <div class="mt-8">
-                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contacto" class="bg-black text-white px-12 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition shadow-xl inline-block">Contactar</a>
+                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition shadow-lg"></a>
                 </div>
             </div>
-            <div class="flex-shrink-0">
-                <img src="foto.jpg" alt="Yisel Ramirez" class="contenedor-foto">
+            <div class="photo-wrapper">
+                <img src="foto.jpg" alt="Yisel Ramirez">
             </div>
         </section>
 
-        <div class="mb-10">
-            <div onclick="abrir_ventana('cv')" class="bloque-tarjeta border-l-[15px] border-l-black flex justify-between items-center">
-                <div>
-                    <h2 class="text-4xl font-bold fuente-titulo">Curriculum Vitae</h2>
-                    <p id="desc-cv" class="text-gray-500 text-lg mt-2"></p>
-                </div>
-                <div class="text-5xl opacity-20">📄</div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
-            <div onclick="abrir_ventana('derecho')" class="bloque-tarjeta border-l-[15px] border-l-blue-400">
-                <h3 id="tit-derecho" class="text-2xl font-bold fuente-titulo"></h3>
-                <p id="desc-derecho" class="text-gray-500 mt-2"></p>
-            </div>
-            <div onclick="abrir_ventana('idioma')" class="bloque-tarjeta border-l-[15px] border-l-red-400">
-                <h3 id="tit-idioma" class="text-2xl font-bold fuente-titulo"></h3>
-                <p id="desc-idioma" class="text-gray-500 mt-2"></p>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            <div onclick="abrir_ventana('it')" class="bloque-tarjeta border-l-[15px] border-l-green-400">
-                <h3 class="text-2xl font-bold fuente-titulo">IT Ausbildung</h3>
-                <p id="desc-it" class="text-gray-500 mt-2"></p>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             
-            <div class="bloque-tarjeta border-l-[15px] border-l-pink-400 cursor-default">
-                <h3 id="tit-otros" class="text-2xl font-bold fuente-titulo mb-4"></h3>
-                <div class="space-y-1">
-                    <span onclick="abrir_ventana('anerkennung1')" class="punto-lista">● Anerkennung Parte 1</span>
-                    <span onclick="abrir_ventana('anerkennung2')" class="punto-lista">● Anerkennung Parte 2</span>
-                    <span onclick="abrir_ventana('convalidacion')" class="punto-lista">● Convalidación de Título</span>
+            <a href="Zertifikat_Frau_Ramírez_07.10.24 (3).pdf" target="_blank" class="tarjeta-movil">
+                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic"></h2>
+                <div class="space-y-4">
+                    <div>
+                        <span id="tag-now" class="tag"></span>
+                        <h3 class="font-bold text-lg mt-1">Fachinformatikerin</h3>
+                        <p id="desc-it" class="text-gray-500 text-sm"></p>
+                    </div>
+                </div>
+            </a>
+
+            <a href="convalidacion de titulo (2).pdf" target="_blank" class="tarjeta-movil">
+                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic"></h2>
+                <div class="space-y-3">
+                    <p id="lang-de" class="text-gray-500 text-sm italic"></p>
+                    <p id="lang-es" class="text-gray-500 text-sm italic"></p>
+                    <hr class="my-4">
+                    <h3 id="sub-aner" class="font-bold"></h3>
+                    <p id="desc-aner" class="text-gray-400 text-xs italic"></p>
+                </div>
+            </a>
+
+            <div class="tarjeta-movil">
+                <h2 id="head-doc" class="text-2xl font-bold mb-6 italic"></h2>
+                <div class="space-y-4 text-sm font-medium">
+                    <a href="anerkennung 2.pdf" target="_blank" class="block hover:text-pink-400">• Anerkennung Part 1</a>
+                    <a href="anerkennung 3.pdf" target="_blank" class="block hover:text-pink-400">• Anerkennung Part 2</a>
+                    <a href="reconocimiento 1.pdf" target="_blank" class="block hover:text-pink-400">• Urkunde / Título</a>
                 </div>
             </div>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            
+            <a href="Certificado B2.pdf" target="_blank" class="tarjeta-movil bg-black text-white p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none">
+                <div>
+                    <h3 id="card-cv" class="text-3xl font-serif text-white"></h3>
+                    <p id="card-cv-sub" class="text-gray-400 text-xs uppercase mt-2 tracking-widest"></p>
+                </div>
+                <div class="text-4xl text-white">→</div>
+            </a>
+
+            <a href="#" class="tarjeta-movil bg-pink-100 p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none">
+                <div>
+                    <h3 id="card-cert" class="text-3xl font-serif text-gray-800"></h3>
+                    <p id="card-cert-sub" class="text-pink-400 text-xs uppercase mt-2 tracking-widest"></p>
+                </div>
+                <div class="text-4xl text-gray-800">→</div>
+            </a>
+        </div>
+
     </main>
 
-    <div id="ventana-modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-6 backdrop-blur-md" onclick="if(event.target == this) cerrar_ventana()">
-        <div class="bg-white w-full max-w-5xl rounded-[40px] p-10 relative shadow-2xl overflow-y-auto max-h-[92vh]">
-            <button onclick="cerrar_ventana()" class="absolute top-8 right-10 text-5xl text-gray-300 hover:text-black">&times;</button>
-            <h2 id="titulo-modal" class="text-4xl fuente-titulo mb-6 border-b pb-4"></h2>
-            <div id="cuerpo-modal"></div>
-        </div>
-    </div>
-
     <script>
-        const datos_web = {
+        const contenido = {
             es: {
-                hero: "Licenciada en Derecho con equivalencia académica en Alemania (ZAB). Especializándome en IT.",
-                contacto: "Contactar",
-                dCv: "Ver trayectoria profesional completa.",
-                tDer: "Licenciatura en Derecho", dDer: "Documentación oficial.",
-                tIdi: "Certificados de Idioma", dIdi: "Alemán B2 obtenido en 2024.",
-                dIt: "Umschulung como Fachinformatikerin.",
-                tOtr: "Documentos ZAB",
-                cv: { t: "Curriculum Vitae", f: "curriculum.pdf" },
-                derecho: { t: "Título de Derecho", f: "reconocimiento 1.pdf" },
-                idioma: { t: "Certificado B2", f: "Certificado B2.pdf" },
-                it: { t: "Zertifikat IT", f: "Zertifikat_Frau_Ramírez_07.10.24 (3).pdf" },
-                anerkennung1: { t: "Anerkennung 1", f: "anerkennung 2.pdf" },
-                anerkennung2: { t: "Anerkennung 2", f: "anerkennung 3.pdf" },
-                convalidacion: { t: "Convalidación", f: "convalidacion de titulo (2).pdf" }
-            },
-            de: {
-                hero: "Rechtswissenschaftlerin mit ZAB-Anerkennung. IT-Spezialisierung.",
-                contacto: "Kontakt",
-                dCv: "Vollständiger Lebenslauf.",
-                tDer: "Jura-Abschluss", dDer: "Offizielle Dokumentation.",
-                tIdi: "Sprachzertifikate", dIdi: "Deutsch B2 Zertifikat.",
-                dIt: "Umschulung zur Fachinformatikerin.",
-                tOtr: "ZAB Dokumente",
-                cv: { t: "Lebenslauf", f: "curriculum.pdf" },
-                derecho: { t: "Jura Diplom", f: "reconocimiento 1.pdf" },
-                idioma: { t: "B2 Zertifikat", f: "Certificado B2.pdf" },
-                it: { t: "IT Zertifikat", f: "Zertifikat_Frau_Ramírez_07.10.24 (3).pdf" },
-                anerkennung1: { t: "Anerkennung 1", f: "anerkennung 2.pdf" },
-                anerkennung2: { t: "Anerkennung 2", f: "anerkennung 3.pdf" },
-                convalidacion: { t: "Gleichwertigkeit", f: "convalidacion de titulo (2).pdf" }
+                desc: "Licenciada en Derecho con equivalencia académica en Alemania (ZAB).",
+                contact: "Contactar", edu: "Formación", langs: "Idiomas & Título", doc: "Documentos ZAB",
+                tagNow: "Actualidad", descIt: "Systemintegration (Umschulung i.A.). Clic para certificado.",
+                langDe: "Alemán: B2 (Avanzado)", langEs: "Español: Nativo",
+                subAner: "Anerkennung", descAner: "Homologación completa de Derecho.",
+                cardCv: "Certificado B2", cardCvSub: "Idioma Alemán oficial", 
+                cardCert: "Otros Cursos", cardCertSub: "Certificaciones adicionales"
             },
             en: {
-                hero: "Lawyer with academic equivalence in Germany (ZAB). Specializing in IT.",
-                contacto: "Contact",
-                dCv: "Full professional background.",
-                tDer: "Law Degree", dDer: "Official recognition.",
-                tIdi: "Languages", dIdi: "German B2 Certificate.",
-                dIt: "IT Specialist Training.",
-                tOtr: "ZAB Documents",
-                cv: { t: "Curriculum Vitae", f: "curriculum.pdf" },
-                derecho: { t: "Law Degree", f: "reconocimiento 1.pdf" },
-                idioma: { t: "B2 German", f: "Certificado B2.pdf" },
-                it: { t: "IT Certificate", f: "Zertifikat_Frau_Ramírez_07.10.24 (3).pdf" },
-                anerkennung1: { t: "Recognition 1", f: "anerkennung 2.pdf" },
-                anerkennung2: { t: "Recognition 2", f: "anerkennung 3.pdf" },
-                convalidacion: { t: "Equivalence", f: "convalidacion de titulo (2).pdf" }
+                desc: "Law Graduate with academic equivalence in Germany (ZAB).",
+                contact: "Contact", edu: "Education", langs: "Languages & Degree", doc: "ZAB Documents",
+                tagNow: "Current", descIt: "IT Specialist (System Integration). Click for certificate.",
+                langDe: "German: B2 (Advanced)", langEs: "Spanish: Native",
+                subAner: "Recognition", descAner: "Officially recognized Law degree.",
+                cardCv: "B2 Certificate", cardCvSub: "Official German Language", 
+                cardCert: "Other Courses", cardCertSub: "Additional certifications"
+            },
+            de: {
+                desc: "Rechtswissenschaftlerin con ZAB-Anerkennung (Bachelor/Master).",
+                contact: "Kontakt", edu: "Bildung", langs: "Sprachen & Abschluss", doc: "ZAB Dokumente",
+                tagNow: "Aktuell", descIt: "Fachinformatikerin Systemintegration. Für Zertifikat klicken.",
+                langDe: "Deutsch: B2 (Fortgeschritten)", langEs: "Spanisch: Muttersprache",
+                subAner: "Anerkennung", descAner: "Anerkannter Jura-Abschluss.",
+                cardCv: "B2 Zertifikat", cardCvSub: "Offizielle Deutschprüfung", 
+                cardCert: "Weitere Kurse", cardCertSub: "Zusätzliche Zertifikate"
             }
         };
 
-        let idioma_actual = 'es';
+        function cambiarIdioma(lang) {
+            const c = contenido[lang];
+            document.getElementById('main-desc').innerText = c.desc;
+            document.getElementById('btn-contact').innerText = c.contact;
+            document.getElementById('head-edu').innerText = c.edu;
+            document.getElementById('head-langs').innerText = c.langs;
+            document.getElementById('head-doc').innerText = c.doc;
+            document.getElementById('tag-now').innerText = c.tagNow;
+            document.getElementById('desc-it').innerText = c.descIt;
+            document.getElementById('lang-de').innerText = c.langDe;
+            document.getElementById('lang-es').innerText = c.langEs;
+            document.getElementById('sub-aner').innerText = c.subAner;
+            document.getElementById('desc-aner').innerText = c.descAner;
+            document.getElementById('card-cv').innerText = c.cardCv;
+            document.getElementById('card-cv-sub').innerText = c.cardCvSub;
+            document.getElementById('card-cert').innerText = c.cardCert;
+            document.getElementById('card-cert-sub').innerText = c.cardCertSub;
 
-        function cambiar_idioma(idm) {
-            idioma_actual = idm;
-            const t = datos_web[idm];
-            document.getElementById('parrafo-hero').innerText = t.hero;
-            document.getElementById('btn-contacto').innerText = t.contacto;
-            document.getElementById('desc-cv').innerText = t.dCv;
-            document.getElementById('tit-derecho').innerText = t.tDer;
-            document.getElementById('desc-derecho').innerText = t.dDer;
-            document.getElementById('tit-idioma').innerText = t.tIdi;
-            document.getElementById('desc-idioma').innerText = t.dIdi;
-            document.getElementById('desc-it').innerText = t.dIt;
-            document.getElementById('tit-otros').innerText = t.tOtr;
-
-            document.querySelectorAll('.boton-idioma').forEach(b => b.classList.toggle('activo', b.id === 'op-' + idm));
+            ['es', 'en', 'de'].forEach(l => {
+                document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+            });
         }
 
-        function abrir_ventana(tipo) {
-            const info = datos_web[idioma_actual][tipo];
-            document.getElementById('titulo-modal').innerText = info.t;
-            document.getElementById('cuerpo-modal').innerHTML = `<iframe src="${info.f}" class="visor-pdf"></iframe>`;
-            document.getElementById('ventana-modal').classList.remove('hidden');
-            document.getElementById('ventana-modal').classList.add('flex');
-        }
-
-        function cerrar_ventana() {
-            document.getElementById('ventana-modal').classList.replace('flex', 'hidden');
-        }
-
-        window.onload = () => cambiar_idioma('es');
+        window.onload = () => cambiarIdioma('es');
     </script>
 </body>
 </html>
