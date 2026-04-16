@@ -9,23 +9,15 @@
     <style>
         body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        
         .tarjeta-profesional { 
             background: white; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; 
             transition: 0.3s; height: 100%; display: flex; flex-direction: column; justify-content: space-between;
+            cursor: pointer;
         }
         .tarjeta-profesional:hover { transform: translateY(-5px); border-color: #ff9a9e; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
-        /* Estilo especial para resaltar el Derecho */
-        .destaque-derecho { border: 2px solid #333; position: relative; overflow: hidden; }
-        .destaque-derecho::after { content: "Pilar Académico"; position: absolute; top: 15px; right: -30px; background: #333; color: white; padding: 5px 40px; transform: rotate(45deg); font-size: 10px; font-weight: bold; text-transform: uppercase; }
-
         .btn-idioma { cursor: pointer; padding: 6px 15px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; }
         .btn-idioma.active { background: #333; color: white; }
-        
         .tag-destacado { background: #fff5f5; color: #ff9a9e; padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
-        .tag-nativo { background: #eef2ff; color: #4f46e5; }
-        
         #area-contacto { display: none; margin-top: 15px; padding: 20px; background: #fff; border: 1px solid #ff9a9e; border-radius: 20px; }
     </style>
 </head>
@@ -35,25 +27,23 @@
         <div class="text-2xl font-bold italic">Y. Ramirez</div>
         <div class="flex gap-2">
             <button onclick="cambiarIdioma('es')" id="es-btn" class="btn-idioma active">ES</button>
-            <button onclick="cambiarIdioma('en')" id="en-btn" class="btn-idioma">EN</button>
+            <button onclick="cambiarIdioma('en')" id="en-btn" class="btn-idioma active">EN</button>
             <button onclick="cambiarIdioma('de')" id="de-btn" class="btn-idioma">DE</button>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto px-6">
         
-        <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
+        <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-12">
             <div class="w-full md:w-2/3">
                 <h1 class="text-6xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
                 <p id="t-descripcion" class="text-2xl text-gray-400 italic font-light leading-relaxed">
                     Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).
                 </p>
-                
                 <div class="mt-8">
                     <button onclick="toggleContacto()" id="t-btn-contacto" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition">
                         Contacto
                     </button>
-                    
                     <div id="area-contacto">
                         <p class="text-xl font-bold text-gray-800">📞 +49 174 1826368</p>
                         <p class="text-xl text-pink-500 font-semibold mt-1">✉️ yisel0271@gmail.com</p>
@@ -65,43 +55,28 @@
             </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-1 gap-6 mb-6">
-            <div class="tarjeta-profesional destaque-derecho">
-                <div>
-                    <h2 id="t-h-derecho" class="text-4xl font-bold mb-4 italic">Grado en Derecho</h2>
-                    <p id="t-d-derecho" class="text-gray-700 text-xl leading-relaxed max-w-4xl">
-                        Título homologado oficialmente en Alemania (**Anerkennung**). Nivel de cualificación académica reconocido entre **Bachelor y Master**.
-                    </p>
-                </div>
-                <div class="mt-6">
-                    <button onclick="window.open('reconocimiento_derecho.pdf')" class="text-sm font-bold border-b-2 border-pink-400 pb-1 hover:text-pink-400 transition">
-                        VER DOCUMENTO DE RECONOCIMIENTO ↓
-                    </button>
-                </div>
-            </div>
-        </div>
-
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             
+            <div class="tarjeta-profesional border-2 border-black" onclick="window.open('reconocimiento_derecho.pdf')">
+                <div>
+                    <h2 id="t-h-derecho" class="text-2xl font-bold mb-4 italic">Grado en Derecho</h2>
+                    <span class="tag-destacado" style="background: black; color: white;">Anerkennung Oficial</span>
+                    <p id="t-d-derecho" class="text-gray-600 text-sm mt-4">
+                        Título homologado en Alemania. Nivel Bachelor/Master. Clic para ver documento oficial.
+                    </p>
+                </div>
+                <p class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter">Ver Diploma →</p>
+            </div>
+
             <div class="tarjeta-profesional">
                 <div>
                     <h2 id="t-h-idiomas" class="text-2xl font-bold mb-6 italic">Idiomas</h2>
                     <div class="space-y-4">
-                        <div class="flex items-center gap-3"><span class="tag-destacado tag-nativo">Nativo</span> <p class="font-semibold text-gray-700">Español</p></div>
-                        <div class="flex items-center gap-3"><span class="tag-destacado">B2</span> <p class="font-semibold text-gray-700">Deutsch (Zertifikat)</p></div>
+                        <div class="flex items-center gap-3"><span class="tag-destacado" style="background:#eef2ff; color:#4f46e5">Nativo</span> <p class="font-semibold text-gray-700">Español</p></div>
+                        <div class="flex items-center gap-3"><span class="tag-destacado">B2</span> <p class="font-semibold text-gray-700">Deutsch</p></div>
                         <div class="flex items-center gap-3"><span class="tag-destacado">A2</span> <p class="font-semibold text-gray-700">English</p></div>
                     </div>
                 </div>
-            </div>
-
-            <div class="tarjeta-profesional" onclick="window.open('certificados_it.pdf')">
-                <div>
-                    <h2 id="t-h-it" class="text-2xl font-bold mb-4 italic">Educación IT</h2>
-                    <span class="tag-destacado">En Curso (Umschulung)</span>
-                    <h3 class="font-bold text-lg mt-2">Fachinformatikerin Systemintegration</h3>
-                    <p id="t-d-it" class="text-gray-500 text-sm mt-2">Administración de sistemas y redes. Clic para ver progreso académico.</p>
-                </div>
-                <p class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter">Certificados →</p>
             </div>
 
             <div class="tarjeta-profesional">
@@ -110,21 +85,31 @@
                     <ul class="text-sm space-y-3 text-gray-600 font-medium">
                         <li class="hover:text-pink-400 cursor-pointer" onclick="window.open('experiencia.pdf')">• Experiencia Laboral</li>
                         <li class="hover:text-pink-400 cursor-pointer" onclick="window.open('habilidades.pdf')">• Habilidades / Skills</li>
-                        <li class="hover:text-pink-400 cursor-pointer" onclick="window.open('hobbies.pdf')">• Hobbies e Intereses</li>
+                        <li class="hover:text-pink-400 cursor-pointer" onclick="window.open('hobbies.pdf')">• Hobbies</li>
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-profesional bg-black text-white p-10 flex flex-row justify-between items-center border-none">
-                <h3 id="t-cv" class="text-3xl font-serif">Curriculum Vitae</h3>
-                <span class="text-4xl">↓</span>
+            <div class="tarjeta-profesional" onclick="window.open('certificados_it.pdf')">
+                <div>
+                    <h2 id="t-h-it" class="text-2xl font-bold mb-4 italic text-gray-400">Educación IT</h2>
+                    <span class="tag-destacado">En Curso</span>
+                    <h3 class="font-bold text-lg mt-2">Fachinformatikerin Systemintegration</h3>
+                    <p id="t-d-it" class="text-gray-500 text-xs mt-2">Umschulung en Administración de sistemas y redes. Clic para certificados.</p>
+                </div>
+                <p class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter">Ver notas →</p>
+            </div>
+
+            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-profesional bg-black text-white flex flex-row justify-between items-center border-none">
+                <h3 id="t-cv" class="text-2xl font-serif">Curriculum Vitae</h3>
+                <span class="text-3xl">↓</span>
             </a>
-            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-profesional bg-gray-100 p-10 flex flex-row justify-between items-center border-none">
-                <h3 id="t-letter" class="text-3xl font-serif text-gray-800">Carta Presentación</h3>
-                <span class="text-4xl">✉️</span>
+
+            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-profesional bg-gray-100 flex flex-row justify-between items-center border-none">
+                <h3 id="t-letter" class="text-2xl font-serif text-gray-800">Anschreiben</h3>
+                <span class="text-3xl">✉️</span>
             </a>
+
         </div>
     </main>
 
@@ -137,39 +122,18 @@
         const textos = {
             es: {
                 desc: "Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).",
-                btn: "Contacto", 
-                hder: "Grado en Derecho", 
-                dder: "Título homologado oficialmente en Alemania (Anerkennung). Nivel de cualificación académica reconocido entre Bachelor y Master.",
-                hidi: "Idiomas", 
-                hit: "Educación IT", 
-                hper: "Perfil",
-                dit: "Umschulung en curso como Fachinformatikerin Systemintegration. Administración de sistemas y redes.",
-                cv: "Curriculum Vitae", 
-                letter: "Carta Presentación"
+                btn: "Contacto", hder: "Grado en Derecho", dder: "Título homologado en Alemania. Nivel Bachelor/Master. Clic para ver documento oficial.",
+                hidi: "Idiomas", hit: "Educación IT", hper: "Perfil", dit: "Fachinformatikerin Systemintegration. Clic para certificados.", cv: "Curriculum Vitae", letter: "Anschreiben"
             },
             en: {
                 desc: "Law Graduate with Anerkennung in Germany (Level between Bachelor and Master).",
-                btn: "Contact", 
-                hder: "Bachelor of Laws", 
-                dder: "Degree officially recognized in Germany (Anerkennung). Academic qualification level recognized between Bachelor and Master.",
-                hidi: "Languages", 
-                hit: "IT Education", 
-                hper: "Profile",
-                dit: "Retraining (Umschulung) as Fachinformatikerin Systemintegration. Systems and network administration.",
-                cv: "Curriculum Vitae", 
-                letter: "Cover Letter"
+                btn: "Contact", hder: "Bachelor of Laws", dder: "Degree officially recognized in Germany. Bachelor/Master level. Click to view document.",
+                hidi: "Languages", hit: "IT Education", hper: "Profile", dit: "Fachinformatikerin Systemintegration. Click for certificates.", cv: "Resume", letter: "Cover Letter"
             },
             de: {
                 desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland (Niveau zwischen Bachelor und Master).",
-                btn: "Kontakt", 
-                hder: "Studium der Rechtswissenschaften", 
-                dder: "Offiziell anerkannter Abschluss in Deutschland (Anerkennung). Akademisches Niveau zwischen Bachelor und Master.",
-                hidi: "Sprachen", 
-                hit: "IT-Ausbildung", 
-                hper: "Profil",
-                dit: "Laufende Umschulung zur Fachinformatikerin Systemintegration. Systemadministration.",
-                cv: "Lebenslauf", 
-                letter: "Anschreiben"
+                btn: "Kontakt", hder: "Studium der Rechtswissenschaften", dder: "Anerkannter Abschluss in Deutschland. Niveau Bachelor/Master. Hier klicken für den Bescheid.",
+                hidi: "Sprachen", hit: "IT-Ausbildung", hper: "Profil", dit: "Fachinformatikerin Systemintegration. Klicken für Noten.", cv: "Lebenslauf", letter: "Anschreiben"
             }
         };
 
@@ -184,4 +148,10 @@
             document.getElementById('t-h-perfil').innerText = t.hper;
             document.getElementById('t-d-it').innerText = t.dit;
             document.getElementById('t-cv').innerText = t.cv;
-            document.getElementById
+            document.getElementById('t-letter').innerText = t.letter;
+            document.querySelectorAll('.btn-idioma').forEach(b => b.classList.remove('active'));
+            document.getElementById(lang + '-btn').classList.add('active');
+        }
+    </script>
+</body>
+</html>
