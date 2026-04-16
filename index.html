@@ -10,20 +10,18 @@
         body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
-        /* Tarjetas Interactivas */
-        .card-click { 
+        .tarjeta-fija { 
             background: white; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; 
-            transition: all 0.3s ease; cursor: pointer; height: 100%;
+            transition: 0.3s; height: 100%; cursor: pointer;
         }
-        .card-click:hover { transform: translateY(-10px); border-color: #ff9a9e; shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .tarjeta-fija:hover { transform: translateY(-5px); border-color: #ff9a9e; }
 
-        /* Modal de Contacto */
-        #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center; }
-        .modal-box { background: white; padding: 40px; border-radius: 30px; text-align: center; max-width: 400px; width: 90%; }
+        .btn-idioma { cursor: pointer; padding: 6px 15px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; }
+        .btn-idioma.active { background: #333; color: white; }
         
-        .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; transition: 0.3s; }
-        .lang-btn.active { background: #333; color: white; }
-        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+        .tag-it { background: #fff5f5; color: #ff9a9e; padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: bold; }
+        
+        #seccion-contacto { display: none; margin-top: 15px; padding: 20px; background: #fff; border: 1px solid #ff9a9e; border-radius: 20px; }
     </style>
 </head>
 <body class="pb-20">
@@ -31,119 +29,124 @@
     <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
         <div class="text-2xl font-bold italic">Y. Ramirez</div>
         <div class="flex gap-2">
-            <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
-            <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
-            <button onclick="changeLang('de')" id="btn-de" class="lang-btn">DE</button>
+            <button onclick="cambiarIdioma('es')" id="es-btn" class="btn-idioma active">ES</button>
+            <button onclick="cambiarIdioma('en')" id="en-btn" class="btn-idioma">EN</button>
+            <button onclick="cambiarIdioma('de')" id="de-btn" class="btn-idioma">DE</button>
         </div>
     </nav>
 
-    <div id="modal" onclick="closeModal()">
-        <div class="modal-box shadow-2xl" onclick="event.stopPropagation()">
-            <h2 class="text-3xl mb-6 italic">Contacto</h2>
-            <p class="text-xl font-semibold mb-2">📞 +49 174 1826368</p>
-            <p class="text-xl text-pink-400 mb-6">✉️ yisel0271@gmail.com</p>
-            <button onclick="closeModal()" class="text-gray-400 uppercase text-xs font-bold tracking-widest">Cerrar</button>
-        </div>
-    </div>
-
     <main class="max-w-7xl mx-auto px-6">
+        
         <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
             <div class="w-full md:w-2/3">
-                <h1 class="text-6xl md:text-7xl font-bold mb-6">Yisel Ramirez</h1>
-                <p id="main-desc" class="text-2xl text-gray-400 italic font-light leading-relaxed"></p>
-                <button onclick="openModal()" id="btn-contact-text" class="mt-8 bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition transform hover:-translate-y-1"></button>
+                <h1 class="text-6xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
+                <p id="t-descripcion" class="text-2xl text-gray-400 italic font-light leading-relaxed">
+                    Licenciada en Derecho con Anerkennung en Alemania. Nivel académico entre Bachelor y Master.
+                </p>
+                
+                <div class="mt-8">
+                    <button onclick="mostrarContacto()" id="t-btn-contacto" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition">
+                        Ver Datos de Contacto
+                    </button>
+                    
+                    <div id="seccion-contacto">
+                        <p class="text-xl font-bold text-gray-800">📞 +49 174 1826368</p>
+                        <p class="text-xl text-pink-500 font-semibold mt-1">✉️ yisel0271@gmail.com</p>
+                    </div>
+                </div>
             </div>
-            <div class="w-[300px] h-[400px] rounded-[40px] overflow-hidden border-4 border-white shadow-xl">
-                <img src="foto.jpg" class="w-full h-full object-cover">
+            <div class="w-[300px] h-[400px] rounded-[40px] overflow-hidden border-4 border-white shadow-2xl">
+                <img src="foto.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover">
             </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div onclick="window.open('notas_y_certificados_it.pdf')" class="card-click">
-                <h2 id="h-it" class="text-2xl font-bold mb-6 italic"></h2>
-                <span id="t-now" class="tag"></span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            
+            <div class="tarjeta-fija" onclick="window.open('notas_it.pdf')">
+                <h2 id="t-h-it" class="text-2xl font-bold mb-4 italic">Educación IT</h2>
+                <span class="tag-it">EN CURSO</span>
                 <h3 class="font-bold text-lg mt-2">Fachinformatikerin</h3>
-                <p id="d-it" class="text-gray-500 text-sm mt-2"></p>
+                <p id="t-d-it" class="text-gray-500 text-sm mt-2">Umschulung Systemintegration. Administración de sistemas y redes.</p>
             </div>
 
-            <div onclick="window.open('reconocimiento_derecho.pdf')" class="card-click">
-                <h2 id="h-law" class="text-2xl font-bold mb-6 italic"></h2>
-                <h3 id="s-law" class="font-bold text-lg"></h3>
-                <p id="d-law" class="text-gray-500 text-sm italic mb-4"></p>
+            <div class="tarjeta-fija" onclick="window.open('reconocimiento.pdf')">
+                <h2 id="t-h-ley" class="text-2xl font-bold mb-4 italic">Leyes e Idiomas</h2>
+                <h3 class="font-bold text-lg">Grado en Derecho</h3>
+                <p id="t-d-ley" class="text-gray-500 text-sm italic mb-4">Reconocimiento oficial en Alemania. Nivel Bachelor/Master.</p>
                 <div class="space-y-2">
-                    <div class="flex items-center gap-2"><span class="tag">B2</span> <p class="text-sm font-semibold">Deutsch</p></div>
-                    <div class="flex items-center gap-2"><span class="tag">A2</span> <p class="text-sm font-semibold">English</p></div>
+                    <div class="flex items-center gap-2"><span class="tag-it">B2</span> <p class="text-sm font-semibold">Alemán</p></div>
+                    <div class="flex items-center gap-2"><span class="tag-it">A2</span> <p class="text-sm font-semibold">Inglés</p></div>
+                    <div class="flex items-center gap-2"><span class="tag-it">NAT</span> <p class="text-sm font-semibold">Español</p></div>
                 </div>
             </div>
 
-            <div class="card-click">
-                <h2 id="h-per" class="text-2xl font-bold mb-6 italic"></h2>
-                <div class="space-y-2 text-sm font-semibold text-gray-600">
-                    <p onclick="window.open('experiencia.pdf')" class="hover:text-pink-400">• Experiencia Laboral</p>
-                    <p onclick="window.open('habilidades.pdf')" class="hover:text-pink-400">• Habilidades / Skills</p>
-                    <p onclick="window.open('hobbies.pdf')" class="hover:text-pink-400">• Hobbies</p>
-                </div>
+            <div class="tarjeta-fija">
+                <h2 id="t-h-per" class="text-2xl font-bold mb-4 italic">Perfil</h2>
+                <ul class="text-sm space-y-3 text-gray-600 font-medium">
+                    <li>• Experiencia Laboral</li>
+                    <li>• Habilidades Técnicas</li>
+                    <li>• Hobbies e Intereses</li>
+                </ul>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <a href="curriculum_yisel.pdf" target="_blank" class="card-click bg-black text-white p-10 rounded-[40px] border-none flex justify-between items-center">
-                <h3 id="c-cv" class="text-3xl"></h3>
+            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-fija bg-black text-white p-10 flex justify-between items-center border-none">
+                <h3 id="t-cv" class="text-3xl font-serif">Curriculum Vitae</h3>
                 <span class="text-3xl">↓</span>
             </a>
-            <a href="carta_presentacion.pdf" target="_blank" class="card-click bg-pink-100 p-10 rounded-[40px] border-none flex justify-between items-center text-gray-800">
-                <h3 id="c-let" class="text-3xl"></h3>
+            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-fija bg-pink-100 p-10 flex justify-between items-center border-none">
+                <h3 id="t-letter" class="text-3xl font-serif text-gray-800">Anschreiben</h3>
                 <span class="text-3xl">✉️</span>
             </a>
         </div>
     </main>
 
     <script>
-        function openModal() { document.getElementById('modal').style.display = 'flex'; }
-        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+        function mostrarContacto() {
+            const div = document.getElementById('seccion-contacto');
+            div.style.display = (div.style.display === 'block') ? 'none' : 'block';
+        }
 
-        const langData = {
+        const textos = {
             es: {
-                desc: "Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).",
-                btn: "Contacto", hit: "Educación IT", hlaw: "Leyes e Idiomas", hper: "Perfil",
-                tnow: "En Curso", dit: "Fachinformatikerin Systemintegration. Clic para certificados.",
-                slaw: "Grado en Derecho", dlaw: "Anerkennung oficial. Nivel Bachelor/Master.",
-                ccv: "Curriculum Vitae", clet: "Carta Presentación"
+                desc: "Licenciada en Derecho con Anerkennung en Alemania. Nivel académico entre Bachelor y Master.",
+                btn: "Ver Datos de Contacto", hit: "Educación IT", hley: "Leyes e Idiomas", hper: "Perfil",
+                dit: "Umschulung Systemintegration. Administración de sistemas y redes.",
+                dley: "Reconocimiento oficial en Alemania. Nivel Bachelor/Master.",
+                cv: "Curriculum Vitae", letter: "Anschreiben"
             },
             en: {
-                desc: "Law Graduate with official Recognition in Germany (Level between Bachelor and Master).",
-                btn: "Contact", hit: "IT Education", hlaw: "Law & Languages", hper: "Profile",
-                tnow: "Ongoing", dit: "IT System Integration. Click for certificates.",
-                slaw: "Law Degree", dlaw: "Official recognition. Bachelor/Master level.",
-                ccv: "Resume / CV", clet: "Cover Letter"
+                desc: "Law Graduate with official Recognition in Germany. Academic level between Bachelor and Master.",
+                btn: "Show Contact Data", hit: "IT Education", hley: "Law & Languages", hper: "Profile",
+                dit: "IT System Integration retraining. Systems and networks.",
+                dley: "Official recognition in Germany. Bachelor/Master level.",
+                cv: "Resume / CV", letter: "Cover Letter"
             },
             de: {
-                desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland (Niveau zwischen Bachelor und Master).",
-                btn: "Kontakt", hit: "IT-Ausbildung", hlaw: "Recht & Sprachen", hper: "Profil",
-                tnow: "Laufend", dit: "Fachinformatikerin Systemintegration. Klicken für Noten.",
-                slaw: "Rechtswissenschaften", dlaw: "Anerkannter Abschluss. Bachelor/Master Niveau.",
-                ccv: "Lebenslauf", clet: "Anschreiben"
+                desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland. Akademisches Niveau zwischen Bachelor und Master.",
+                btn: "Kontaktdaten anzeigen", hit: "IT-Ausbildung", hley: "Recht & Sprachen", hper: "Profil",
+                dit: "Umschulung Fachinformatikerin Systemintegration. Systemadministration.",
+                dley: "Offizielle Anerkennung in Deutschland. Bachelor/Master-Niveau.",
+                cv: "Lebenslauf", letter: "Anschreiben"
             }
         };
 
-        function changeLang(lang) {
-            const d = langData[lang];
-            document.getElementById('main-desc').innerText = d.desc;
-            document.getElementById('btn-contact-text').innerText = d.btn;
-            document.getElementById('h-it').innerText = d.hit;
-            document.getElementById('h-law').innerText = d.hlaw;
-            document.getElementById('h-per').innerText = d.hper;
-            document.getElementById('t-now').innerText = d.tnow;
-            document.getElementById('d-it').innerText = d.dit;
-            document.getElementById('s-law').innerText = d.slaw;
-            document.getElementById('d-law').innerText = d.dlaw;
-            document.getElementById('c-cv').innerText = d.ccv;
-            document.getElementById('c-let').innerText = d.clet;
-            
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('btn-' + lang).classList.add('active');
+        function cambiarIdioma(lang) {
+            const t = textos[lang];
+            document.getElementById('t-descripcion').innerText = t.desc;
+            document.getElementById('t-btn-contacto').innerText = t.btn;
+            document.getElementById('t-h-it').innerText = t.hit;
+            document.getElementById('t-h-ley').innerText = t.hley;
+            document.getElementById('t-h-per').innerText = t.hper;
+            document.getElementById('t-d-it').innerText = t.dit;
+            document.getElementById('t-d-ley').innerText = t.dley;
+            document.getElementById('t-cv').innerText = t.cv;
+            document.getElementById('t-letter').innerText = t.letter;
+
+            document.querySelectorAll('.btn-idioma').forEach(b => b.classList.remove('active'));
+            document.getElementById(lang + '-btn').classList.add('active');
         }
-        window.onload = () => changeLang('es');
     </script>
 </body>
 </html>
