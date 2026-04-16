@@ -10,18 +10,18 @@
         body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
-        .tarjeta-fija { 
+        .tarjeta-profesional { 
             background: white; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; 
-            transition: 0.3s; height: 100%; cursor: pointer;
+            transition: 0.3s; height: 100%; display: flex; flex-direction: column; justify-content: space-between;
         }
-        .tarjeta-fija:hover { transform: translateY(-5px); border-color: #ff9a9e; }
+        .tarjeta-profesional:hover { transform: translateY(-5px); border-color: #ff9a9e; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
         .btn-idioma { cursor: pointer; padding: 6px 15px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; }
         .btn-idioma.active { background: #333; color: white; }
         
-        .tag-it { background: #fff5f5; color: #ff9a9e; padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: bold; }
+        .tag-destacado { background: #fff5f5; color: #ff9a9e; padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
         
-        #seccion-contacto { display: none; margin-top: 15px; padding: 20px; background: #fff; border: 1px solid #ff9a9e; border-radius: 20px; }
+        #area-contacto { display: none; margin-top: 15px; padding: 20px; background: #fff; border: 1px solid #ff9a9e; border-radius: 20px; }
     </style>
 </head>
 <body class="pb-20">
@@ -45,11 +45,11 @@
                 </p>
                 
                 <div class="mt-8">
-                    <button onclick="mostrarContacto()" id="t-btn-contacto" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition">
+                    <button onclick="toggleContacto()" id="t-btn-contacto" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition">
                         Ver Datos de Contacto
                     </button>
                     
-                    <div id="seccion-contacto">
+                    <div id="area-contacto">
                         <p class="text-xl font-bold text-gray-800">📞 +49 174 1826368</p>
                         <p class="text-xl text-pink-500 font-semibold mt-1">✉️ yisel0271@gmail.com</p>
                     </div>
@@ -60,74 +60,104 @@
             </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
             
-            <div class="tarjeta-fija" onclick="window.open('notas_it.pdf')">
-                <h2 id="t-h-it" class="text-2xl font-bold mb-4 italic">Educación IT</h2>
-                <span class="tag-it">EN CURSO</span>
-                <h3 class="font-bold text-lg mt-2">Fachinformatikerin</h3>
-                <p id="t-d-it" class="text-gray-500 text-sm mt-2">Umschulung Systemintegration. Administración de sistemas y redes.</p>
-            </div>
-
-            <div class="tarjeta-fija" onclick="window.open('reconocimiento.pdf')">
-                <h2 id="t-h-ley" class="text-2xl font-bold mb-4 italic">Leyes e Idiomas</h2>
-                <h3 class="font-bold text-lg">Grado en Derecho</h3>
-                <p id="t-d-ley" class="text-gray-500 text-sm italic mb-4">Reconocimiento oficial en Alemania. Nivel Bachelor/Master.</p>
-                <div class="space-y-2">
-                    <div class="flex items-center gap-2"><span class="tag-it">B2</span> <p class="text-sm font-semibold">Alemán</p></div>
-                    <div class="flex items-center gap-2"><span class="tag-it">A2</span> <p class="text-sm font-semibold">Inglés</p></div>
-                    <div class="flex items-center gap-2"><span class="tag-it">NAT</span> <p class="text-sm font-semibold">Español</p></div>
+            <div class="tarjeta-profesional">
+                <div>
+                    <h2 id="t-h-derecho" class="text-3xl font-bold mb-4 italic">Título en Derecho</h2>
+                    <p id="t-d-derecho" class="text-gray-600 text-lg leading-relaxed">
+                        Licenciada en Derecho. Título homologado en Alemania con un nivel de cualificación situado entre **Bachelor y Master**.
+                    </p>
                 </div>
             </div>
 
-            <div class="tarjeta-fija">
-                <h2 id="t-h-per" class="text-2xl font-bold mb-4 italic">Perfil</h2>
-                <ul class="text-sm space-y-3 text-gray-600 font-medium">
-                    <li>• Experiencia Laboral</li>
-                    <li>• Habilidades Técnicas</li>
-                    <li>• Hobbies e Intereses</li>
-                </ul>
+            <a href="reconocimiento_derecho.pdf" target="_blank" class="tarjeta-profesional bg-pink-50 border-pink-100">
+                <div>
+                    <h2 id="t-h-aner" class="text-3xl font-bold mb-4 italic text-pink-600">Anerkennung</h2>
+                    <p id="t-d-aner" class="text-pink-800 text-sm font-medium mb-6">Certificado oficial de reconocimiento académico en Alemania.</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl text-center font-bold text-pink-500 uppercase text-xs tracking-widest border border-pink-200">
+                    Descargar Documento ↓
+                </div>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="tarjeta-profesional">
+                <div>
+                    <h2 id="t-h-idiomas" class="text-2xl font-bold mb-6 italic">Idiomas</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3"><span class="tag-destacado">B2</span> <p class="font-semibold text-gray-700">Alemán (Zertifikat)</p></div>
+                        <div class="flex items-center gap-3"><span class="tag-destacado">A2</span> <p class="font-semibold text-gray-700">Inglés</p></div>
+                        <div class="flex items-center gap-3"><span class="tag-destacado">NAT</span> <p class="font-semibold text-gray-700">Español</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta-profesional" onclick="window.open('notas_it.pdf')">
+                <div>
+                    <h2 id="t-h-it" class="text-2xl font-bold mb-4 italic">Formación IT</h2>
+                    <span class="tag-destacado">En Curso</span>
+                    <h3 class="font-bold text-lg mt-2">Fachinformatikerin</h3>
+                    <p id="t-d-it" class="text-gray-500 text-sm mt-2">Umschulung Systemintegration. Administración de sistemas y redes.</p>
+                </div>
+                <p class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter">Ver notas actuales →</p>
+            </div>
+
+            <div class="tarjeta-profesional">
+                <div>
+                    <h2 id="t-h-perfil" class="text-2xl font-bold mb-6 italic">Perfil Personal</h2>
+                    <ul class="text-sm space-y-3 text-gray-600 font-medium">
+                        <li class="hover:text-pink-400 cursor-pointer" onclick="window.open('experiencia.pdf')">• Experiencia Laboral</li>
+                        <li class="hover:text-pink-400 cursor-pointer" onclick="window.open('habilidades.pdf')">• Habilidades / Skills</li>
+                        <li class="hover:text-pink-400 cursor-pointer" onclick="window.open('hobbies.pdf')">• Hobbies e Intereses</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-fija bg-black text-white p-10 flex justify-between items-center border-none">
+            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-profesional bg-black text-white p-10 flex flex-row justify-between items-center border-none">
                 <h3 id="t-cv" class="text-3xl font-serif">Curriculum Vitae</h3>
-                <span class="text-3xl">↓</span>
+                <span class="text-4xl">↓</span>
             </a>
-            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-fija bg-pink-100 p-10 flex justify-between items-center border-none">
+            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-profesional bg-gray-100 p-10 flex flex-row justify-between items-center border-none">
                 <h3 id="t-letter" class="text-3xl font-serif text-gray-800">Anschreiben</h3>
-                <span class="text-3xl">✉️</span>
+                <span class="text-4xl">✉️</span>
             </a>
         </div>
     </main>
 
     <script>
-        function mostrarContacto() {
-            const div = document.getElementById('seccion-contacto');
+        function toggleContacto() {
+            const div = document.getElementById('area-contacto');
             div.style.display = (div.style.display === 'block') ? 'none' : 'block';
         }
 
         const textos = {
             es: {
                 desc: "Licenciada en Derecho con Anerkennung en Alemania. Nivel académico entre Bachelor y Master.",
-                btn: "Ver Datos de Contacto", hit: "Educación IT", hley: "Leyes e Idiomas", hper: "Perfil",
+                btn: "Ver Datos de Contacto", hder: "Título en Derecho", dder: "Licenciada en Derecho. Título homologado en Alemania (Anerkennung) con nivel entre Bachelor y Master.",
+                haner: "Anerkennung", daner: "Certificado oficial de reconocimiento académico en Alemania.",
+                hidi: "Idiomas", hit: "Formación IT", hper: "Perfil Personal",
                 dit: "Umschulung Systemintegration. Administración de sistemas y redes.",
-                dley: "Reconocimiento oficial en Alemania. Nivel Bachelor/Master.",
                 cv: "Curriculum Vitae", letter: "Anschreiben"
             },
             en: {
                 desc: "Law Graduate with official Recognition in Germany. Academic level between Bachelor and Master.",
-                btn: "Show Contact Data", hit: "IT Education", hley: "Law & Languages", hper: "Profile",
+                btn: "Show Contact Info", hder: "Law Degree", dder: "Graduate in Law. Officially recognized in Germany (Anerkennung) at a level between Bachelor and Master.",
+                haner: "Recognition", daner: "Official academic recognition certificate in Germany.",
+                hidi: "Languages", hit: "IT Training", hper: "Personal Profile",
                 dit: "IT System Integration retraining. Systems and networks.",
-                dley: "Official recognition in Germany. Bachelor/Master level.",
-                cv: "Resume / CV", letter: "Cover Letter"
+                cv: "Resume", letter: "Cover Letter"
             },
             de: {
                 desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland. Akademisches Niveau zwischen Bachelor und Master.",
-                btn: "Kontaktdaten anzeigen", hit: "IT-Ausbildung", hley: "Recht & Sprachen", hper: "Profil",
+                btn: "Kontaktdaten", hder: "Rechtswissenschaften", dder: "Studium der Rechtswissenschaften. Offizielle Anerkennung in Deutschland (Bachelor/Master-Niveau).",
+                haner: "Anerkennung", daner: "Offizieller Bescheid über die Anerkennung des Abschlusses.",
+                hidi: "Sprachen", hit: "IT-Ausbildung", hper: "Profil",
                 dit: "Umschulung Fachinformatikerin Systemintegration. Systemadministration.",
-                dley: "Offizielle Anerkennung in Deutschland. Bachelor/Master-Niveau.",
                 cv: "Lebenslauf", letter: "Anschreiben"
             }
         };
@@ -136,11 +166,14 @@
             const t = textos[lang];
             document.getElementById('t-descripcion').innerText = t.desc;
             document.getElementById('t-btn-contacto').innerText = t.btn;
+            document.getElementById('t-h-derecho').innerText = t.hder;
+            document.getElementById('t-d-derecho').innerText = t.dder;
+            document.getElementById('t-h-aner').innerText = t.haner;
+            document.getElementById('t-d-aner').innerText = t.daner;
+            document.getElementById('t-h-idiomas').innerText = t.hidi;
             document.getElementById('t-h-it').innerText = t.hit;
-            document.getElementById('t-h-ley').innerText = t.hley;
-            document.getElementById('t-h-per').innerText = t.hper;
+            document.getElementById('t-h-perfil').innerText = t.hper;
             document.getElementById('t-d-it').innerText = t.dit;
-            document.getElementById('t-d-ley').innerText = t.dley;
             document.getElementById('t-cv').innerText = t.cv;
             document.getElementById('t-letter').innerText = t.letter;
 
