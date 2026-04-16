@@ -18,6 +18,8 @@
         .clicable:hover { color: #ff9a9e; }
         .photo-wrapper { width: 300px; height: 400px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        /* Estilo para el visor de PDF */
+        .pdf-container { width: 100%; height: 500px; border-radius: 15px; border: 1px solid #eee; margin-top: 15px; }
     </style>
 </head>
 <body class="pb-20">
@@ -62,7 +64,7 @@
             <div onclick="abrirModal('it')" class="tarjeta-movil cursor-pointer group">
                 <h2 id="head-edu" class="text-2xl font-bold mb-6 italic"></h2>
                 <span id="tag-now" class="tag"></span>
-                <h3 id="title-it" class="font-bold text-lg mt-2 group-hover:text-pink-400 transition-colors"></h3>
+                <h3 class="font-bold text-lg mt-2 group-hover:text-pink-400 transition-colors">Fachinformatikerin i.A.</h3>
                 <p id="desc-it" class="text-gray-500 text-sm mt-1"></p>
             </div>
 
@@ -79,10 +81,12 @@
     </main>
 
     <div id="modal-info" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 p-4 backdrop-blur-sm" onclick="if(event.target == this) cerrarModal()">
-        <div class="bg-white w-full max-w-2xl rounded-[40px] p-10 relative shadow-2xl">
+        <div class="bg-white w-full max-w-4xl rounded-[40px] p-8 relative shadow-2xl overflow-y-auto max-h-[90vh]">
             <button onclick="cerrarModal()" class="absolute top-6 right-8 text-3xl text-gray-300 hover:text-pink-400">&times;</button>
-            <h2 id="modal-titulo" class="text-3xl font-serif mb-6 text-gray-900 border-b pb-4"></h2>
-            <div id="modal-cuerpo" class="text-gray-600 leading-relaxed text-lg whitespace-pre-line"></div>
+            <h2 id="modal-titulo" class="text-3xl font-serif mb-4 text-gray-900 border-b pb-4"></h2>
+            
+            <div id="modal-cuerpo" class="text-gray-600 leading-relaxed text-lg whitespace-pre-line">
+                </div>
         </div>
     </div>
 
@@ -92,55 +96,39 @@
         const content = {
             es: {
                 mainDesc: "Licenciada en Derecho con equivalencia académica en Alemania (ZAB). Especializándome en IT.",
-                contact: "Contactar", edu: "Nueva Formación", langs: "Títulos & Idiomas", doc: "Documentación",
-                tagNow: "En curso", descIt: "Umschulung: Systemintegration. Clic para detalles.",
-                subAner: "Licenciada en Derecho", descAner: "Título homologado (Anabin H+). Clic para detalles.",
-                docExp: "• Experiencia Laboral", docCarta: "• Carta de Motivación", docSkills: "• Skills & Habilidades", docHobbies: "• Intereses",
-                it: { t: "Formación en Informática", c: "Actualmente realizando una 'Umschulung' (reconversión profesional) como Fachinformatikerin für Systemintegration.\n\nEste proceso me permite combinar mi rigor analítico legal con competencias técnicas en administración de sistemas, redes y soporte especializado." },
-                derecho: { t: "Licenciatura en Derecho", c: "Título universitario oficialmente reconocido por la ZAB en Alemania.\n\n• Calificación: Nivel equivalente a Bachelor/Master.\n• Institución: Anabin H+.\n• Competencias: Análisis complejo, redacción técnica, cumplimiento legal (Compliance)." },
-                langDe: { t: "Certificado de Alemán", c: "Nivel B2 certificado. Capacidad para trabajar y comunicarme eficazmente en el mercado laboral alemán." },
-                langEs: { t: "Español: Nativo", c: "Lengua materna. Capacidad de redacción jurídica y técnica avanzada." },
-                exp: { t: "Trayectoria Profesional", c: "Experiencia previa en el sector legal y administrativo, destacando por mi capacidad de aprendizaje rápido y adaptación al cambio tecnológico." },
-                carta: { t: "Candidatura", c: "Busco fusionar mi experiencia profesional previa con mi nueva pasión por la tecnología, aportando una visión estratégica y disciplinada a equipos de IT." },
-                skills: { t: "Habilidades Clave", c: "• Resolución de problemas complejos\n• Administración de sistemas (en formación)\n• Mentalidad analítica jurídica\n• Trabajo bajo presión" },
-                hobbies: { t: "Sobre mí", c: "Interés constante por el aprendizaje, la tecnología y la integración cultural en Alemania." }
+                contact: "Contactar", edu: "Formación", langs: "Títulos & Idiomas", doc: "Documentación",
+                tagNow: "En curso", descIt: "Umschulung: Systemintegration. Clic para ver detalles.",
+                subAner: "Licenciatura en Derecho", descAner: "Homologación ZAB (Anabin H+). Clic para ver título.",
+                docExp: "• Experiencia Laboral (CV)", docCarta: "• Carta de Motivación", docSkills: "• Habilidades", docHobbies: "• Intereses",
+                it: { t: "Formación en Informática", c: "Actualmente realizando una 'Umschulung' como Fachinformatikerin für Systemintegration.", file: "" },
+                derecho: { t: "Licenciatura en Derecho", c: "Título oficialmente reconocido por la ZAB como equivalente a nivel universitario alemán.", file: "titulo_derecho.pdf" },
+                langDe: { t: "Certificado de Alemán", c: "Nivel B2 certificado.", file: "certificado_b2.pdf" },
+                langEs: { t: "Español: Nativo", c: "Lengua materna.", file: "" },
+                exp: { t: "Curriculum Vitae", c: "Resumen de trayectoria profesional y técnica.", file: "curriculum.pdf" },
+                carta: { t: "Carta de Motivación", c: "Visión profesional y transición al sector IT.", file: "" },
+                skills: { t: "Habilidades", c: "• Análisis jurídico\n• Administración de redes (en curso)\n• Resolución de problemas técnicos.", file: "" },
+                hobbies: { t: "Sobre mí", c: "Pasión por el aprendizaje, tecnología y cultura.", file: "" }
             },
             de: {
-                mainDesc: "Rechtswissenschaftlerin mit ZAB-Anerkennung. Spezialisierung im IT-Bereich.",
-                contact: "Kontakt", edu: "Neue Ausbildung", langs: "Studium & Sprachen", doc: "Dokumentation",
-                tagNow: "Laufend", descIt: "Umschulung: Systemintegration. Klicken für Details.",
-                subAner: "Rechtswissenschaftlerin", descAner: "ZAB-Anerkennung (Anabin H+). Klicken für Details.",
-                docExp: "• Berufserfahrung", docCarta: "• Motivationsschreiben", docSkills: "• Fähigkeiten", docHobbies: "• Hobbys",
-                it: { t: "IT-Ausbildung", c: "In der Umschulung zur Fachinformatikerin für Systemintegration.\n\nHier verbinde ich mein juristisches strukturiertes Denken mit technischem Know-how in den Bereichen Netzwerktechnik, Serveradministration und IT-Infrastruktur." },
-                derecho: { t: "Rechtsstudium", c: "Ausländischer Hochschulabschluss, offiziell anerkannt durch die ZAB.\n\n• Einstufung: Gleichwertig mit Bachelor/Master-Niveau.\n• Anabin: H+ Status.\n• Kompetenzen: Analytisches Denken, Compliance, technisches Schreiben." },
-                langDe: { t: "Deutsch: B2 Zertifikat", c: "B2-Niveau zertifiziert. Sicher in der professionellen Kommunikation am deutschen Arbeitsplatz." },
-                langEs: { t: "Spanisch: Muttersprache", c: "Hervorragende Ausdrucksweise in Wort und Schrift." },
-                exp: { t: "Berufserfahrung", c: "Erfahrung im Rechts- und Verwaltungsbereich, die eine schnelle Auffassungsgabe und Anpassungsfähigkeit an neue technologische Umfelder beweist." },
-                carta: { t: "Initiativbewerbung", c: "Mein Ziel ist es, meine juristische Präzision mit IT-Kompetenz zu kombinieren, um strategische Lösungen in technischen Teams zu bieten." },
-                skills: { t: "Kernkompetenzen", c: "• Komplexe Problemlösung\n• Systemadministration (in Ausbildung)\n• Juristische Denkweise\n• Belastbarkeit" },
-                hobbies: { t: "Interessen", c: "Leidenschaft für Technologie, lebenslanges Lernen und kulturelle Integration." }
-            },
-            en: {
-                mainDesc: "Law Graduate with ZAB recognition. Specializing in IT systems.",
-                contact: "Contact", edu: "New Training", langs: "Degrees & Languages", doc: "Documentation",
-                tagNow: "Ongoing", descIt: "IT System Integration. Click for details.",
-                subAner: "Law Degree", descAner: "Officially recognized (Anabin H+). Click for details.",
-                docExp: "• Experience", docCarta: "• Motivation Letter", docSkills: "• Skills", docHobbies: "• Interests",
-                it: { t: "IT Training", c: "Currently undergoing an 'Umschulung' as an IT Specialist (System Integration).\n\nI am bridging my legal analytical background with technical skills in networking, server management, and IT support." },
-                derecho: { t: "Bachelor of Laws", c: "University degree officially recognized by ZAB in Germany.\n\n• Level: Equivalent to Bachelor/Master level.\n• Anabin: H+ status.\n• Skills: Complex analysis, technical drafting, compliance." },
-                langDe: { t: "German: B2 Level", c: "B2 certified. Fluent in professional communication within the German labor market." },
-                langEs: { t: "Spanish: Native", c: "Mother tongue. Expert technical and legal writing skills." },
-                exp: { t: "Work History", c: "Background in law and administration, highlighting fast learning capabilities and technical adaptability." },
-                carta: { t: "Application", c: "Seeking to merge my previous professional expertise with my passion for technology, bringing a strategic vision to IT teams." },
-                skills: { t: "Key Skills", c: "• Complex problem solving\n• System administration (trainee)\n• Legal analytical mindset\n• Resilience" },
-                hobbies: { t: "Interests", c: "Passionate about learning, emerging technology, and cultural integration." }
+                mainDesc: "Rechtswissenschaftlerin mit ZAB-Anerkennung. IT-Spezialisierung.",
+                contact: "Kontakt", edu: "Ausbildung", langs: "Studium & Sprachen", doc: "Dokumente",
+                tagNow: "Laufend", descIt: "Umschulung Systemintegration. Klicken für Details.",
+                subAner: "Rechtswissenschaftlerin", descAner: "ZAB-Anerkennung (Anabin H+). Klicken für Abschluss.",
+                docExp: "• Berufserfahrung (Lebenslauf)", docCarta: "• Motivationsschreiben", docSkills: "• Fähigkeiten", docHobbies: "• Hobbys",
+                it: { t: "IT-Ausbildung", c: "Umschulung zur Fachinformatikerin für Systemintegration.", file: "" },
+                derecho: { t: "Rechtsstudium", c: "ZAB Anerkennung (Anabin H+). Offiziell gleichwertiger Abschluss.", file: "titulo_derecho.pdf" },
+                langDe: { t: "Deutsch B2", c: "Zertifiziertes B2 Niveau.", file: "certificado_b2.pdf" },
+                langEs: { t: "Spanisch: Muttersprache", c: "Exzellente Sprachkenntnisse.", file: "" },
+                exp: { t: "Lebenslauf", c: "Beruflicher Werdegang und Qualifikationen.", file: "curriculum.pdf" },
+                carta: { t: "Motivationsschreiben", c: "Warum ich mich für IT entschieden habe.", file: "" },
+                skills: { t: "Fähigkeiten", c: "• Analytik\n• Netzwerktechnik (in Ausbildung)\n• IT-Infrastruktur", file: "" },
+                hobbies: { t: "Interessen", c: "Technologie, Sprachen und Kultur.", file: "" }
             }
         };
 
         function changeLang(lang) {
             currentLang = lang;
             const d = content[lang];
-            
             document.getElementById('main-desc').innerText = d.mainDesc;
             document.getElementById('btn-contact').innerText = d.contact;
             document.getElementById('head-edu').innerText = d.edu;
@@ -157,21 +145,34 @@
             document.getElementById('doc-skills').innerText = d.docSkills;
             document.getElementById('doc-hobbies').innerText = d.docHobbies;
 
-            ['es', 'en', 'de'].forEach(l => {
-                document.getElementById('btn-' + l).classList.toggle('active', l === lang);
-            });
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
         }
 
         function abrirModal(tipo) {
-            const modal = document.getElementById('modal-info');
-            document.getElementById('modal-titulo').innerText = content[currentLang][tipo].t;
-            document.getElementById('modal-cuerpo').innerText = content[currentLang][tipo].c;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            const info = content[currentLang][tipo];
+            document.getElementById('modal-titulo').innerText = info.t;
+            
+            let htmlContent = `<p>${info.c}</p>`;
+
+            // Si hay un archivo, añadimos el visor protegido (iframe)
+            if (info.file && info.file !== "") {
+                htmlContent += `
+                    <div class="mt-6 border-t pt-4">
+                        <p class="text-xs text-gray-400 mb-2 italic">Vista previa protegida (Solo lectura):</p>
+                        <iframe src="${info.file}#toolbar=0&navpanes=0" class="pdf-container"></iframe>
+                    </div>
+                `;
+            }
+
+            document.getElementById('modal-cuerpo').innerHTML = htmlContent;
+            document.getElementById('modal-info').classList.remove('hidden');
+            document.getElementById('modal-info').classList.add('flex');
         }
 
         function cerrarModal() {
             document.getElementById('modal-info').classList.replace('flex', 'hidden');
+            document.getElementById('modal-cuerpo').innerHTML = ""; // Limpiamos para seguridad
         }
 
         window.onload = () => changeLang('es');
