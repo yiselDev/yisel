@@ -7,67 +7,29 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; overflow-x: hidden; }
+        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
-        /* Efecto de tarjetas interactivas */
-        .interactive-card { 
-            background: white; 
-            border-radius: 25px; 
-            padding: 30px; 
-            border: 1px solid #f0f0f0; 
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            cursor: pointer;
-            height: 100%;
+        /* Tarjetas Interactivas */
+        .card-click { 
+            background: white; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; 
+            transition: all 0.3s ease; cursor: pointer; height: 100%;
         }
-        
-        .interactive-card:hover { 
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            border-color: #ff9a9e;
-        }
-
-        .interactive-card:active { transform: scale(0.98); }
-
-        .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; transition: 0.3s; }
-        .lang-btn.active { background: #333 !important; color: white !important; border-color: #333; }
-        
-        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
-        
-        .photo-wrapper { width: 300px; height: 400px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.5s; }
-        .photo-wrapper:hover { transform: rotate(2deg) scale(1.02); }
+        .card-click:hover { transform: translateY(-10px); border-color: #ff9a9e; shadow: 0 10px 20px rgba(0,0,0,0.05); }
 
         /* Modal de Contacto */
-        #modal-contacto { 
-            display: none; 
-            position: fixed; 
-            inset: 0; 
-            background: rgba(0,0,0,0.6); 
-            backdrop-filter: blur(8px); 
-            z-index: 100; 
-            align-items: center; 
-            justify-content: center; 
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .modal-content { 
-            background: white; 
-            padding: 40px; 
-            border-radius: 35px; 
-            text-align: center; 
-            max-width: 400px; 
-            width: 90%; 
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-        #modal-contacto.active { display: flex; opacity: 1; }
-        #modal-contacto.active .modal-content { transform: scale(1); }
+        #modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 100; align-items: center; justify-content: center; }
+        .modal-box { background: white; padding: 40px; border-radius: 30px; text-align: center; max-width: 400px; width: 90%; }
+        
+        .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; transition: 0.3s; }
+        .lang-btn.active { background: #333; color: white; }
+        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
     </style>
 </head>
 <body class="pb-20">
 
     <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold italic tracking-tighter">Y. Ramirez</div>
+        <div class="text-2xl font-bold italic">Y. Ramirez</div>
         <div class="flex gap-2">
             <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
             <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
@@ -75,79 +37,113 @@
         </div>
     </nav>
 
-    <div id="modal-contacto" onclick="toggleModal(false)">
-        <div class="modal-content shadow-2xl" onclick="event.stopPropagation()">
-            <h2 class="text-3xl mb-6 italic" id="modal-title">Contacto</h2>
-            <div class="space-y-6 text-lg">
-                <div class="p-4 bg-gray-50 rounded-2xl">
-                    <p class="text-xs text-gray-400 uppercase font-bold mb-1">WhatsApp / Tel</p>
-                    <p class="font-semibold text-xl">+49 174 1826368</p>
-                </div>
-                <div class="p-4 bg-gray-50 rounded-2xl">
-                    <p class="text-xs text-gray-400 uppercase font-bold mb-1">Email</p>
-                    <a href="mailto:yisel0271@gmail.com" class="font-semibold text-xl text-pink-400 hover:underline">yisel0271@gmail.com</a>
-                </div>
-            </div>
-            <button onclick="toggleModal(false)" class="mt-8 bg-gray-100 hover:bg-gray-200 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition">Cerrar</button>
+    <div id="modal" onclick="closeModal()">
+        <div class="modal-box shadow-2xl" onclick="event.stopPropagation()">
+            <h2 class="text-3xl mb-6 italic">Contacto</h2>
+            <p class="text-xl font-semibold mb-2">📞 +49 174 1826368</p>
+            <p class="text-xl text-pink-400 mb-6">✉️ yisel0271@gmail.com</p>
+            <button onclick="closeModal()" class="text-gray-400 uppercase text-xs font-bold tracking-widest">Cerrar</button>
         </div>
     </div>
 
-    <main class="max-w-7xl mx-auto px-6 transition-opacity duration-300" id="main-content">
-        
+    <main class="max-w-7xl mx-auto px-6">
         <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
             <div class="w-full md:w-2/3">
-                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
-                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl leading-relaxed"></p>
-                
-                <div class="mt-8">
-                    <button onclick="toggleModal(true)" id="btn-contact" class="bg-black text-white px-10 py-5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 hover:shadow-pink-200 transition-all transform hover:-translate-y-1 shadow-xl active:scale-95"></button>
-                </div>
+                <h1 class="text-6xl md:text-7xl font-bold mb-6">Yisel Ramirez</h1>
+                <p id="main-desc" class="text-2xl text-gray-400 italic font-light leading-relaxed"></p>
+                <button onclick="openModal()" id="btn-contact-text" class="mt-8 bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition transform hover:-translate-y-1"></button>
             </div>
-            <div class="photo-wrapper">
-                <img src="foto.jpg" alt="Yisel Ramirez" onerror="this.src='https://via.placeholder.com/300x400?text=Yisel+Ramirez'">
+            <div class="w-[300px] h-[400px] rounded-[40px] overflow-hidden border-4 border-white shadow-xl">
+                <img src="foto.jpg" class="w-full h-full object-cover">
             </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            
-            <div onclick="window.open('notas_y_certificados_it.pdf', '_blank')" class="interactive-card group">
-                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic group-hover:text-pink-400 transition-colors"></h2>
-                <div class="space-y-4">
-                    <span id="tag-now" class="tag"></span>
-                    <h3 class="font-bold text-lg mt-1">Fachinformatikerin</h3>
-                    <p id="desc-it" class="text-gray-500 text-sm"></p>
-                    <p class="text-pink-300 text-[10px] font-bold uppercase mt-4">Clic para ver certificados →</p>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div onclick="window.open('notas_y_certificados_it.pdf')" class="card-click">
+                <h2 id="h-it" class="text-2xl font-bold mb-6 italic"></h2>
+                <span id="t-now" class="tag"></span>
+                <h3 class="font-bold text-lg mt-2">Fachinformatikerin</h3>
+                <p id="d-it" class="text-gray-500 text-sm mt-2"></p>
             </div>
 
-            <div onclick="window.open('reconocimiento_derecho.pdf', '_blank')" class="interactive-card group">
-                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic group-hover:text-pink-400 transition-colors"></h2>
-                <div class="space-y-3">
-                    <h3 id="sub-aner" class="font-bold text-lg"></h3>
-                    <p id="desc-aner" class="text-gray-500 text-sm italic"></p>
-                    <hr class="my-4 border-gray-100">
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-2"><span class="tag">B2</span> <p id="lang-de" class="text-sm font-semibold"></p></div>
-                        <div class="flex items-center gap-2"><span class="tag">A2</span> <p id="lang-en" class="text-sm font-semibold"></p></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="interactive-card">
-                <h2 id="head-doc" class="text-2xl font-bold mb-6 italic"></h2>
+            <div onclick="window.open('reconocimiento_derecho.pdf')" class="card-click">
+                <h2 id="h-law" class="text-2xl font-bold mb-6 italic"></h2>
+                <h3 id="s-law" class="font-bold text-lg"></h3>
+                <p id="d-law" class="text-gray-500 text-sm italic mb-4"></p>
                 <div class="space-y-2">
-                    <button onclick="window.open('experiencia_laboral.pdf', '_blank')" id="doc-exp" class="w-full text-left p-2 hover:bg-pink-50 rounded-lg transition text-sm font-semibold text-gray-600 hover:text-pink-500"></button>
-                    <button onclick="window.open('habilidades_tecnicas.pdf', '_blank')" id="doc-skills" class="w-full text-left p-2 hover:bg-pink-50 rounded-lg transition text-sm font-semibold text-gray-600 hover:text-pink-500"></button>
-                    <button onclick="window.open('hobbies_intereses.pdf', '_blank')" id="doc-hobbies" class="w-full text-left p-2 hover:bg-pink-50 rounded-lg transition text-sm font-semibold text-gray-600 hover:text-pink-500"></button>
+                    <div class="flex items-center gap-2"><span class="tag">B2</span> <p class="text-sm font-semibold">Deutsch</p></div>
+                    <div class="flex items-center gap-2"><span class="tag">A2</span> <p class="text-sm font-semibold">English</p></div>
+                </div>
+            </div>
+
+            <div class="card-click">
+                <h2 id="h-per" class="text-2xl font-bold mb-6 italic"></h2>
+                <div class="space-y-2 text-sm font-semibold text-gray-600">
+                    <p onclick="window.open('experiencia.pdf')" class="hover:text-pink-400">• Experiencia Laboral</p>
+                    <p onclick="window.open('habilidades.pdf')" class="hover:text-pink-400">• Habilidades / Skills</p>
+                    <p onclick="window.open('hobbies.pdf')" class="hover:text-pink-400">• Hobbies</p>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <a href="curriculum_yisel.pdf" target="_blank" class="interactive-card bg-black text-white p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none hover:bg-gray-900">
-                <div>
-                    <h3 id="card-cv" class="text-3xl font-serif text-white"></h3>
-                    <p id="card-cv-sub" class="text-gray-400 text-xs uppercase mt-2 tracking-widest"></p>
-                </div>
-                <div class="text-4xl text-white">↓</div>
+            <a href="curriculum_yisel.pdf" target="_blank" class="card-click bg-black text-white p-10 rounded-[40px] border-none flex justify-between items-center">
+                <h3 id="c-cv" class="text-3xl"></h3>
+                <span class="text-3xl">↓</span>
             </a>
+            <a href="carta_presentacion.pdf" target="_blank" class="card-click bg-pink-100 p-10 rounded-[40px] border-none flex justify-between items-center text-gray-800">
+                <h3 id="c-let" class="text-3xl"></h3>
+                <span class="text-3xl">✉️</span>
+            </a>
+        </div>
+    </main>
+
+    <script>
+        function openModal() { document.getElementById('modal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+
+        const langData = {
+            es: {
+                desc: "Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).",
+                btn: "Contacto", hit: "Educación IT", hlaw: "Leyes e Idiomas", hper: "Perfil",
+                tnow: "En Curso", dit: "Fachinformatikerin Systemintegration. Clic para certificados.",
+                slaw: "Grado en Derecho", dlaw: "Anerkennung oficial. Nivel Bachelor/Master.",
+                ccv: "Curriculum Vitae", clet: "Carta Presentación"
+            },
+            en: {
+                desc: "Law Graduate with official Recognition in Germany (Level between Bachelor and Master).",
+                btn: "Contact", hit: "IT Education", hlaw: "Law & Languages", hper: "Profile",
+                tnow: "Ongoing", dit: "IT System Integration. Click for certificates.",
+                slaw: "Law Degree", dlaw: "Official recognition. Bachelor/Master level.",
+                ccv: "Resume / CV", clet: "Cover Letter"
+            },
+            de: {
+                desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland (Niveau zwischen Bachelor und Master).",
+                btn: "Kontakt", hit: "IT-Ausbildung", hlaw: "Recht & Sprachen", hper: "Profil",
+                tnow: "Laufend", dit: "Fachinformatikerin Systemintegration. Klicken für Noten.",
+                slaw: "Rechtswissenschaften", dlaw: "Anerkannter Abschluss. Bachelor/Master Niveau.",
+                ccv: "Lebenslauf", clet: "Anschreiben"
+            }
+        };
+
+        function changeLang(lang) {
+            const d = langData[lang];
+            document.getElementById('main-desc').innerText = d.desc;
+            document.getElementById('btn-contact-text').innerText = d.btn;
+            document.getElementById('h-it').innerText = d.hit;
+            document.getElementById('h-law').innerText = d.hlaw;
+            document.getElementById('h-per').innerText = d.hper;
+            document.getElementById('t-now').innerText = d.tnow;
+            document.getElementById('d-it').innerText = d.dit;
+            document.getElementById('s-law').innerText = d.slaw;
+            document.getElementById('d-law').innerText = d.dlaw;
+            document.getElementById('c-cv').innerText = d.ccv;
+            document.getElementById('c-let').innerText = d.clet;
+            
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+        }
+        window.onload = () => changeLang('es');
+    </script>
+</body>
+</html>
