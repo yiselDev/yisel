@@ -17,7 +17,8 @@
             border: 1px solid #f0f0f0; 
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             height: 100%;
-            display: block;
+            display: flex;
+            flex-direction: column;
         }
         
         .tarjeta-movil:hover { 
@@ -29,15 +30,12 @@
         .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; transition: 0.3s; }
         .lang-btn.active { background: #333 !important; color: white !important; border-color: #333; }
         
-        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
+        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; margin-right: 5px; }
         
         .photo-wrapper { width: 300px; height: 400px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
         .fade-text { transition: opacity 0.3s ease-in-out; }
-        
-        .doc-link { transition: all 0.3s; display: block; width: 100%; margin-bottom: 10px; padding: 5px; border-radius: 8px; }
-        .doc-link:hover { color: #ff9a9e; background: #fffafa; transform: translateX(5px); }
     </style>
 </head>
 <body class="pb-20">
@@ -58,13 +56,9 @@
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
                 <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl leading-relaxed"></p>
                 
-                <div class="mt-4 space-y-1">
-                    <p class="text-gray-600 font-medium">📞 +49 174 1826368</p>
-                    <p class="text-gray-600 font-medium">✉️ yisel0271@gmail.com</p>
-                </div>
-
                 <div class="mt-8">
                     <a href="mailto:yisel0271@gmail.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition transform hover:-translate-y-1 shadow-lg"></a>
+                    <p class="mt-4 text-gray-500 font-medium">📞 +49 174 1826368</p>
                 </div>
             </div>
             <div class="photo-wrapper">
@@ -74,62 +68,60 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             
-            <a href="reconocimiento_derecho.pdf" target="_blank" class="tarjeta-movil group">
-                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic group-hover:text-pink-400 transition-colors"></h2>
+            <div class="tarjeta-movil">
+                <h2 id="head-it" class="text-2xl font-bold mb-6 italic"></h2>
                 <div class="space-y-4">
-                    <div>
-                        <span id="tag-legal" class="tag">Anerkennung</span>
-                        <h3 id="sub-aner" class="font-bold text-lg mt-1"></h3>
-                        <p id="desc-aner" class="text-gray-500 text-sm"></p>
-                    </div>
+                    <span id="tag-now" class="tag"></span>
+                    <h3 class="font-bold text-lg mt-1">Fachinformatikerin</h3>
+                    <p id="desc-it" class="text-gray-500 text-sm"></p>
+                    <a href="notas_y_certificados_it.pdf" target="_blank" class="text-pink-400 text-xs font-bold hover:underline">Ver Certificados →</a>
                 </div>
-            </a>
+            </div>
 
             <div class="tarjeta-movil">
-                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic"></h2>
+                <h2 id="head-law" class="text-2xl font-bold mb-6 italic"></h2>
                 <div class="space-y-3">
-                    <div class="flex items-center gap-2">
-                        <span class="tag">B2</span>
-                        <p id="lang-de" class="text-gray-700 text-sm font-semibold"></p>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="tag">A2</span>
-                        <p id="lang-en" class="text-gray-700 text-sm font-semibold"></p>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="tag">Native</span>
-                        <p id="lang-es" class="text-gray-700 text-sm font-semibold"></p>
+                    <h3 id="sub-aner" class="font-bold text-lg"></h3>
+                    <p id="desc-aner" class="text-gray-500 text-sm italic"></p>
+                    <hr class="my-4">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2"><span class="tag">B2</span> <p id="lang-de" class="text-sm font-semibold"></p></div>
+                        <div class="flex items-center gap-2"><span class="tag">A2</span> <p id="lang-en" class="text-sm font-semibold"></p></div>
+                        <div class="flex items-center gap-2"><span class="tag">Nativo</span> <p id="lang-es" class="text-sm font-semibold"></p></div>
                     </div>
                 </div>
             </div>
 
             <div class="tarjeta-movil">
-                <h2 id="head-personal" class="text-2xl font-bold mb-6 italic"></h2>
-                <div class="space-y-2">
-                    <p id="title-skills" class="font-bold text-sm text-pink-400 uppercase tracking-wider"></p>
-                    <p id="list-skills" class="text-gray-500 text-sm mb-4"></p>
-                    
-                    <p id="title-hobbies" class="font-bold text-sm text-pink-400 uppercase tracking-wider mt-4"></p>
-                    <p id="list-hobbies" class="text-gray-500 text-sm"></p>
+                <h2 id="head-skills" class="text-2xl font-bold mb-6 italic"></h2>
+                <div class="space-y-4">
+                    <div>
+                        <p id="title-tech" class="text-pink-400 text-[10px] font-bold uppercase"></p>
+                        <p id="list-tech" class="text-gray-600 text-sm mt-1"></p>
+                    </div>
+                    <div>
+                        <p id="title-hobbies" class="text-pink-400 text-[10px] font-bold uppercase"></p>
+                        <p id="list-hobbies" class="text-gray-600 text-sm mt-1"></p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-movil bg-black text-white p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none hover:bg-gray-900">
+            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-movil bg-black text-white p-10 rounded-[40px] flex-row justify-between items-center border-none hover:bg-gray-900">
                 <div>
                     <h3 id="card-cv" class="text-3xl font-serif text-white"></h3>
                     <p id="card-cv-sub" class="text-gray-400 text-xs uppercase mt-2 tracking-widest"></p>
                 </div>
-                <div class="text-4xl text-white">↓</div>
+                <div class="text-4xl">↓</div>
             </a>
 
-            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-movil bg-pink-100 p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none hover:bg-pink-200">
+            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-movil bg-pink-100 p-10 rounded-[40px] flex-row justify-between items-center border-none hover:bg-pink-200">
                 <div>
                     <h3 id="card-letter" class="text-3xl font-serif text-gray-800"></h3>
                     <p id="card-letter-sub" class="text-pink-400 text-xs uppercase mt-2 tracking-widest"></p>
                 </div>
-                <div class="text-4xl text-gray-800">✉️</div>
+                <div class="text-4xl">✉️</div>
             </a>
         </div>
 
@@ -138,85 +130,89 @@
     <script>
         const content = {
             es: {
-                desc: "Licenciada en Derecho con homologación en Alemania (Nivel entre Bachelor y Master).",
-                contact: "yisel0271@gmail.com",
-                edu: "Formación Académica",
-                langs: "Idiomas",
-                personal: "Perfil Técnico",
+                desc: "Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).",
+                contact: "Contacto: yisel0271@gmail.com",
+                headIt: "Formación IT",
+                headLaw: "Derecho e Idiomas",
+                headSkills: "Skills & Hobbies",
+                tagNow: "En Curso",
+                descIt: "Umschulung Systemintegration. Especialización en redes y sistemas.",
                 subAner: "Licenciada en Derecho",
-                descAner: "Título con Anerkennung oficial en Alemania. Nivel académico entre Bachelor y Master.",
-                langDe: "Alemán",
-                langEn: "Inglés",
-                langEs: "Español",
-                titleSkills: "Habilidades",
-                listSkills: "Gestión legal, Análisis de datos, Microsoft Office, Adaptabilidad cultural.",
+                descAner: "Homologación oficial en Alemania (Anerkennung).",
+                langDe: "Alemán", langEn: "Inglés", langEs: "Español",
+                titleTech: "Habilidades Técnicas",
+                listTech: "Gestión legal, Análisis, Microsoft Office, Resolución de problemas.",
                 titleHobbies: "Intereses",
-                listHobbies: "Tecnología, Lectura jurídica, Viajes, Aprendizaje de idiomas.",
-                cardCv: "Descargar CV",
-                cardCvSub: "Lebenslauf en PDF",
-                cardLetter: "Carta de Presentación",
-                cardLetterSub: "Anschreiben Ver"
+                listHobbies: "Viajes, Tecnología, Lectura, Aprendizaje continuo.",
+                cardCv: "Curriculum Vitae", cardCvSub: "Descargar Lebenslauf",
+                cardLetter: "Carta de Presentación", cardLetterSub: "Ver Anschreiben"
             },
             en: {
                 desc: "Law Graduate with official Recognition in Germany (Level between Bachelor and Master).",
-                contact: "yisel0271@gmail.com",
-                edu: "Academic Background",
-                langs: "Languages",
-                personal: "Technical Profile",
-                subAner: "Bachelor of Laws",
-                descAner: "Official Anerkennung in Germany. Academic level between Bachelor and Master.",
-                langDe: "German",
-                langEn: "English",
-                langEs: "Spanish",
-                titleSkills: "Skills",
-                listSkills: "Legal Management, Data Analysis, Microsoft Office, Cultural Adaptability.",
+                contact: "Contact: yisel0271@gmail.com",
+                headIt: "IT Training",
+                headLaw: "Law & Languages",
+                headSkills: "Skills & Hobbies",
+                tagNow: "Ongoing",
+                descIt: "Umschulung Systemintegration. Specialized in systems and networks.",
+                subAner: "Law Degree",
+                descAner: "Official recognition in Germany (Anerkennung).",
+                langDe: "German", langEn: "English", langEs: "Spanish",
+                titleTech: "Technical Skills",
+                listTech: "Legal Management, Analysis, Microsoft Office, Problem Solving.",
                 titleHobbies: "Interests",
-                listHobbies: "Technology, Legal Reading, Travel, Language Learning.",
-                cardCv: "Download CV",
-                cardCvSub: "Curriculum Vitae PDF",
-                cardLetter: "Cover Letter",
-                cardLetterSub: "View Anschreiben"
+                listHobbies: "Travel, Technology, Reading, Lifelong Learning.",
+                cardCv: "Curriculum Vitae", cardCvSub: "Download CV",
+                cardLetter: "Cover Letter", cardLetterSub: "View Anschreiben"
             },
             de: {
                 desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland (Niveau zwischen Bachelor und Master).",
-                contact: "yisel0271@gmail.com",
-                edu: "Akademische Ausbildung",
-                langs: "Sprachen",
-                personal: "Persönliches Profil",
-                subAner: "Abschluss in Rechtswissenschaften",
-                descAner: "Offizielle Anerkennung in Deutschland. Akademisches Niveau zwischen Bachelor und Master.",
-                langDe: "Deutsch",
-                langEn: "Englisch",
-                langEs: "Spanisch",
-                titleSkills: "Fähigkeiten",
-                listSkills: "Rechtsmanagement, Datenanalyse, Microsoft Office, Kulturelle Anpassungsfähigkeit.",
+                contact: "Kontakt: yisel0271@gmail.com",
+                headIt: "IT-Ausbildung",
+                headLaw: "Recht & Sprachen",
+                headSkills: "Skills & Hobbys",
+                tagNow: "In Ausbildung",
+                descIt: "Umschulung Systemintegration. Fokus auf Netzwerke und Systeme.",
+                subAner: "Abschluss in Recht",
+                descAner: "Offizielle Anerkennung in Deutschland (Anerkennung).",
+                langDe: "Deutsch", langEn: "Englisch", langEs: "Spanisch",
+                titleTech: "Fähigkeiten",
+                listTech: "Rechtsmanagement, Analyse, Microsoft Office, Problemlösung.",
                 titleHobbies: "Hobbys",
-                listHobbies: "Technologie, Rechtliche Lektüre, Reisen, Sprachenlernen.",
-                cardCv: "Lebenslauf herunterladen",
-                cardCvSub: "Lebenslauf als PDF",
-                cardLetter: "Anschreiben",
-                cardLetterSub: "Anschreiben anzeigen"
+                listHobbies: "Reisen, Technologie, Lesen, Kontinuierliches Lernen.",
+                cardCv: "Lebenslauf", cardCvSub: "Lebenslauf herunterladen",
+                cardLetter: "Anschreiben", cardLetterSub: "Anschreiben anzeigen"
             }
         };
 
         function changeLang(lang) {
-            // Actualizar botones
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`btn-${lang}`).classList.add('active');
 
-            // Actualizar textos
-            document.getElementById('main-desc').innerText = content[lang].desc;
-            document.getElementById('btn-contact').innerText = content[lang].contact;
-            document.getElementById('head-edu').innerText = content[lang].edu;
-            document.getElementById('head-langs').innerText = content[lang].langs;
-            document.getElementById('head-personal').innerText = content[lang].personal;
-            document.getElementById('sub-aner').innerText = content[lang].subAner;
-            document.getElementById('desc-aner').innerText = content[lang].descAner;
-            document.getElementById('lang-de').innerText = content[lang].langDe;
-            document.getElementById('lang-en').innerText = content[lang].langEn;
-            document.getElementById('lang-es').innerText = content[lang].langEs;
-            document.getElementById('title-skills').innerText = content[lang].titleSkills;
-            document.getElementById('list-skills').innerText = content[lang].listSkills;
-            document.getElementById('title-hobbies').innerText = content[lang].titleHobbies;
-            document.getElementById('list-hobbies').innerText = content[lang].listHobbies;
-            document.getElementById('card-cv').innerText = content[lang].cardCv;
+            const c = content[lang];
+            document.getElementById('main-desc').innerText = c.desc;
+            document.getElementById('btn-contact').innerText = c.contact;
+            document.getElementById('head-it').innerText = c.headIt;
+            document.getElementById('head-law').innerText = c.headLaw;
+            document.getElementById('head-skills').innerText = c.headSkills;
+            document.getElementById('tag-now').innerText = c.tagNow;
+            document.getElementById('desc-it').innerText = c.descIt;
+            document.getElementById('sub-aner').innerText = c.subAner;
+            document.getElementById('desc-aner').innerText = c.descAner;
+            document.getElementById('lang-de').innerText = c.langDe;
+            document.getElementById('lang-en').innerText = c.langEn;
+            document.getElementById('lang-es').innerText = c.langEs;
+            document.getElementById('title-tech').innerText = c.titleTech;
+            document.getElementById('list-tech').innerText = c.listTech;
+            document.getElementById('title-hobbies').innerText = c.titleHobbies;
+            document.getElementById('list-hobbies').innerText = c.listHobbies;
+            document.getElementById('card-cv').innerText = c.cardCv;
+            document.getElementById('card-cv-sub').innerText = c.cardCvSub;
+            document.getElementById('card-letter').innerText = c.cardLetter;
+            document.getElementById('card-letter-sub').innerText = c.cardLetterSub;
+        }
+
+        changeLang('es');
+    </script>
+</body>
+</html>
