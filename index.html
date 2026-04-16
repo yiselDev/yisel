@@ -7,10 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
+        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
-        /* ESTILO DE LAS TARJETAS CON MOVIMIENTO */
         .tarjeta-movil { 
             background: white; 
             border-radius: 25px; 
@@ -18,45 +17,49 @@
             border: 1px solid #f0f0f0; 
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             height: 100%;
-            display: flex;
-            flex-direction: column;
+            display: block; /* Para que toda la tarjeta sea clickable */
         }
         
         .tarjeta-movil:hover { 
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
             border-color: #ff9a9e;
-            cursor: pointer;
         }
 
         .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; transition: 0.3s; }
-        .lang-btn.active { background: #333 !important; color: white !important; }
+        .lang-btn.active { background: #333 !important; color: white !important; border-color: #333; }
         
-        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
         
         .photo-wrapper { width: 300px; height: 400px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        .fade-text { transition: opacity 0.3s ease-in-out; }
+        
+        /* Estilo para los links dentro de la tarjeta de documentos */
+        .doc-link { transition: color 0.3s; display: block; width: 100%; }
+        .doc-link:hover { color: #ff9a9e; }
     </style>
 </head>
 <body class="pb-20">
 
     <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold italic">Y. Ramirez</div>
+        <div class="text-2xl font-bold italic tracking-tighter">Y. Ramirez</div>
         <div class="flex gap-2">
-            <button onclick="cambiarIdioma('es')" id="btn-es" class="lang-btn active">ES</button>
-            <button onclick="cambiarIdioma('en')" id="btn-en" class="lang-btn">EN</button>
-            <button onclick="cambiarIdioma('de')" id="btn-de" class="lang-btn">DE</button>
+            <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
+            <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
+            <button onclick="changeLang('de')" id="btn-de" class="lang-btn">DE</button>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6">
+    <main class="max-w-7xl mx-auto px-6 fade-text" id="main-content">
         
         <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
-            <div class="w-full md:w-2/3 text-center md:text-left">
+            <div class="w-full md:w-2/3">
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
-                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl"></p>
+                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl leading-relaxed"></p>
                 <div class="mt-8">
-                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition shadow-lg"></a>
+                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition transform hover:-translate-y-1 shadow-lg"></a>
                 </div>
             </div>
             <div class="photo-wrapper">
@@ -66,8 +69,8 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             
-            <a href="Zertifikat_Frau_Ramírez_07.10.24 (3).pdf" target="_blank" class="tarjeta-movil">
-                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic"></h2>
+            <a href="informacion_it.pdf" target="_blank" class="tarjeta-movil group">
+                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic group-hover:text-pink-400 transition-colors"></h2>
                 <div class="space-y-4">
                     <div>
                         <span id="tag-now" class="tag"></span>
@@ -77,12 +80,12 @@
                 </div>
             </a>
 
-            <a href="convalidacion de titulo (2).pdf" target="_blank" class="tarjeta-movil">
-                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic"></h2>
+            <a href="reconocimiento_derecho.pdf" target="_blank" class="tarjeta-movil group">
+                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic group-hover:text-pink-400 transition-colors"></h2>
                 <div class="space-y-3">
                     <p id="lang-de" class="text-gray-500 text-sm italic"></p>
                     <p id="lang-es" class="text-gray-500 text-sm italic"></p>
-                    <hr class="my-4">
+                    <hr class="my-4 border-gray-100">
                     <h3 id="sub-aner" class="font-bold"></h3>
                     <p id="desc-aner" class="text-gray-400 text-xs italic"></p>
                 </div>
@@ -90,90 +93,4 @@
 
             <div class="tarjeta-movil">
                 <h2 id="head-doc" class="text-2xl font-bold mb-6 italic"></h2>
-                <div class="space-y-4 text-sm font-medium">
-                    <a href="anerkennung 2.pdf" target="_blank" class="block hover:text-pink-400">• Anerkennung Part 1</a>
-                    <a href="anerkennung 3.pdf" target="_blank" class="block hover:text-pink-400">• Anerkennung Part 2</a>
-                    <a href="reconocimiento 1.pdf" target="_blank" class="block hover:text-pink-400">• Urkunde / Título</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            
-            <a href="Certificado B2.pdf" target="_blank" class="tarjeta-movil bg-black text-white p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none">
-                <div>
-                    <h3 id="card-cv" class="text-3xl font-serif text-white"></h3>
-                    <p id="card-cv-sub" class="text-gray-400 text-xs uppercase mt-2 tracking-widest"></p>
-                </div>
-                <div class="text-4xl text-white">→</div>
-            </a>
-
-            <a href="#" class="tarjeta-movil bg-pink-100 p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none">
-                <div>
-                    <h3 id="card-cert" class="text-3xl font-serif text-gray-800"></h3>
-                    <p id="card-cert-sub" class="text-pink-400 text-xs uppercase mt-2 tracking-widest"></p>
-                </div>
-                <div class="text-4xl text-gray-800">→</div>
-            </a>
-        </div>
-
-    </main>
-
-    <script>
-        const contenido = {
-            es: {
-                desc: "Licenciada en Derecho con equivalencia académica en Alemania (ZAB).",
-                contact: "Contactar", edu: "Formación", langs: "Idiomas & Título", doc: "Documentos ZAB",
-                tagNow: "Actualidad", descIt: "Systemintegration (Umschulung i.A.). Clic para certificado.",
-                langDe: "Alemán: B2 (Avanzado)", langEs: "Español: Nativo",
-                subAner: "Anerkennung", descAner: "Homologación completa de Derecho.",
-                cardCv: "Certificado B2", cardCvSub: "Idioma Alemán oficial", 
-                cardCert: "Otros Cursos", cardCertSub: "Certificaciones adicionales"
-            },
-            en: {
-                desc: "Law Graduate with academic equivalence in Germany (ZAB).",
-                contact: "Contact", edu: "Education", langs: "Languages & Degree", doc: "ZAB Documents",
-                tagNow: "Current", descIt: "IT Specialist (System Integration). Click for certificate.",
-                langDe: "German: B2 (Advanced)", langEs: "Spanish: Native",
-                subAner: "Recognition", descAner: "Officially recognized Law degree.",
-                cardCv: "B2 Certificate", cardCvSub: "Official German Language", 
-                cardCert: "Other Courses", cardCertSub: "Additional certifications"
-            },
-            de: {
-                desc: "Rechtswissenschaftlerin con ZAB-Anerkennung (Bachelor/Master).",
-                contact: "Kontakt", edu: "Bildung", langs: "Sprachen & Abschluss", doc: "ZAB Dokumente",
-                tagNow: "Aktuell", descIt: "Fachinformatikerin Systemintegration. Für Zertifikat klicken.",
-                langDe: "Deutsch: B2 (Fortgeschritten)", langEs: "Spanisch: Muttersprache",
-                subAner: "Anerkennung", descAner: "Anerkannter Jura-Abschluss.",
-                cardCv: "B2 Zertifikat", cardCvSub: "Offizielle Deutschprüfung", 
-                cardCert: "Weitere Kurse", cardCertSub: "Zusätzliche Zertifikate"
-            }
-        };
-
-        function cambiarIdioma(lang) {
-            const c = contenido[lang];
-            document.getElementById('main-desc').innerText = c.desc;
-            document.getElementById('btn-contact').innerText = c.contact;
-            document.getElementById('head-edu').innerText = c.edu;
-            document.getElementById('head-langs').innerText = c.langs;
-            document.getElementById('head-doc').innerText = c.doc;
-            document.getElementById('tag-now').innerText = c.tagNow;
-            document.getElementById('desc-it').innerText = c.descIt;
-            document.getElementById('lang-de').innerText = c.langDe;
-            document.getElementById('lang-es').innerText = c.langEs;
-            document.getElementById('sub-aner').innerText = c.subAner;
-            document.getElementById('desc-aner').innerText = c.descAner;
-            document.getElementById('card-cv').innerText = c.cardCv;
-            document.getElementById('card-cv-sub').innerText = c.cardCvSub;
-            document.getElementById('card-cert').innerText = c.cardCert;
-            document.getElementById('card-cert-sub').innerText = c.cardCertSub;
-
-            ['es', 'en', 'de'].forEach(l => {
-                document.getElementById('btn-' + l).classList.toggle('active', l === lang);
-            });
-        }
-
-        window.onload = () => cambiarIdioma('es');
-    </script>
-</body>
-</html>
+                <div class="space-y-4 text-sm font-
