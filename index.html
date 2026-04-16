@@ -7,86 +7,87 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
+        body { background: #fafafa; font-family: 'Montserrat', sans-serif; color: #333; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        .tarjeta-movil { background: white; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; transition: all 0.4s ease; height: 100%; }
-        .tarjeta-movil:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); border-color: #ff9a9e; }
-        .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; transition: 0.3s; }
-        .lang-btn.active { background: #333 !important; color: white !important; }
-        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
-        .clicable { cursor: pointer; transition: color 0.3s; }
-        .clicable:hover { color: #ff9a9e; }
-        .photo-wrapper { width: 300px; height: 400px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        /* Estilo para el visor de PDF */
-        .pdf-container { width: 100%; height: 500px; border-radius: 15px; border: 1px solid #eee; margin-top: 15px; }
+        
+        /* Estilo de tarjetas */
+        .card-main { background: white; border-radius: 24px; padding: 35px; border: 1px solid #eee; transition: all 0.3s ease; cursor: pointer; }
+        .card-main:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); border-color: #ff9a9e; }
+        
+        /* Botones de idioma */
+        .lang-btn { cursor: pointer; padding: 6px 15px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 11px; transition: 0.3s; }
+        .lang-btn.active { background: #000 !important; color: #fff !important; }
+
+        /* Visor PDF */
+        .pdf-viewer { width: 100%; height: 600px; border-radius: 15px; border: 1px solid #eee; margin-top: 20px; }
+        
+        .label-top { font-size: 10px; font-weight: bold; text-transform: uppercase; color: #ff9a9e; letter-spacing: 2px; margin-bottom: 10px; display: block; }
     </style>
 </head>
 <body class="pb-20">
 
     <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold italic">Y. Ramirez</div>
+        <div class="text-2xl font-bold italic tracking-tighter">Y. Ramirez</div>
         <div class="flex gap-2">
             <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
-            <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
             <button onclick="changeLang('de')" id="btn-de" class="lang-btn">DE</button>
+            <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6">
-        <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
-            <div class="w-full md:w-2/3">
-                <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
-                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl"></p>
-                <div class="mt-8">
-                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition transform hover:-translate-y-1 shadow-lg">Contactar</a>
-                </div>
-            </div>
-            <div class="photo-wrapper">
-                <img src="foto.jpg" alt="Yisel Ramirez">
-            </div>
+    <main class="max-w-6xl mx-auto px-6">
+        <section class="mb-12">
+            <h1 class="text-6xl font-bold text-gray-900 mb-4">Yisel Ramirez</h1>
+            <p id="hero-subtitle" class="text-2xl text-gray-400 italic font-light max-w-2xl"></p>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div class="tarjeta-movil">
-                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic"></h2>
-                <div class="space-y-3">
-                    <div onclick="abrirModal('derecho')" class="clicable group">
-                        <h3 id="sub-aner" class="font-bold text-lg group-hover:text-pink-400 transition-colors"></h3>
-                        <p id="desc-aner" class="text-gray-500 text-sm italic"></p>
+        <div class="mb-8">
+            <div onclick="abrirModal('cv')" class="card-main border-l-[12px] border-l-black">
+                <span class="label-top" id="lab-cv">Perfil Profesional</span>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 class="text-4xl font-bold" id="tit-cv">Curriculum Vitae</h2>
+                        <p class="text-gray-500 text-lg mt-2" id="des-cv">Resumen detallado de experiencia, estudios y habilidades técnicas.</p>
                     </div>
-                    <hr class="my-4 border-gray-100">
-                    <p onclick="abrirModal('langDe')" class="clicable text-gray-400 text-xs italic" id="txt-lang-de"></p>
-                    <p onclick="abrirModal('langEs')" class="clicable text-gray-400 text-xs italic" id="txt-lang-es"></p>
-                </div>
-            </div>
-
-            <div onclick="abrirModal('it')" class="tarjeta-movil cursor-pointer group">
-                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic"></h2>
-                <span id="tag-now" class="tag"></span>
-                <h3 class="font-bold text-lg mt-2 group-hover:text-pink-400 transition-colors">Fachinformatikerin i.A.</h3>
-                <p id="desc-it" class="text-gray-500 text-sm mt-1"></p>
-            </div>
-
-            <div class="tarjeta-movil">
-                <h2 id="head-doc" class="text-2xl font-bold mb-6 italic"></h2>
-                <div class="space-y-4 text-sm font-medium">
-                    <p onclick="abrirModal('exp')" class="clicable" id="doc-exp"></p>
-                    <p onclick="abrirModal('carta')" class="clicable" id="doc-carta"></p>
-                    <p onclick="abrirModal('skills')" class="clicable" id="doc-skills"></p>
-                    <p onclick="abrirModal('hobbies')" class="clicable" id="doc-hobbies"></p>
+                    <div class="text-5xl opacity-20">📄</div>
                 </div>
             </div>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div onclick="abrirModal('derecho')" class="card-main border-l-[12px] border-l-blue-500">
+                <span class="label-top" id="lab-law">Académico</span>
+                <h3 class="text-2xl font-bold" id="tit-law">Títulos Oficiales</h3>
+                <p class="text-gray-500 mt-2" id="des-law">Homologación ZAB (Anerkennung) y Licenciatura.</p>
+            </div>
+
+            <div onclick="abrirModal('idioma')" class="card-main border-l-[12px] border-l-red-500">
+                <span class="label-top" id="lab-lang">Idiomas</span>
+                <h3 class="text-2xl font-bold" id="tit-lang">Certificados de Idioma</h3>
+                <p class="text-gray-500 mt-2" id="des-lang">Alemán B2 y otros conocimientos lingüísticos.</p>
+            </div>
+
+            <div onclick="abrirModal('it')" class="card-main border-l-[12px] border-l-green-500">
+                <span class="label-top" id="lab-it">Tecnología</span>
+                <h3 class="text-2xl font-bold">IT Ausbildung</h3>
+                <p class="text-gray-500 mt-2" id="des-it">Umschulung Systemintegration (Fachinformatikerin).</p>
+            </div>
+
+            <div onclick="abrirModal('otros')" class="card-main border-l-[12px] border-l-pink-500">
+                <span class="label-top" id="lab-oth">Complementario</span>
+                <h3 class="text-2xl font-bold" id="tit-oth">Otros</h3>
+                <p class="text-gray-500 mt-2" id="des-oth">Cursos adicionales, seminarios y voluntariados.</p>
+            </div>
+
+        </div>
     </main>
 
-    <div id="modal-info" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 p-4 backdrop-blur-sm" onclick="if(event.target == this) cerrarModal()">
-        <div class="bg-white w-full max-w-4xl rounded-[40px] p-8 relative shadow-2xl overflow-y-auto max-h-[90vh]">
-            <button onclick="cerrarModal()" class="absolute top-6 right-8 text-3xl text-gray-300 hover:text-pink-400">&times;</button>
-            <h2 id="modal-titulo" class="text-3xl font-serif mb-4 text-gray-900 border-b pb-4"></h2>
-            
-            <div id="modal-cuerpo" class="text-gray-600 leading-relaxed text-lg whitespace-pre-line">
-                </div>
+    <div id="modal-container" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4 backdrop-blur-md" onclick="if(event.target == this) cerrarModal()">
+        <div class="bg-white w-full max-w-5xl rounded-[40px] p-10 relative shadow-2xl max-h-[95vh] overflow-y-auto">
+            <button onclick="cerrarModal()" class="absolute top-6 right-10 text-4xl text-gray-300 hover:text-black transition">&times;</button>
+            <h2 id="modal-title" class="text-4xl font-serif mb-4 text-gray-900"></h2>
+            <div id="modal-body" class="text-gray-600 text-lg leading-relaxed"></div>
         </div>
     </div>
 
@@ -95,84 +96,74 @@
 
         const content = {
             es: {
-                mainDesc: "Licenciada en Derecho con equivalencia académica en Alemania (ZAB). Especializándome en IT.",
-                contact: "Contactar", edu: "Formación", langs: "Títulos & Idiomas", doc: "Documentación",
-                tagNow: "En curso", descIt: "Umschulung: Systemintegration. Clic para ver detalles.",
-                subAner: "Licenciatura en Derecho", descAner: "Homologación ZAB (Anabin H+). Clic para ver título.",
-                docExp: "• Experiencia Laboral (CV)", docCarta: "• Carta de Motivación", docSkills: "• Habilidades", docHobbies: "• Intereses",
-                it: { t: "Formación en Informática", c: "Actualmente realizando una 'Umschulung' como Fachinformatikerin für Systemintegration.", file: "" },
-                derecho: { t: "Licenciatura en Derecho", c: "Título oficialmente reconocido por la ZAB como equivalente a nivel universitario alemán.", file: "titulo_derecho.pdf" },
-                langDe: { t: "Certificado de Alemán", c: "Nivel B2 certificado.", file: "certificado_b2.pdf" },
-                langEs: { t: "Español: Nativo", c: "Lengua materna.", file: "" },
-                exp: { t: "Curriculum Vitae", c: "Resumen de trayectoria profesional y técnica.", file: "curriculum.pdf" },
-                carta: { t: "Carta de Motivación", c: "Visión profesional y transición al sector IT.", file: "" },
-                skills: { t: "Habilidades", c: "• Análisis jurídico\n• Administración de redes (en curso)\n• Resolución de problemas técnicos.", file: "" },
-                hobbies: { t: "Sobre mí", c: "Pasión por el aprendizaje, tecnología y cultura.", file: "" }
+                hero: "Licenciada en Derecho con equivalencia académica en Alemania (ZAB). Especializándome en IT.",
+                labCv: "Perfil Profesional", titCv: "Curriculum Vitae", desCv: "Ver mi trayectoria profesional completa.",
+                labLaw: "Académico", titLaw: "Títulos Oficiales", desLaw: "Anerkennung de la ZAB y Licenciatura.",
+                labLang: "Idiomas", titLang: "Certificados de Idioma", desLang: "Alemán B2 y conocimientos nativos.",
+                labIt: "Tecnología", desIt: "Umschulung como Fachinformatikerin (En curso).",
+                labOth: "Complementario", titOth: "Otros", desOth: "Seminarios, cursos extra y certificaciones menores.",
+                // Datos de las ventanas
+                cv: { t: "Curriculum Vitae", c: "Mi trayectoria profesional y formación técnica actualizada.", f: "curriculum.pdf" },
+                derecho: { t: "Anerkennung ZAB", c: "Equivalencia oficial de mi título de Derecho en Alemania (Anabin H+).", f: "titulo_derecho.pdf" },
+                idioma: { t: "Certificado Alemán B2", c: "Nivel de competencia profesional en alemán.", f: "certificado_b2.pdf" },
+                it: { t: "Fachinformatikerin i.A.", c: "Formación actual en administración de sistemas y redes.", f: "" },
+                otros: { t: "Otros Títulos y Cursos", c: "• Curso de Excel Avanzado\n• Seminario en Ciberseguridad Legal\n• Voluntariados", f: "" }
             },
             de: {
-                mainDesc: "Rechtswissenschaftlerin mit ZAB-Anerkennung. IT-Spezialisierung.",
-                contact: "Kontakt", edu: "Ausbildung", langs: "Studium & Sprachen", doc: "Dokumente",
-                tagNow: "Laufend", descIt: "Umschulung Systemintegration. Klicken für Details.",
-                subAner: "Rechtswissenschaftlerin", descAner: "ZAB-Anerkennung (Anabin H+). Klicken für Abschluss.",
-                docExp: "• Berufserfahrung (Lebenslauf)", docCarta: "• Motivationsschreiben", docSkills: "• Fähigkeiten", docHobbies: "• Hobbys",
-                it: { t: "IT-Ausbildung", c: "Umschulung zur Fachinformatikerin für Systemintegration.", file: "" },
-                derecho: { t: "Rechtsstudium", c: "ZAB Anerkennung (Anabin H+). Offiziell gleichwertiger Abschluss.", file: "titulo_derecho.pdf" },
-                langDe: { t: "Deutsch B2", c: "Zertifiziertes B2 Niveau.", file: "certificado_b2.pdf" },
-                langEs: { t: "Spanisch: Muttersprache", c: "Exzellente Sprachkenntnisse.", file: "" },
-                exp: { t: "Lebenslauf", c: "Beruflicher Werdegang und Qualifikationen.", file: "curriculum.pdf" },
-                carta: { t: "Motivationsschreiben", c: "Warum ich mich für IT entschieden habe.", file: "" },
-                skills: { t: "Fähigkeiten", c: "• Analytik\n• Netzwerktechnik (in Ausbildung)\n• IT-Infrastruktur", file: "" },
-                hobbies: { t: "Interessen", c: "Technologie, Sprachen und Kultur.", file: "" }
+                hero: "Rechtswissenschaftlerin mit ZAB-Anerkennung. IT-Spezialisierung.",
+                labCv: "Berufsprofil", titCv: "Lebenslauf", desCv: "Meinen vollständigen Werdegang ansehen.",
+                labLaw: "Akademisch", titLaw: "Offizielle Abschlüsse", desLaw: "ZAB Anerkennung und Jura-Diplom.",
+                labLang: "Sprachen", titLang: "Sprachzertifikate", desLang: "Deutsch B2 und Muttersprache.",
+                labIt: "Technologie", desIt: "Umschulung zur Fachinformatikerin (Laufend).",
+                labOth: "Zusätzlich", titOth: "Sonstiges", desOth: "Seminare, Zusatzkurse und Zertifizierungen.",
+                cv: { t: "Lebenslauf", c: "Mein beruflicher Werdegang.", f: "curriculum.pdf" },
+                derecho: { t: "ZAB Anerkennung", c: "Offizieller Bescheid über die Gleichwertigkeit meines Studiums.", f: "titulo_derecho.pdf" },
+                idioma: { t: "B2 Zertifikat", c: "Nachweis über fortgeschrittene Deutschkenntnisse.", f: "certificado_b2.pdf" },
+                it: { t: "Fachinformatikerin Systemintegration", c: "Aktuelle Ausbildung.", f: "" },
+                otros: { t: "Weitere Qualifikationen", c: "• Excel Fortgeschritten\n• Seminar für IT-Recht\n• Ehrenamtliche Tätigkeiten", f: "" }
             }
         };
 
         function changeLang(lang) {
             currentLang = lang;
             const d = content[lang];
-            document.getElementById('main-desc').innerText = d.mainDesc;
-            document.getElementById('btn-contact').innerText = d.contact;
-            document.getElementById('head-edu').innerText = d.edu;
-            document.getElementById('head-langs').innerText = d.langs;
-            document.getElementById('head-doc').innerText = d.doc;
-            document.getElementById('tag-now').innerText = d.tagNow;
-            document.getElementById('desc-it').innerText = d.descIt;
-            document.getElementById('txt-lang-de').innerText = d.langDe.t;
-            document.getElementById('txt-lang-es').innerText = d.langEs.t;
-            document.getElementById('sub-aner').innerText = d.subAner;
-            document.getElementById('desc-aner').innerText = d.descAner;
-            document.getElementById('doc-exp').innerText = d.docExp;
-            document.getElementById('doc-carta').innerText = d.docCarta;
-            document.getElementById('doc-skills').innerText = d.docSkills;
-            document.getElementById('doc-hobbies').innerText = d.docHobbies;
+            document.getElementById('hero-subtitle').innerText = d.hero;
+            document.getElementById('lab-cv').innerText = d.labCv;
+            document.getElementById('tit-cv').innerText = d.titCv;
+            document.getElementById('des-cv').innerText = d.desCv;
+            document.getElementById('lab-law').innerText = d.labLaw;
+            document.getElementById('tit-law').innerText = d.titLaw;
+            document.getElementById('des-law').innerText = d.desLaw;
+            document.getElementById('lab-lang').innerText = d.labLang;
+            document.getElementById('tit-lang').innerText = d.titLang;
+            document.getElementById('des-lang').innerText = d.desLang;
+            document.getElementById('lab-it').innerText = d.labIt;
+            document.getElementById('des-it').innerText = d.desIt;
+            document.getElementById('lab-oth').innerText = d.labOth;
+            document.getElementById('tit-oth').innerText = d.titOth;
+            document.getElementById('des-oth').innerText = d.desOth;
 
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn-' + lang).classList.add('active');
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.id === 'btn-' + lang);
+            });
         }
 
         function abrirModal(tipo) {
-            const info = content[currentLang][tipo];
-            document.getElementById('modal-titulo').innerText = info.t;
+            const data = content[currentLang][tipo];
+            document.getElementById('modal-title').innerText = data.t;
             
-            let htmlContent = `<p>${info.c}</p>`;
-
-            // Si hay un archivo, añadimos el visor protegido (iframe)
-            if (info.file && info.file !== "") {
-                htmlContent += `
-                    <div class="mt-6 border-t pt-4">
-                        <p class="text-xs text-gray-400 mb-2 italic">Vista previa protegida (Solo lectura):</p>
-                        <iframe src="${info.file}#toolbar=0&navpanes=0" class="pdf-container"></iframe>
-                    </div>
-                `;
+            let html = `<p class="whitespace-pre-line">${data.c}</p>`;
+            if (data.f) {
+                html += `<iframe src="${data.f}#toolbar=0" class="pdf-viewer"></iframe>`;
             }
-
-            document.getElementById('modal-cuerpo').innerHTML = htmlContent;
-            document.getElementById('modal-info').classList.remove('hidden');
-            document.getElementById('modal-info').classList.add('flex');
+            
+            document.getElementById('modal-body').innerHTML = html;
+            document.getElementById('modal-container').classList.remove('hidden');
+            document.getElementById('modal-container').classList.add('flex');
         }
 
         function cerrarModal() {
-            document.getElementById('modal-info').classList.replace('flex', 'hidden');
-            document.getElementById('modal-cuerpo').innerHTML = ""; // Limpiamos para seguridad
+            document.getElementById('modal-container').classList.replace('flex', 'hidden');
         }
 
         window.onload = () => changeLang('es');
