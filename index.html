@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYP<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -7,49 +7,40 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
+        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
-        /* --- ESTILOS DE ANIMACIÓN Y MOVIMIENTO (CORREGIDOS) --- */
         .tarjeta-movil { 
             background: white; 
             border-radius: 25px; 
             padding: 30px; 
             border: 1px solid #f0f0f0; 
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Movimiento suave y elástico */
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             height: 100%;
-            display: block; /* Para que toda la casilla sea clicable */
         }
         
-        /* Efecto al pasar el ratón por encima de CUALQUIER tarjeta */
         .tarjeta-movil:hover { 
-            transform: translateY(-15px) scale(1.02); /* Sube y se agranda ligeramente */
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08); /* Sombra elegante */
-            border-color: #ff9a9e; /* Borde rosa suave */
-            cursor: pointer;
-        }
-
-        /* Efecto específico en los textos al hacer hover en la tarjeta */
-        .tarjeta-movil:hover h3 {
-            color: #ff9a9e;
-            transition: color 0.3s;
+            transform: translateY(-12px) scale(1.01);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            border-color: #ff9a9e;
         }
 
         .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; transition: 0.3s; }
-        .lang-btn:hover { background: #f0f0f0; }
-        .lang-btn.active { background: #333 !important; color: white !important; }
+        .lang-btn.active { background: #333 !important; color: white !important; border-color: #333; }
         
-        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
+        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
         
-        /* Estilo de la foto original */
         .photo-wrapper { width: 300px; height: 400px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Clase para transición de texto */
+        .fade-text { transition: opacity 0.3s ease-in-out; }
     </style>
 </head>
 <body class="pb-20">
 
     <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold italic">Y. Ramirez</div>
+        <div class="text-2xl font-bold italic tracking-tighter">Y. Ramirez</div>
         <div class="flex gap-2">
             <button onclick="changeLang('es')" id="btn-es" class="lang-btn active">ES</button>
             <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
@@ -57,14 +48,14 @@
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6">
+    <main class="max-w-7xl mx-auto px-6 fade-text" id="main-content">
         
         <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
             <div class="w-full md:w-2/3">
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
-                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl">Licenciada en Derecho con equivalencia académica en Alemania (Nivel entre Bachelor y Master).</p>
+                <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl leading-relaxed"></p>
                 <div class="mt-8">
-                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition transform hover:-translate-y-1 shadow-lg">Contactar</a>
+                    <a href="mailto:tu-correo@ejemplo.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition transform hover:-translate-y-1 shadow-lg"></a>
                 </div>
             </div>
             <div class="photo-wrapper">
@@ -74,53 +65,52 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             
-            <a href="AQUÍ_TU_LINK_DE_INFORMATICA.html" class="tarjeta-movil block">
-                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic">Formación</h2>
+            <a href="AQUÍ_TU_LINK_DE_INFORMATICA.html" class="tarjeta-movil group">
+                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic group-hover:text-pink-400 transition-colors"></h2>
                 <div class="space-y-4">
                     <div>
-                        <span id="tag-now" class="tag">Actualidad</span>
+                        <span id="tag-now" class="tag"></span>
                         <h3 class="font-bold text-lg mt-1">Fachinformatikerin</h3>
-                        <p id="desc-it" class="text-gray-500 text-sm">Systemintegration (Umschulung i.A.). Clic para detalles.</p>
+                        <p id="desc-it" class="text-gray-500 text-sm"></p>
                     </div>
                 </div>
             </a>
 
-            <a href="AQUÍ_TU_LINK_DE_DERECHO.html" class="tarjeta-movil block">
-                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic">Idiomas e Idiomas</h2>
+            <a href="AQUÍ_TU_LINK_DE_DERECHO.html" class="tarjeta-movil group">
+                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic group-hover:text-pink-400 transition-colors"></h2>
                 <div class="space-y-3">
-                    <p id="lang-de" class="text-gray-500 text-sm italic">Alemán: B2 (Avanzado)</p>
-                    <p id="lang-es" class="text-gray-500 text-sm italic">Español: Nativo</p>
-                    <hr class="my-4">
-                    <h3 id="sub-aner" class="font-bold">Anerkennung</h3>
-                    <p id="desc-aner" class="text-gray-400 text-xs italic">Título de Derecho homologado. Clic para detalles.</p>
+                    <p id="lang-de" class="text-gray-500 text-sm italic"></p>
+                    <p id="lang-es" class="text-gray-500 text-sm italic"></p>
+                    <hr class="my-4 border-gray-100">
+                    <h3 id="sub-aner" class="font-bold"></h3>
+                    <p id="desc-aner" class="text-gray-400 text-xs italic"></p>
                 </div>
             </a>
 
             <div class="tarjeta-movil">
-                <h2 id="head-doc" class="text-2xl font-bold mb-6 italic">Documentación</h2>
+                <h2 id="head-doc" class="text-2xl font-bold mb-6 italic"></h2>
                 <div class="space-y-4 text-sm font-medium">
-                    <p id="doc-exp">• Experiencia Laboral</p>
-                    <p id="doc-carta">• Initiativbewerbung</p>
-                    <p id="doc-skills">• Skills & Habilidades</p>
-                    <p id="doc-hobbies">• Intereses</p>
+                    <p id="doc-exp"></p>
+                    <p id="doc-carta"></p>
+                    <p id="doc-skills"></p>
+                    <p id="doc-hobbies"></p>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            
-            <a href="tu-cv.pdf" target="_blank" class="tarjeta-movil bg-black text-white p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none">
+            <a href="tu-cv.pdf" target="_blank" class="tarjeta-movil bg-black text-white p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none hover:bg-gray-900">
                 <div>
-                    <h3 id="card-cv" class="text-3xl font-serif text-white">Curriculum Vitae</h3>
-                    <p id="card-cv-sub" class="text-gray-400 text-xs uppercase mt-2 tracking-widest">Lebenslauf digital</p>
+                    <h3 id="card-cv" class="text-3xl font-serif text-white"></h3>
+                    <p id="card-cv-sub" class="text-gray-400 text-xs uppercase mt-2 tracking-widest"></p>
                 </div>
                 <div class="text-4xl text-white">↓</div>
             </a>
 
-            <a href="tus-certificados.pdf" target="_blank" class="tarjeta-movil bg-pink-100 p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none">
+            <a href="tus-certificados.pdf" target="_blank" class="tarjeta-movil bg-pink-100 p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none hover:bg-pink-200">
                 <div>
-                    <h3 id="card-cert" class="text-3xl font-serif text-gray-800">Otros Cursos</h3>
-                    <p id="card-cert-sub" class="text-pink-400 text-xs uppercase mt-2 tracking-widest">Certificaciones adicionales</p>
+                    <h3 id="card-cert" class="text-3xl font-serif text-gray-800"></h3>
+                    <p id="card-cert-sub" class="text-pink-400 text-xs uppercase mt-2 tracking-widest"></p>
                 </div>
                 <div class="text-4xl text-gray-800">→</div>
             </a>
@@ -129,25 +119,22 @@
     </main>
 
     <script>
-        // OBJETO DE CONTENIDO (ACTUALIZADO CON TODOS LOS IDS)
         const content = {
             es: {
                 desc: "Licenciada en Derecho con equivalencia académica en Alemania (Nivel entre Bachelor y Master).",
-                contact: "Contactar", edu: "Formación", langs: "Idiomas e Idiomas", doc: "Documentación",
-                tagTitle: "Título Superior", descLaw: "Equivalencia Anabin (Bachelor/Master)",
+                contact: "Contactar", edu: "Formación", langs: "Idiomas & Títulos", doc: "Documentación",
                 tagNow: "Actualidad", descIt: "Systemintegration (Umschulung i.A.). Clic para detalles.",
-                langDe: "Alemán: B2 (Avanzado)", langEn: "Inglés: A2 (Básico)", langEs: "Español: Nativo",
+                langDe: "Alemán: B2 (Avanzado)", langEs: "Español: Nativo",
                 subAner: "Anerkennung", descAner: "Título de Derecho homologado. Clic para detalles.",
-                docExp: "• Experiencia Laboral", docCarta: "• Initiativbewerbung", docSkills: "• Skills & Habilidades", docHobbies: "• Intereses",
+                docExp: "• Experiencia Laboral", docCarta: "• Iniciativbewerbung", docSkills: "• Skills & Habilidades", docHobbies: "• Intereses",
                 cardCv: "Curriculum Vitae", cardCvSub: "Lebenslauf digital", 
                 cardCert: "Otros Cursos", cardCertSub: "Certificaciones adicionales"
             },
             en: {
                 desc: "Law Graduate with academic equivalence in Germany (Level between Bachelor and Master).",
-                contact: "Contact", edu: "Education", langs: "Languages & Recognition", doc: "Documentation",
-                tagTitle: "Higher Degree", descLaw: "Anabin Equivalence (Bachelor/Master)",
+                contact: "Contact", edu: "Education", langs: "Languages & Degrees", doc: "Documentation",
                 tagNow: "Current", descIt: "IT Specialist (System Integration). Click for details.",
-                langDe: "German: B2 (Advanced)", langEn: "English: A2 (Elementary)", langEs: "Spanish: Native",
+                langDe: "German: B2 (Advanced)", langEs: "Spanish: Native",
                 subAner: "Recognition", descAner: "Officially recognized Law degree. Click for details.",
                 docExp: "• Work Experience", docCarta: "• Spontaneous Application", docSkills: "• Skills & Abilities", docHobbies: "• Interests",
                 cardCv: "Digital Resume", cardCvSub: "Curriculum Vitae", 
@@ -156,9 +143,8 @@
             de: {
                 desc: "Rechtswissenschaftlerin mit akademischer Gleichwertigkeit in Deutschland (Bachelor/Master).",
                 contact: "Kontakt", edu: "Bildung", langs: "Sprachen & Anerkennung", doc: "Dokumentation",
-                tagTitle: "Hochschulabschluss", descLaw: "Anabin-Gleichwertigkeit (Bachelor/Master)",
                 tagNow: "Aktuell", descIt: "Fachinformatikerin Systemintegration (i.A.). Klicken.",
-                langDe: "Deutsch: B2 (Fortgeschritten)", langEn: "Englisch: A2 (Grundkenntnisse)", langEs: "Spanisch: Muttersprache",
+                langDe: "Deutsch: B2 (Fortgeschritten)", langEs: "Spanisch: Muttersprache",
                 subAner: "Anerkennung", descAner: "Anerkannter Jura-Abschluss. Klicken.",
                 docExp: "• Berufserfahrung", docCarta: "• Initiativbewerbung", docSkills: "• Fähigkeiten", docHobbies: "• Hobbys",
                 cardCv: "Lebenslauf", cardCvSub: "Digitaler Lebenslauf", 
@@ -167,36 +153,42 @@
         };
 
         function changeLang(lang) {
-            // Actualizar textos principales
-            document.getElementById('main-desc').innerText = content[lang].desc;
-            document.getElementById('btn-contact').innerText = content[lang].contact;
-            document.getElementById('head-edu').innerText = content[lang].edu;
-            document.getElementById('head-langs').innerText = content[lang].langs;
-            document.getElementById('head-doc').innerText = content[lang].doc;
-            document.getElementById('tag-now').innerText = content[lang].tagNow;
-            document.getElementById('desc-it').innerText = content[lang].descIt;
-            document.getElementById('lang-de').innerText = content[lang].langDe;
-            document.getElementById('lang-es').innerText = content[lang].langEs;
-            document.getElementById('sub-aner').innerText = content[lang].subAner;
-            document.getElementById('desc-aner').innerText = content[lang].descAner;
-            document.getElementById('doc-exp').innerText = content[lang].docExp;
-            document.getElementById('doc-carta').innerText = content[lang].docCarta;
-            document.getElementById('doc-skills').innerText = content[lang].docSkills;
-            document.getElementById('doc-hobbies').innerText = content[lang].docHobbies;
+            const main = document.getElementById('main-content');
+            main.style.opacity = 0; // Efecto de salida
 
-            // ACTUALIZAR TEXTOS DE LAS TARJETAS INFERIORES (ESTO FALTABA)
-            document.getElementById('card-cv').innerText = content[lang].cardCv;
-            document.getElementById('card-cv-sub').innerText = content[lang].cardCvSub;
-            document.getElementById('card-cert').innerText = content[lang].cardCert;
-            document.getElementById('card-cert-sub').innerText = content[lang].cardCertSub;
+            setTimeout(() => {
+                const langData = content[lang];
+                
+                // Mapeo automático de IDs
+                document.getElementById('main-desc').innerText = langData.desc;
+                document.getElementById('btn-contact').innerText = langData.contact;
+                document.getElementById('head-edu').innerText = langData.edu;
+                document.getElementById('head-langs').innerText = langData.langs;
+                document.getElementById('head-doc').innerText = langData.doc;
+                document.getElementById('tag-now').innerText = langData.tagNow;
+                document.getElementById('desc-it').innerText = langData.descIt;
+                document.getElementById('lang-de').innerText = langData.langDe;
+                document.getElementById('lang-es').innerText = langData.langEs;
+                document.getElementById('sub-aner').innerText = langData.subAner;
+                document.getElementById('desc-aner').innerText = langData.descAner;
+                document.getElementById('doc-exp').innerText = langData.docExp;
+                document.getElementById('doc-skills').innerText = langData.docSkills;
+                document.getElementById('doc-hobbies').innerText = langData.docHobbies;
+                document.getElementById('doc-carta').innerText = langData.docCarta;
+                document.getElementById('card-cv').innerText = langData.cardCv;
+                document.getElementById('card-cv-sub').innerText = langData.cardCvSub;
+                document.getElementById('card-cert').innerText = langData.cardCert;
+                document.getElementById('card-cert-sub').innerText = langData.cardCertSub;
 
-            // Cambiar estado de botones
-            ['es', 'en', 'de'].forEach(l => {
-                document.getElementById('btn-' + l).classList.toggle('active', l === lang);
-            });
+                // Actualizar botones
+                ['es', 'en', 'de'].forEach(l => {
+                    document.getElementById('btn-' + l).classList.toggle('active', l === lang);
+                });
+
+                main.style.opacity = 1; // Efecto de entrada
+            }, 300);
         }
 
-        // Cargar idioma español al inicio
         window.onload = () => changeLang('es');
     </script>
 </body>
