@@ -3,177 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yisel Ramirez | Portfolio Profesional</title>
+    <title>Yisel Ramirez | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        
-        /* FOTO DE PERFIL */
-        .contenedor-foto { width: 280px; height: 380px; background: #ddd; border-radius: 35px; overflow: hidden; border: 6px solid white; box-shadow: 0 15px 35px rgba(0,0,0,0.05); flex-shrink: 0; }
-        .contenedor-foto img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* TARJETAS */
-        .bloque-yisel { background: white; border-radius: 25px; padding: 25px; border: 1px solid #f0f0f0; transition: 0.3s; cursor: pointer; }
-        .bloque-yisel:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); border-color: #ff9a9e; }
-        
-        .btn-lang { cursor: pointer; padding: 7px 15px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 11px; }
-        .btn-lang.active { background: #222 !important; color: #fff !important; }
-        
-        .mini-etiqueta { background: #fff5f5; color: #ff9a9e; padding: 3px 10px; border-radius: 8px; font-size: 9px; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
-        
-        .pdf-box { width: 100%; height: 500px; border-radius: 15px; border: 1px solid #eee; margin-top: 15px; }
-        
-        .enlace-doc { display: block; padding: 6px 0; border-bottom: 1px solid #fcfcfc; transition: 0.2s; font-size: 14px; font-weight: 500; }
-        .enlace-doc:hover { color: #ff9a9e; padding-left: 4px; }
+        body { background: #f8f9fa; font-family: 'Montserrat', sans-serif; }
+        .foto-perfil { width: 250px; height: 320px; object-fit: cover; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .tarjeta { background: white; border-radius: 20px; padding: 25px; transition: 0.3s; cursor: pointer; border: 1px solid #eee; }
+        .tarjeta:hover { border-color: #ff9a9e; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .pdf-viewer { width: 100%; height: 500px; border-radius: 15px; border: none; margin-top: 15px; }
+        .btn-lang { padding: 5px 12px; border-radius: 15px; border: 1px solid #ddd; font-size: 12px; cursor: pointer; }
+        .btn-lang.active { background: #000; color: #fff; border-color: #000; }
     </style>
 </head>
-<body class="pb-20">
+<body class="p-6 md:p-12">
 
-    <nav class="p-6 max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-xl font-bold italic tracking-tighter">Y. Ramirez</div>
-        <div class="flex gap-3">
-            <button onclick="changeLang('es')" id="btn-es" class="btn-lang active">ES</button>
-            <button onclick="changeLang('de')" id="btn-de" class="btn-lang">DE</button>
-        </div>
-    </nav>
+    <div class="flex justify-end gap-2 mb-8">
+        <button onclick="changeLang('es')" id="btn-es" class="btn-lang active">ES</button>
+        <button onclick="changeLang('de')" id="btn-de" class="btn-lang">DE</button>
+    </div>
 
-    <main class="max-w-5xl mx-auto px-6">
-        
-        <header class="flex flex-col md:flex-row items-center gap-10 mb-16 pt-6">
-            <div class="contenedor-foto">
-                <img src="foto.jpg" alt="Yisel Ramirez">
-            </div>
-            <div class="text-center md:text-left">
-                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-4">Yisel Ramirez</h1>
-                <p id="txt-hero" class="text-xl text-gray-400 italic font-light max-w-lg"></p>
-                <div class="mt-6">
-                    <a href="mailto:tu-correo@ejemplo.com" id="btn-mail" class="bg-black text-white px-10 py-3 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 shadow-lg inline-block">Contactar</a>
-                </div>
+    <div class="max-w-5xl mx-auto">
+        <header class="flex flex-col md:flex-row items-center gap-10 mb-12">
+            <img src="foto.jpg" alt="Foto Yisel" class="foto-perfil">
+            <div>
+                <h1 class="text-5xl font-bold text-gray-800">Yisel Ramirez</h1>
+                <p id="hero-sub" class="text-xl text-gray-500 mt-4 leading-relaxed italic"></p>
+                <button class="mt-6 bg-black text-white px-8 py-3 rounded-full text-sm font-bold uppercase tracking-widest">Contactar</button>
             </div>
         </header>
 
-        <div class="mb-6">
-            <div onclick="abrirModal('cv')" class="bloque-yisel border-l-[10px] border-l-black flex justify-between items-center">
+        <div onclick="abrirModal('cv')" class="tarjeta mb-6 border-l-8 border-l-black">
+            <div class="flex justify-between items-center">
                 <div>
-                    <span class="mini-etiqueta">Principal</span>
+                    <span class="text-[10px] font-bold text-pink-400 uppercase tracking-widest">Principal</span>
                     <h2 class="text-2xl font-bold">Curriculum Vitae</h2>
-                    <p id="txt-cv-desc" class="text-gray-400 text-sm mt-1"></p>
+                    <p id="cv-desc" class="text-gray-400 text-sm"></p>
                 </div>
-                <div class="text-3xl opacity-20">📄</div>
+                <span class="text-3xl">📄</span>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div onclick="abrirModal('derecho')" class="bloque-yisel border-l-[10px] border-l-blue-400">
-                <span class="mini-etiqueta">Académico</span>
-                <h3 id="tit-derecho" class="text-xl font-bold"></h3>
-                <p id="des-derecho" class="text-gray-400 text-sm mt-1"></p>
+            <div onclick="abrirModal('titulo')" class="tarjeta border-l-8 border-l-blue-400">
+                <h3 id="tit-law" class="font-bold text-xl"></h3>
+                <p id="des-law" class="text-gray-400 text-sm mt-1"></p>
             </div>
-            <div onclick="abrirModal('idioma')" class="bloque-yisel border-l-[10px] border-l-red-400">
-                <span class="mini-etiqueta">Idiomas</span>
-                <h3 id="tit-idioma" class="text-xl font-bold"></h3>
-                <p id="des-idioma" class="text-gray-400 text-sm mt-1"></p>
+            <div onclick="abrirModal('idioma')" class="tarjeta border-l-8 border-l-red-400">
+                <h3 id="tit-lang" class="font-bold text-xl"></h3>
+                <p id="des-lang" class="text-gray-400 text-sm mt-1"></p>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div onclick="abrirModal('it')" class="bloque-yisel border-l-[10px] border-l-green-400">
-                <span class="mini-etiqueta">Formación IT</span>
-                <h3 class="text-xl font-bold">Fachinformatikerin i.A.</h3>
+            <div onclick="abrirModal('it')" class="tarjeta border-l-8 border-l-green-400">
+                <h3 class="font-bold text-xl">IT Ausbildung</h3>
                 <p id="des-it" class="text-gray-400 text-sm mt-1"></p>
             </div>
-            
-            <div class="bloque-yisel border-l-[10px] border-l-pink-400 cursor-default">
-                <span class="mini-etiqueta">Documentación</span>
-                <h3 id="tit-otros" class="text-xl font-bold mb-3"></h3>
-                <div class="space-y-1">
-                    <span onclick="abrirModal('carta')" class="enlace-doc cursor-pointer">● Carta de Motivación</span>
-                    <span onclick="abrirModal('skills')" class="enlace-doc cursor-pointer">● Habilidades & Skills</span>
-                    <span onclick="abrirModal('hobbies')" class="enlace-doc cursor-pointer">● Intereses personales</span>
+            <div class="tarjeta border-l-8 border-l-pink-400 cursor-default">
+                <h3 id="tit-oth" class="font-bold text-xl mb-4"></h3>
+                <div class="space-y-2 text-sm">
+                    <p onclick="abrirModal('carta')" class="hover:text-pink-400 cursor-pointer">● Carta de Motivación</p>
+                    <p onclick="abrirModal('skills')" class="hover:text-pink-400 cursor-pointer">● Habilidades</p>
+                    <p onclick="abrirModal('intereses')" class="hover:text-pink-400 cursor-pointer">● Intereses</p>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <div id="modal-box" class="fixed inset-0 bg-black/75 hidden items-center justify-center z-50 p-6 backdrop-blur-sm" onclick="if(event.target == this) cerrarModal()">
-        <div class="bg-white w-full max-w-4xl rounded-[35px] p-10 relative shadow-2xl overflow-y-auto max-h-[90vh]">
-            <button onclick="cerrarModal()" class="absolute top-6 right-8 text-4xl text-gray-300 hover:text-black">&times;</button>
-            <h2 id="m-titulo" class="text-3xl font-serif mb-4"></h2>
-            <div id="m-cuerpo" class="text-gray-600 leading-relaxed"></div>
+    <div id="modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center p-4 z-50" onclick="if(event.target == this) cerrar()">
+        <div class="bg-white w-full max-w-4xl p-8 rounded-3xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="cerrar()" class="absolute top-4 right-6 text-3xl">&times;</button>
+            <h2 id="m-tit" class="text-3xl font-bold mb-4"></h2>
+            <div id="m-body"></div>
         </div>
     </div>
 
     <script>
-        let currentLang = 'es';
-
-        const content = {
+        const data = {
             es: {
                 hero: "Licenciada en Derecho con equivalencia académica en Alemania (ZAB). Especializándome en IT.",
-                btnMail: "Contactar",
-                cvDesc: "Ver trayectoria profesional completa.",
-                titLaw: "Licenciatura en Derecho", desLaw: "Anerkennung ZAB (Anabin H+).",
-                titLang: "Idiomas & Títulos", desLang: "Alemán B2 y Español Nativo.",
-                desIt: "Umschulung Systemintegration.",
-                titOth: "Otros detalles",
-                // Modales
-                cv: { t: "Curriculum Vitae", c: "Mi experiencia profesional.", f: "curriculum.pdf" },
-                derecho: { t: "Anerkennung ZAB", c: "Equivalencia de estudios en Alemania.", f: "titulo_derecho.pdf" },
-                idioma: { t: "Certificados", c: "Nivel B2 certificado.", f: "certificado_b2.pdf" },
-                it: { t: "Formación IT", c: "Especialización actual.", f: "" },
-                carta: { t: "Carta de Motivación", c: "Mis razones para el cambio profesional.", f: "" },
-                skills: { t: "Habilidades", c: "• Análisis Legal\n• Sistemas IT\n• Redes", f: "" },
-                hobbies: { t: "Intereses", c: "Tecnología y cultura.", f: "" }
+                cvD: "Trayectoria profesional completa.",
+                tL: "Licenciatura en Derecho", dL: "Homologación ZAB (Anabin H+).",
+                tI: "Certificados de Idioma", dI: "Alemán B2 y Español Nativo.",
+                dIT: "Umschulung Systemintegration.",
+                tO: "Otros documentos",
+                cv: { t: "Curriculum Vitae", c: "Resumen profesional.", f: "curriculum.pdf" },
+                titulo: { t: "Título y ZAB", c: "Documentación académica.", f: "titulo_derecho.pdf" },
+                idioma: { t: "Idiomas", c: "Certificación B2.", f: "certificado_b2.pdf" },
+                it: { t: "Fachinformatikerin", c: "En formación.", f: "" },
+                carta: { t: "Carta de Motivación", c: "Por qué IT.", f: "" },
+                skills: { t: "Skills", c: "Habilidades técnicas.", f: "" },
+                intereses: { t: "Intereses", c: "Hobbies.", f: "" }
             },
             de: {
                 hero: "Rechtswissenschaftlerin mit ZAB-Anerkennung. IT-Spezialisierung.",
-                btnMail: "Kontakt",
-                cvDesc: "Vollständiger Lebenslauf.",
-                titLaw: "Jura Abschluss", desLaw: "ZAB Anerkennung (Anabin H+).",
-                titLang: "Sprachen", desLang: "B2 Zertifikat & Muttersprache.",
-                desIt: "Umschulung Systemintegration.",
-                titOth: "Weitere Details",
-                cv: { t: "Lebenslauf", c: "Beruflicher Werdegang.", f: "curriculum.pdf" },
-                derecho: { t: "ZAB Anerkennung", c: "Gleichwertigkeitsbescheid.", f: "titulo_derecho.pdf" },
-                idioma: { t: "Zertifikate", c: "Deutsch B2 Niveau.", f: "certificado_b2.pdf" },
-                it: { t: "IT Ausbildung", c: "Aktuelle Ausbildung.", f: "" },
-                carta: { t: "Motivationsschreiben", c: "Mein Weg in die IT.", f: "" },
-                skills: { t: "Fähigkeiten", c: "• Analytik\n• IT-Systeme", f: "" },
-                hobbies: { t: "Interessen", c: "Technologie & Lernen.", f: "" }
+                cvD: "Vollständiger Lebenslauf.",
+                tL: "Jura-Abschluss", dL: "ZAB Anerkennung.",
+                tI: "Sprachzertifikate", dI: "Deutsch B2.",
+                dIT: "Umschulung Systemintegration.",
+                tO: "Weitere Details",
+                cv: { t: "Lebenslauf", c: "Berufserfahrung.", f: "curriculum.pdf" },
+                titulo: { t: "ZAB Anerkennung", c: "Studienabschluss.", f: "titulo_derecho.pdf" },
+                idioma: { t: "Sprachen", c: "B2 Niveau.", f: "certificado_b2.pdf" },
+                it: { t: "IT Ausbildung", c: "Laufend.", f: "" },
+                carta: { t: "Motivationsschreiben", c: "Mein Weg.", f: "" },
+                skills: { t: "Fähigkeiten", c: "Technik.", f: "" },
+                intereses: { t: "Interessen", c: "Hobbies.", f: "" }
             }
         };
 
-        function changeLang(lang) {
-            currentLang = lang;
-            const d = content[lang];
-            document.getElementById('txt-hero').innerText = d.hero;
-            document.getElementById('btn-mail').innerText = d.btnMail;
-            document.getElementById('txt-cv-desc').innerText = d.cvDesc;
-            document.getElementById('tit-derecho').innerText = d.titLaw;
-            document.getElementById('des-derecho').innerText = d.desLaw;
-            document.getElementById('tit-idioma').innerText = d.titLang;
-            document.getElementById('des-idioma').innerText = d.desLang;
-            document.getElementById('des-it').innerText = d.desIt;
-            document.getElementById('tit-otros').innerText = d.titOth;
-
-            document.querySelectorAll('.btn-lang').forEach(b => b.classList.toggle('active', b.id === 'btn-' + lang));
+        function changeLang(l) {
+            const d = data[l];
+            document.getElementById('hero-sub').innerText = d.hero;
+            document.getElementById('cv-desc').innerText = d.cvD;
+            document.getElementById('tit-law').innerText = d.tL;
+            document.getElementById('des-law').innerText = d.dL;
+            document.getElementById('tit-lang').innerText = d.tI;
+            document.getElementById('des-lang').innerText = d.dI;
+            document.getElementById('des-it').innerText = d.dIT;
+            document.getElementById('tit-oth').innerText = d.tO;
+            document.querySelectorAll('.btn-lang').forEach(b => b.classList.toggle('active', b.id === 'btn-'+l));
+            window.currentLang = l;
         }
 
         function abrirModal(tipo) {
-            const info = content[currentLang][tipo];
-            document.getElementById('m-titulo').innerText = info.t;
-            let h = `<p class="whitespace-pre-line mb-4">${info.c}</p>`;
-            if (info.f) h += `<iframe src="${info.f}#toolbar=0" class="pdf-box"></iframe>`;
-            document.getElementById('m-cuerpo').innerHTML = h;
-            document.getElementById('modal-box').classList.remove('hidden');
-            document.getElementById('modal-box').classList.add('flex');
+            const info = data[window.currentLang || 'es'][tipo];
+            document.getElementById('m-tit').innerText = info.t;
+            let html = `<p class="mb-4">${info.c}</p>`;
+            if(info.f) html += `<iframe src="${info.f}" class="pdf-viewer"></iframe>`;
+            document.getElementById('m-body').innerHTML = html;
+            document.getElementById('modal').classList.remove('hidden');
+            document.getElementById('modal').classList.add('flex');
         }
 
-        function cerrarModal() {
-            document.getElementById('modal-box').classList.replace('flex', 'hidden');
-        }
-
+        function cerrar() { document.getElementById('modal').classList.replace('flex', 'hidden'); }
         window.onload = () => changeLang('es');
     </script>
 </body>
