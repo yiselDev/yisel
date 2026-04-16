@@ -7,34 +7,61 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; }
+        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         
-        .tarjeta-movil { 
+        /* Efecto de tarjetas interactivas */
+        .interactive-card { 
             background: white; 
             border-radius: 25px; 
             padding: 30px; 
             border: 1px solid #f0f0f0; 
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            cursor: pointer;
             height: 100%;
-            display: block;
         }
         
-        .tarjeta-movil:hover { 
-            transform: translateY(-12px) scale(1.01);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        .interactive-card:hover { 
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
             border-color: #ff9a9e;
         }
+
+        .interactive-card:active { transform: scale(0.98); }
 
         .lang-btn { cursor: pointer; padding: 8px 16px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; transition: 0.3s; }
         .lang-btn.active { background: #333 !important; color: white !important; border-color: #333; }
         
-        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
+        .tag { background: #fff5f5; color: #ff9a9e; padding: 4px 12px; border-radius: 10px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
         
-        .photo-wrapper { width: 300px; height: 400px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .photo-wrapper { width: 300px; height: 400px; background: #eee; border-radius: 40px; overflow: hidden; border: 4px solid white; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.5s; }
+        .photo-wrapper:hover { transform: rotate(2deg) scale(1.02); }
 
-        .fade-text { transition: opacity 0.3s ease-in-out; }
+        /* Modal de Contacto */
+        #modal-contacto { 
+            display: none; 
+            position: fixed; 
+            inset: 0; 
+            background: rgba(0,0,0,0.6); 
+            backdrop-filter: blur(8px); 
+            z-index: 100; 
+            align-items: center; 
+            justify-content: center; 
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-content { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 35px; 
+            text-align: center; 
+            max-width: 400px; 
+            width: 90%; 
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        #modal-contacto.active { display: flex; opacity: 1; }
+        #modal-contacto.active .modal-content { transform: scale(1); }
     </style>
 </head>
 <body class="pb-20">
@@ -48,160 +75,79 @@
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 fade-text" id="main-content">
+    <div id="modal-contacto" onclick="toggleModal(false)">
+        <div class="modal-content shadow-2xl" onclick="event.stopPropagation()">
+            <h2 class="text-3xl mb-6 italic" id="modal-title">Contacto</h2>
+            <div class="space-y-6 text-lg">
+                <div class="p-4 bg-gray-50 rounded-2xl">
+                    <p class="text-xs text-gray-400 uppercase font-bold mb-1">WhatsApp / Tel</p>
+                    <p class="font-semibold text-xl">+49 174 1826368</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-2xl">
+                    <p class="text-xs text-gray-400 uppercase font-bold mb-1">Email</p>
+                    <a href="mailto:yisel0271@gmail.com" class="font-semibold text-xl text-pink-400 hover:underline">yisel0271@gmail.com</a>
+                </div>
+            </div>
+            <button onclick="toggleModal(false)" class="mt-8 bg-gray-100 hover:bg-gray-200 px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition">Cerrar</button>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 transition-opacity duration-300" id="main-content">
         
         <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-16">
             <div class="w-full md:w-2/3">
                 <h1 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
                 <p id="main-desc" class="text-2xl text-gray-400 italic font-light max-w-xl leading-relaxed"></p>
                 
-                <div class="mt-4 space-y-1">
-                    <p class="text-gray-600 font-medium">📞 +49 174 1826368</p>
-                    <p class="text-gray-600 font-medium">✉️ yisel0271@gmail.com</p>
-                </div>
-
                 <div class="mt-8">
-                    <a href="mailto:yisel0271@gmail.com" id="btn-contact" class="inline-block bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition transform hover:-translate-y-1 shadow-lg"></a>
+                    <button onclick="toggleModal(true)" id="btn-contact" class="bg-black text-white px-10 py-5 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 hover:shadow-pink-200 transition-all transform hover:-translate-y-1 shadow-xl active:scale-95"></button>
                 </div>
             </div>
             <div class="photo-wrapper">
-                <img src="foto.jpg" alt="Yisel Ramirez">
+                <img src="foto.jpg" alt="Yisel Ramirez" onerror="this.src='https://via.placeholder.com/300x400?text=Yisel+Ramirez'">
             </div>
         </section>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             
-            <div class="tarjeta-movil">
-                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic"></h2>
+            <div onclick="window.open('notas_y_certificados_it.pdf', '_blank')" class="interactive-card group">
+                <h2 id="head-edu" class="text-2xl font-bold mb-6 italic group-hover:text-pink-400 transition-colors"></h2>
                 <div class="space-y-4">
-                    <div>
-                        <span id="tag-now" class="tag"></span>
-                        <h3 class="font-bold text-lg mt-1">Fachinformatikerin</h3>
-                        <p id="desc-it" class="text-gray-500 text-sm"></p>
-                    </div>
+                    <span id="tag-now" class="tag"></span>
+                    <h3 class="font-bold text-lg mt-1">Fachinformatikerin</h3>
+                    <p id="desc-it" class="text-gray-500 text-sm"></p>
+                    <p class="text-pink-300 text-[10px] font-bold uppercase mt-4">Clic para ver certificados →</p>
                 </div>
             </div>
 
-            <div class="tarjeta-movil">
-                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic"></h2>
+            <div onclick="window.open('reconocimiento_derecho.pdf', '_blank')" class="interactive-card group">
+                <h2 id="head-langs" class="text-2xl font-bold mb-6 italic group-hover:text-pink-400 transition-colors"></h2>
                 <div class="space-y-3">
                     <h3 id="sub-aner" class="font-bold text-lg"></h3>
                     <p id="desc-aner" class="text-gray-500 text-sm italic"></p>
                     <hr class="my-4 border-gray-100">
                     <div class="space-y-2">
-                        <div class="flex items-center gap-2">
-                            <span class="tag">B2</span>
-                            <p id="lang-de" class="text-gray-700 text-sm font-semibold"></p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span class="tag">A2</span>
-                            <p id="lang-en" class="text-gray-700 text-sm font-semibold"></p>
-                        </div>
+                        <div class="flex items-center gap-2"><span class="tag">B2</span> <p id="lang-de" class="text-sm font-semibold"></p></div>
+                        <div class="flex items-center gap-2"><span class="tag">A2</span> <p id="lang-en" class="text-sm font-semibold"></p></div>
                     </div>
-                    <p id="lang-es" class="text-gray-400 text-xs italic mt-2"></p>
                 </div>
             </div>
 
-            <div class="tarjeta-movil">
-                <h2 id="head-personal" class="text-2xl font-bold mb-6 italic">Personal</h2>
-                <div class="space-y-4">
-                    <div>
-                        <p id="title-skills" class="text-pink-400 text-[10px] font-bold uppercase tracking-wider"></p>
-                        <p id="txt-skills" class="text-gray-600 text-sm"></p>
-                    </div>
-                    <div>
-                        <p id="title-hobbies" class="text-pink-400 text-[10px] font-bold uppercase tracking-wider"></p>
-                        <p id="txt-hobbies" class="text-gray-600 text-sm"></p>
-                    </div>
+            <div class="interactive-card">
+                <h2 id="head-doc" class="text-2xl font-bold mb-6 italic"></h2>
+                <div class="space-y-2">
+                    <button onclick="window.open('experiencia_laboral.pdf', '_blank')" id="doc-exp" class="w-full text-left p-2 hover:bg-pink-50 rounded-lg transition text-sm font-semibold text-gray-600 hover:text-pink-500"></button>
+                    <button onclick="window.open('habilidades_tecnicas.pdf', '_blank')" id="doc-skills" class="w-full text-left p-2 hover:bg-pink-50 rounded-lg transition text-sm font-semibold text-gray-600 hover:text-pink-500"></button>
+                    <button onclick="window.open('hobbies_intereses.pdf', '_blank')" id="doc-hobbies" class="w-full text-left p-2 hover:bg-pink-50 rounded-lg transition text-sm font-semibold text-gray-600 hover:text-pink-500"></button>
                 </div>
             </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-movil bg-black text-white p-10 rounded-[40px] flex justify-between items-center border-none hover:bg-gray-900 shadow-xl">
+            <a href="curriculum_yisel.pdf" target="_blank" class="interactive-card bg-black text-white p-10 rounded-[40px] flex justify-between items-center shadow-xl border-none hover:bg-gray-900">
                 <div>
                     <h3 id="card-cv" class="text-3xl font-serif text-white"></h3>
                     <p id="card-cv-sub" class="text-gray-400 text-xs uppercase mt-2 tracking-widest"></p>
                 </div>
                 <div class="text-4xl text-white">↓</div>
             </a>
-
-            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-movil bg-pink-100 p-10 rounded-[40px] flex justify-between items-center border-none hover:bg-pink-200 shadow-xl">
-                <div>
-                    <h3 id="card-letter" class="text-3xl font-serif text-gray-800"></h3>
-                    <p id="card-letter-sub" class="text-pink-400 text-xs uppercase mt-2 tracking-widest"></p>
-                </div>
-                <div class="text-4xl text-gray-800">✉️</div>
-            </a>
-        </div>
-
-    </main>
-
-    <script>
-        const content = {
-            es: {
-                desc: "Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).",
-                contact: "Enviar Email", edu: "Formación IT", langs: "Derecho e Idiomas", personal: "Perfil",
-                tagNow: "En Curso", descIt: "Umschulung Systemintegration. Soporte técnico y administración de sistemas.",
-                langDe: "Alemán: Certificado B2", langEn: "Inglés: Nivel A2", langEs: "Español: Nativo",
-                subAner: "Grado en Derecho", descAner: "Homologación oficial en Alemania. Nivel académico entre Bachelor y Master.",
-                titleSkills: "Skills", txtSkills: "Análisis legal, Gestión de documentos, Resolución de problemas.",
-                titleHobbies: "Hobbies", txtHobbies: "Tecnología, Lectura, Viajes y aprendizaje de idiomas.",
-                cardCv: "Curriculum Vitae", cardCvSub: "Descargar Lebenslauf", 
-                cardLetter: "Carta de Presentación", cardLetterSub: "Ver Anschreiben"
-            },
-            en: {
-                desc: "Law Graduate with official Recognition in Germany (Level between Bachelor and Master).",
-                contact: "Send Email", edu: "IT Training", langs: "Law & Languages", personal: "Profile",
-                tagNow: "Ongoing", descIt: "Umschulung Systemintegration. IT support and system administration.",
-                langDe: "German: B2 Certificate", langEn: "English: A2 Level", langEs: "Spanish: Native",
-                subAner: "Law Degree", descAner: "Official Recognition in Germany. Level between Bachelor and Master.",
-                titleSkills: "Skills", txtSkills: "Legal Analysis, Document Management, Problem Solving.",
-                titleHobbies: "Hobbies", txtHobbies: "Technology, Reading, Travel, and Language Learning.",
-                cardCv: "Curriculum Vitae", cardCvSub: "Download CV", 
-                cardLetter: "Cover Letter", cardLetterSub: "View Anschreiben"
-            },
-            de: {
-                desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland (Niveau zwischen Bachelor und Master).",
-                contact: "E-Mail senden", edu: "IT-Ausbildung", langs: "Recht & Sprachen", personal: "Profil",
-                tagNow: "In Ausbildung", descIt: "Umschulung Systemintegration. IT-Support und Systemadministration.",
-                langDe: "Deutsch: B2 Zertifikat", langEn: "Englisch: A2 Niveau", langEs: "Spanisch: Muttersprache",
-                subAner: "Abschluss in Rechtswissenschaften", descAner: "Offizielle Anerkennung in Deutschland. Niveau zwischen Bachelor und Master.",
-                titleSkills: "Fähigkeiten", txtSkills: "Rechtsanalyse, Dokumentenmanagement, Problemlösung.",
-                titleHobbies: "Hobbys", txtHobbies: "Technologie, Lesen, Reisen und Sprachenlernen.",
-                cardCv: "Lebenslauf", cardCvSub: "Lebenslauf herunterladen", 
-                cardLetter: "Anschreiben", cardLetterSub: "Anschreiben anzeigen"
-            }
-        };
-
-        function changeLang(lang) {
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`btn-${lang}`).classList.add('active');
-
-            const c = content[lang];
-            document.getElementById('main-desc').innerText = c.desc;
-            document.getElementById('btn-contact').innerText = c.contact;
-            document.getElementById('head-edu').innerText = c.edu;
-            document.getElementById('head-langs').innerText = c.langs;
-            document.getElementById('head-personal').innerText = c.personal;
-            document.getElementById('tag-now').innerText = c.tagNow;
-            document.getElementById('desc-it').innerText = c.descIt;
-            document.getElementById('sub-aner').innerText = c.subAner;
-            document.getElementById('desc-aner').innerText = c.descAner;
-            document.getElementById('lang-de').innerText = c.langDe;
-            document.getElementById('lang-en').innerText = c.langEn;
-            document.getElementById('lang-es').innerText = c.langEs;
-            document.getElementById('title-skills').innerText = c.titleSkills;
-            document.getElementById('txt-skills').innerText = c.txtSkills;
-            document.getElementById('title-hobbies').innerText = c.titleHobbies;
-            document.getElementById('txt-hobbies').innerText = c.txtHobbies;
-            document.getElementById('card-cv').innerText = c.cardCv;
-            document.getElementById('card-cv-sub').innerText = c.cardCvSub;
-            document.getElementById('card-letter').innerText = c.cardLetter;
-            document.getElementById('card-letter-sub').innerText = c.cardLetterSub;
-        }
-
-        changeLang('es');
-    </script>
-</body>
-</html>
