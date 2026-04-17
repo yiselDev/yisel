@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; }
+        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .tarjeta-profesional { 
             background: white; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; 
@@ -18,52 +18,52 @@
         .btn-idioma { cursor: pointer; padding: 6px 15px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; }
         .btn-idioma.active { background: #333; color: white; }
         .tag-destacado { background: #fff5f5; color: #ff9a9e; padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
-        #area-contacto { display: none; margin-top: 15px; padding: 20px; background: #fff; border: 1px solid #ff9a9e; border-radius: 20px; }
+        nav { backdrop-filter: blur(10px); background: rgba(253, 251, 251, 0.8); }
+        footer { background: white; border-top: 1px solid #eee; }
     </style>
 </head>
-<body class="pb-20">
+<body class="flex flex-col min-h-screen">
 
-    <nav class="p-8 max-w-7xl mx-auto flex justify-between items-center">
-        <div class="text-2xl font-bold italic">Y. Ramirez</div>
-        <div class="flex gap-2">
-            <button onclick="cambiarIdioma('es')" id="es-btn" class="btn-idioma active">ES</button>
-            <button onclick="cambiarIdioma('en')" id="en-btn" class="btn-idioma active">EN</button>
-            <button onclick="cambiarIdioma('de')" id="de-btn" class="btn-idioma">DE</button>
+    <nav class="fixed top-0 left-0 right-0 z-50 p-6 shadow-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-bold italic">Y. Ramirez</div>
+            
+            <div class="hidden md:flex gap-8 font-semibold text-sm uppercase tracking-widest">
+                <a href="#portfolio" class="hover:text-pink-400 transition" id="nav-portfolio">Portfolio</a>
+                <a href="#acerca-de" class="hover:text-pink-400 transition" id="nav-acerca">Acerca de mí</a>
+                <a href="#contacto-final" class="hover:text-pink-400 transition" id="nav-contacto">Contacto</a>
+            </div>
+
+            <div class="flex gap-2">
+                <button onclick="cambiarIdioma('es')" id="es-btn" class="btn-idioma active">ES</button>
+                <button onclick="cambiarIdioma('en')" id="en-btn" class="btn-idioma">EN</button>
+                <button onclick="cambiarIdioma('de')" id="de-btn" class="btn-idioma">DE</button>
+            </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6">
+    <main class="max-w-7xl mx-auto px-6 mt-32 flex-grow">
         
-        <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-12">
+        <section id="acerca-de" class="flex flex-col md:flex-row items-center justify-between gap-12 mb-24 scroll-mt-32">
             <div class="w-full md:w-2/3">
                 <h1 class="text-6xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
                 <p id="t-descripcion" class="text-2xl text-gray-400 italic font-light leading-relaxed">
                     Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).
                 </p>
-                <div class="mt-8">
-                    <button onclick="toggleContacto()" id="t-btn-contacto" class="bg-black text-white px-10 py-4 rounded-full text-xs font-bold uppercase tracking-widest hover:bg-pink-400 transition">
-                        Contacto
-                    </button>
-                    <div id="area-contacto">
-                        <p class="text-xl font-bold text-gray-800">📞 +49 174 1826368</p>
-                        <p class="text-xl text-pink-500 font-semibold mt-1">✉️ yisel0271@gmail.com</p>
-                    </div>
-                </div>
             </div>
             <div class="w-[300px] h-[400px] rounded-[40px] overflow-hidden border-4 border-white shadow-2xl">
                 <img src="foto.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover">
             </div>
         </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <h2 id="portfolio" class="text-4xl font-bold mb-12 scroll-mt-32">Portfolio</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
             
             <div class="tarjeta-profesional border-2 border-black" onclick="window.open('reconocimiento_derecho.pdf')">
                 <div>
                     <h2 id="t-h-derecho" class="text-2xl font-bold mb-4 italic">Grado en Derecho</h2>
                     <span class="tag-destacado" style="background: black; color: white;">Anerkennung Oficial</span>
-                    <p id="t-d-derecho" class="text-gray-600 text-sm mt-4">
-                        Título homologado en Alemania. Nivel Bachelor/Master. Clic para ver documento oficial.
-                    </p>
+                    <p id="t-d-derecho" class="text-gray-600 text-sm mt-4">Título homologado en Alemania. Nivel Bachelor/Master.</p>
                 </div>
                 <p class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter">Ver Diploma →</p>
             </div>
@@ -95,9 +95,8 @@
                     <h2 id="t-h-it" class="text-2xl font-bold mb-4 italic text-gray-400">Educación IT</h2>
                     <span class="tag-destacado">En Curso</span>
                     <h3 class="font-bold text-lg mt-2">Fachinformatikerin Systemintegration</h3>
-                    <p id="t-d-it" class="text-gray-500 text-xs mt-2">Umschulung en Administración de sistemas y redes. Clic para certificados.</p>
+                    <p id="t-d-it" class="text-gray-500 text-xs mt-2">Umschulung en sistemas y redes.</p>
                 </div>
-                <p class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter">Ver notas →</p>
             </div>
 
             <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-profesional bg-black text-white flex flex-row justify-between items-center border-none">
@@ -109,38 +108,49 @@
                 <h3 id="t-letter" class="text-2xl font-serif text-gray-800">Anschreiben</h3>
                 <span class="text-3xl">✉️</span>
             </a>
-
         </div>
     </main>
 
-    <script>
-        function toggleContacto() {
-            const div = document.getElementById('area-contacto');
-            div.style.display = (div.style.display === 'block') ? 'none' : 'block';
-        }
+    <footer id="contacto-final" class="py-20 px-6 scroll-mt-20">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 id="t-contactate" class="text-4xl font-bold mb-8">Contáctate conmigo</h2>
+            <div class="inline-block bg-white border-2 border-pink-200 rounded-[30px] p-10 shadow-xl">
+                <p class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">📞 +49 174 1826368</p>
+                <p class="text-2xl md:text-3xl text-pink-500 font-semibold underline">✉️ yisel0271@gmail.com</p>
+                <p class="mt-8 text-gray-400 uppercase tracking-widest text-xs font-bold">Alemania | 2026</p>
+            </div>
+        </div>
+    </footer>
 
+    <script>
         const textos = {
             es: {
+                navP: "Portfolio", navA: "Acerca de mí", navC: "Contacto", tCont: "Contáctate conmigo",
                 desc: "Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).",
-                btn: "Contacto", hder: "Grado en Derecho", dder: "Título homologado en Alemania. Nivel Bachelor/Master. Clic para ver documento oficial.",
-                hidi: "Idiomas", hit: "Educación IT", hper: "Perfil", dit: "Fachinformatikerin Systemintegration. Clic para certificados.", cv: "Curriculum Vitae", letter: "Anschreiben"
+                hder: "Grado en Derecho", dder: "Título homologado en Alemania. Clic para ver.",
+                hidi: "Idiomas", hit: "Educación IT", hper: "Perfil", dit: "Fachinformatikerin Systemintegration.", cv: "Curriculum Vitae", letter: "Anschreiben"
             },
             en: {
+                navP: "Portfolio", navA: "About me", navC: "Contact", tCont: "Contact me",
                 desc: "Law Graduate with Anerkennung in Germany (Level between Bachelor and Master).",
-                btn: "Contact", hder: "Bachelor of Laws", dder: "Degree officially recognized in Germany. Bachelor/Master level. Click to view document.",
-                hidi: "Languages", hit: "IT Education", hper: "Profile", dit: "Fachinformatikerin Systemintegration. Click for certificates.", cv: "Resume", letter: "Cover Letter"
+                hder: "Bachelor of Laws", dder: "Degree recognized in Germany. Click to view.",
+                hidi: "Languages", hit: "IT Education", hper: "Profile", dit: "Fachinformatikerin Systemintegration.", cv: "Resume", letter: "Cover Letter"
             },
             de: {
+                navP: "Portfolio", navA: "Über mich", navC: "Kontakt", tCont: "Kontaktieren Sie mich",
                 desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland (Niveau zwischen Bachelor und Master).",
-                btn: "Kontakt", hder: "Studium der Rechtswissenschaften", dder: "Anerkannter Abschluss in Deutschland. Niveau Bachelor/Master. Hier klicken für den Bescheid.",
-                hidi: "Sprachen", hit: "IT-Ausbildung", hper: "Profil", dit: "Fachinformatikerin Systemintegration. Klicken für Noten.", cv: "Lebenslauf", letter: "Anschreiben"
+                hder: "Studium der Rechtswissenschaften", dder: "Anerkannter Abschluss in Deutschland. Klicken para ver.",
+                hidi: "Sprachen", hit: "IT-Ausbildung", hper: "Profil", dit: "Fachinformatikerin Systemintegration.", cv: "Lebenslauf", letter: "Anschreiben"
             }
         };
 
         function cambiarIdioma(lang) {
             const t = textos[lang];
+            document.getElementById('nav-portfolio').innerText = t.navP;
+            document.getElementById('nav-acerca').innerText = t.navA;
+            document.getElementById('nav-contacto').innerText = t.navC;
+            document.getElementById('t-contactate').innerText = t.tCont;
             document.getElementById('t-descripcion').innerText = t.desc;
-            document.getElementById('t-btn-contacto').innerText = t.btn;
             document.getElementById('t-h-derecho').innerText = t.hder;
             document.getElementById('t-d-derecho').innerText = t.dder;
             document.getElementById('t-h-idiomas').innerText = t.hidi;
@@ -148,10 +158,3 @@
             document.getElementById('t-h-perfil').innerText = t.hper;
             document.getElementById('t-d-it').innerText = t.dit;
             document.getElementById('t-cv').innerText = t.cv;
-            document.getElementById('t-letter').innerText = t.letter;
-            document.querySelectorAll('.btn-idioma').forEach(b => b.classList.remove('active'));
-            document.getElementById(lang + '-btn').classList.add('active');
-        }
-    </script>
-</body>
-</html>
