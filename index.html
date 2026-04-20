@@ -3,196 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yisel Ramirez | Portfolio</title>
+    <title>Yisel Ramirez | Project Lab</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { background: #fdfbfb; font-family: 'Montserrat', sans-serif; color: #333; scroll-behavior: smooth; }
+        body { background: #fafafa; font-family: 'Montserrat', sans-serif; color: #2d3436; scroll-behavior: smooth; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        .tarjeta-profesional { 
-            background: white; border-radius: 25px; padding: 30px; border: 1px solid #f0f0f0; 
-            transition: 0.3s; height: 100%; display: flex; flex-direction: column; justify-content: space-between;
-            cursor: pointer;
+        .tarjeta-pro { 
+            background: white; border-radius: 24px; padding: 40px; border: 1px solid #f0f0f0; 
+            transition: all 0.4s ease; display: flex; flex-direction: column; height: 100%; cursor: pointer;
         }
-        .tarjeta-profesional:hover { transform: translateY(-5px); border-color: #ff9a9e; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .btn-idioma { cursor: pointer; padding: 6px 15px; border-radius: 20px; font-weight: 600; background: #fff; border: 1px solid #eee; font-size: 12px; }
-        .btn-idioma.active { background: #333; color: white; }
-        .tag-destacado { background: #fff5f5; color: #ff9a9e; padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: bold; text-transform: uppercase; }
-        nav { backdrop-filter: blur(10px); background: rgba(253, 251, 251, 0.8); }
+        .tarjeta-pro:hover { transform: translateY(-10px); border-color: #ff9a9e; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .modal-overlay { background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); transition: 0.3s; }
+        .tag { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 4px 12px; border-radius: 50px; display: inline-block; margin-bottom: 15px; }
         .hidden { display: none !important; }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body>
 
-    <nav class="fixed top-0 left-0 right-0 z-50 p-6 shadow-sm">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="text-xl font-bold italic">Y. Ramirez</div>
-            <div class="hidden md:flex gap-8 font-semibold text-sm uppercase tracking-widest">
-                <a href="#portfolio" class="hover:text-pink-400 transition" id="nav-portfolio">Portfolio</a>
-                <a href="#acerca-de" class="hover:text-pink-400 transition" id="nav-acerca">Acerca de mí</a>
-                <a href="#contacto-final" class="hover:text-pink-400 transition" id="nav-contacto">Contacto</a>
-            </div>
-            <div class="flex gap-2">
-                <button onclick="cambiarIdioma('es')" id="es-btn" class="btn-idioma active">ES</button>
-                <button onclick="cambiarIdioma('en')" id="en-btn" class="btn-idioma">EN</button>
-                <button onclick="cambiarIdioma('de')" id="de-btn" class="btn-idioma">DE</button>
+    <nav class="fixed top-0 w-full z-50 bg-white/90 py-5 border-b border-gray-50">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center text-xs font-bold uppercase tracking-widest">
+            <a href="#">Y. RAMIREZ</a>
+            <div class="flex gap-8">
+                <a href="#portfolio" class="hover:text-pink-400">Proyectos</a>
+                <a href="#contacto" class="text-pink-500">Contacto</a>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6 mt-32 flex-grow">
-        <section id="acerca-de" class="flex flex-col md:flex-row items-center justify-between gap-12 mb-24 scroll-mt-32">
-            <div class="w-full md:w-2/3">
-                <h1 class="text-6xl md:text-7xl font-bold text-gray-900 mb-6">Yisel Ramirez</h1>
-                <p id="t-descripcion" class="text-2xl text-gray-400 italic font-light leading-relaxed">Licenciada en Derecho con Anerkennung en Alemania.</p>
-            </div>
-            <div class="w-[300px] h-[400px] rounded-[40px] overflow-hidden border-4 border-white shadow-2xl">
-                <img src="foto.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover">
-            </div>
-        </section>
-
-        <h2 id="portfolio-title" class="text-4xl font-bold mb-12">Portfolio</h2>
+    <main class="max-w-6xl mx-auto px-6 pt-40">
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+        <header class="mb-20">
+            <h1 class="text-6xl font-bold mb-4">Project <span class="italic text-pink-400">Lab.</span></h1>
+            <p class="text-gray-400 max-w-md">Soluciones técnicas diseñadas para optimizar procesos legales y de sistemas.</p>
+        </header>
+
+        <section id="portfolio" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-40">
             
-            <div class="tarjeta-profesional border-2 border-black">
-                <div>
-                    <h2 id="t-h-derecho" class="text-2xl font-bold mb-4 italic">Grado en Derecho</h2>
-                    <span id="tag-anerkennung" class="tag-destacado" style="background: black; color: white;">Anerkennung Oficial</span>
-                    <ul class="mt-4 space-y-2 text-xs font-medium text-gray-600">
-                        <li class="hover:text-pink-500 cursor-pointer" onclick="window.open('convalidacion de titulo (2).pdf')">• Convalidación de Título</li>
-                        <li class="hover:text-pink-500 cursor-pointer" onclick="window.open('reconocimiento 1.pdf')">• Reconocimiento 1</li>
-                        <li class="hover:text-pink-500 cursor-pointer" onclick="window.open('anerkennung 2.pdf')">• Anerkennung 2</li>
-                        <li class="hover:text-pink-500 cursor-pointer" onclick="window.open('anerkennung 3.pdf')">• Anerkennung 3</li>
-                    </ul>
-                </div>
-                <p id="t-ver-docs" class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter">Click para ver documentos →</p>
+            <div class="tarjeta-pro" onclick="abrirModal('modal-calc')">
+                <span class="tag bg-gray-100 text-gray-500">LegalTech</span>
+                <h3 class="text-2xl font-bold mb-4 italic">Legal Calculator</h3>
+                <p class="text-sm text-gray-400 flex-grow">Gestión lógica de plazos procesales con exclusión de días no laborables.</p>
+                <span class="text-pink-400 font-bold text-[10px] uppercase mt-6">Abrir Herramienta →</span>
             </div>
 
-            <div class="tarjeta-profesional border-2 border-pink-100" onclick="window.open('Zertifikat_Frau_Ramírez_07.10.24 (3).pdf')">
-                <div>
-                    <h2 id="t-h-it" class="text-2xl font-bold mb-4 italic text-gray-400">Educación IT</h2>
-                    <span id="tag-curso" class="tag-destacado">En Curso</span>
-                    <h3 class="font-bold text-lg mt-2">Fachinformatikerin</h3>
-                    <p id="t-d-it" class="text-gray-500 text-xs mt-2">Umschulung Systemintegration.</p>
-                </div>
-                <p id="t-ver-cert" class="text-[10px] text-pink-400 mt-4 uppercase font-bold tracking-tighter">Ver Certificado IT →</p>
+            <div class="tarjeta-pro" onclick="abrirModal('modal-tickets')">
+                <span class="tag bg-pink-50 text-pink-400">IT Support</span>
+                <h3 class="text-2xl font-bold mb-4 italic">Ticket System</h3>
+                <p class="text-sm text-gray-400 flex-grow">Panel de control para incidencias técnicas. Gestión de prioridades y flujo de trabajo IT.</p>
+                <span class="text-pink-400 font-bold text-[10px] uppercase mt-6">Abrir Consola →</span>
             </div>
 
-            <div class="tarjeta-profesional border-2 border-pink-200" onclick="abrirCalculadora()">
-                <div>
-                    <h2 id="t-h-legaltech" class="text-2xl font-bold mb-4 italic">LegalTech Tool</h2>
-                    <span class="tag-destacado" style="background: #ff9a9e; color: white;">JS / LOGIC</span>
-                    <p id="t-d-legaltech" class="text-gray-600 text-sm mt-4">Calculadora de plazos procesales.</p>
-                </div>
-                <p id="t-probar" class="text-[10px] text-pink-400 mt-4 uppercase font-bold tracking-tighter">Probar herramienta →</p>
+            <div class="tarjeta-pro" onclick="abrirModal('modal-dsgvo')">
+                <span class="tag bg-black text-white">Compliance</span>
+                <h3 class="text-2xl font-bold mb-4 italic">DSGVO Generator</h3>
+                <p class="text-sm text-gray-400 flex-grow">Automatización de cláusulas de privacidad para entornos web bajo normativa alemana.</p>
+                <span class="text-pink-400 font-bold text-[10px] uppercase mt-6">Abrir Asistente →</span>
             </div>
 
-            <div class="tarjeta-profesional" onclick="window.open('Certificado B2.pdf')">
-                <div>
-                    <h2 id="t-h-idiomas" class="text-2xl font-bold mb-6 italic">Idiomas</h2>
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-3"><span class="tag-destacado" style="background:#eef2ff; color:#4f46e5">Nativo</span> <p class="font-semibold text-gray-700">Español</p></div>
-                        <div class="flex items-center gap-3"><span class="tag-destacado">B2</span> <p class="font-semibold text-gray-700">Deutsch</p></div>
-                    </div>
-                </div>
-                <p id="t-ver-b2" class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter">Ver Certificado B2 →</p>
-            </div>
-
-            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-profesional bg-black text-white flex flex-row justify-between items-center border-none">
-                <h3 id="t-cv" class="text-2xl font-serif">Curriculum Vitae</h3>
-                <span class="text-3xl">↓</span>
-            </a>
-
-            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-profesional bg-gray-100 flex flex-row justify-between items-center border-none">
-                <h3 id="t-letter" class="text-2xl font-serif text-gray-800">Anschreiben</h3>
-                <span class="text-3xl">✉️</span>
-            </a>
-        </div>
+        </section>
     </main>
 
-    <div id="modal-calc" class="fixed inset-0 bg-black/60 z-[60] hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-[40px] max-w-md w-full p-10 shadow-2xl relative border-t-8 border-pink-400">
-            <button onclick="cerrarCalculadora()" class="absolute top-6 right-6 text-gray-400 hover:text-black text-xl">✕</button>
-            <h3 id="t-modal-title" class="text-3xl font-bold mb-2 italic text-gray-800">Calculadora Legal</h3>
-            <div class="space-y-6 mt-4">
-                <input type="date" id="fecha-inicio" class="w-full border-2 border-gray-100 rounded-2xl p-4">
-                <input type="number" id="dias-plazo" placeholder="Días de plazo" class="w-full border-2 border-gray-100 rounded-2xl p-4">
-                <button onclick="ejecutarCalculo()" id="btn-calc" class="w-full bg-black text-white rounded-2xl py-5 font-bold">CALCULAR</button>
-                <div id="resultado-calc" class="hidden mt-6 p-6 bg-gray-50 rounded-3xl text-center">
-                    <p id="fecha-final" class="text-3xl font-bold text-pink-500"></p>
+    <div id="modal-calc" class="modal-overlay fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-8 relative">
+            <button onclick="cerrarModales()" class="absolute top-4 right-4">✕</button>
+            <h3 class="text-2xl font-bold mb-6 italic">Legal Calculator</h3>
+            <div class="space-y-4">
+                <input type="date" id="calc-fecha" class="w-full border p-3 rounded-xl outline-none focus:border-pink-300">
+                <input type="number" id="calc-dias" placeholder="Días de plazo" class="w-full border p-3 rounded-xl outline-none focus:border-pink-300">
+                <button onclick="runCalc()" class="w-full bg-black text-white py-4 rounded-xl font-bold hover:bg-pink-400 transition">Calcular Vencimiento</button>
+                <div id="res-calc" class="hidden p-4 bg-gray-50 rounded-xl text-center text-xl font-bold text-pink-500"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-tickets" class="modal-overlay fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="cerrarModales()" class="absolute top-4 right-4">✕</button>
+            <h3 class="text-2xl font-bold mb-2 italic text-pink-400">IT Help Desk</h3>
+            <p class="text-[10px] text-gray-400 uppercase font-bold mb-6">Consola de Soporte Técnico</p>
+            
+            <div class="space-y-3 mb-8 bg-gray-50 p-4 rounded-2xl">
+                <input type="text" id="t-user" placeholder="Usuario / Depto" class="w-full border p-2 rounded-lg text-sm">
+                <select id="t-prioridad" class="w-full border p-2 rounded-lg text-sm">
+                    <option value="Baja">Baja</option>
+                    <option value="Media">Media</option>
+                    <option value="Crítica">Crítica 🔥</option>
+                </select>
+                <textarea id="t-desc" placeholder="Descripción del problema" class="w-full border p-2 rounded-lg text-sm"></textarea>
+                <button onclick="addTicket()" class="w-full bg-pink-400 text-white py-2 rounded-lg font-bold text-sm">Crear Ticket</button>
+            </div>
+
+            <div id="ticket-list" class="space-y-2">
+                </div>
+        </div>
+    </div>
+
+    <div id="modal-dsgvo" class="modal-overlay fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 relative">
+            <button onclick="cerrarModales()" class="absolute top-4 right-4">✕</button>
+            <h3 class="text-2xl font-bold mb-6 italic border-b pb-4">Asistente DSGVO</h3>
+            <div class="space-y-4">
+                <p class="text-xs text-gray-500 mb-4 font-semibold uppercase">Seleccione los servicios técnicos:</p>
+                <label class="flex items-center gap-3 text-sm"><input type="checkbox" id="c-form"> Formulario de Contacto</label>
+                <label class="flex items-center gap-3 text-sm"><input type="checkbox" id="c-analytics"> Google Analytics</label>
+                <label class="flex items-center gap-3 text-sm"><input type="checkbox" id="c-news"> Newsletter / Email Marketing</label>
+                
+                <button onclick="genDSGVO()" class="w-full bg-black text-white py-4 rounded-xl font-bold mt-4">Generar Cláusula</button>
+                
+                <div id="res-dsgvo" class="hidden mt-4 p-4 bg-gray-100 rounded-xl text-[10px] font-mono whitespace-pre-wrap max-h-40 overflow-y-auto">
                 </div>
             </div>
         </div>
     </div>
 
-    <footer id="contacto-final" class="py-20 text-center">
-        <h2 id="t-contactate" class="text-4xl font-bold mb-8 italic">Contáctate conmigo</h2>
-        <p class="text-2xl font-bold">📞 +49 174 1826368</p>
-        <p class="text-2xl text-pink-500 underline">yisel0271@gmail.com</p>
-    </footer>
-
     <script>
-        const textos = {
-            es: {
-                navP: "Portfolio", navA: "Acerca de mí", navC: "Contacto", tCont: "Contáctate conmigo",
-                desc: "Licenciada en Derecho con Anerkennung en Alemania.",
-                hder: "Grado en Derecho", tagA: "Anerkennung Oficial", tDocs: "Ver documentos →",
-                hidi: "Idiomas", hit: "Educación IT", cv: "Curriculum Vitae", letter: "Carta de Presentación",
-                hLegal: "LegalTech Tool", mTitle: "Calculadora Legal", bCalc: "CALCULAR", 
-                tagC: "En Curso", vCert: "Ver Certificado IT →", vB2: "Ver Certificado B2 →"
-            },
-            en: {
-                navP: "Portfolio", navA: "About me", navC: "Contact", tCont: "Contact me",
-                desc: "Law Graduate with Anerkennung in Germany.",
-                hder: "Bachelor of Laws", tagA: "Official Recognition", tDocs: "View documents →",
-                hidi: "Languages", hit: "IT Education", cv: "Resume", letter: "Cover Letter",
-                hLegal: "LegalTech Tool", mTitle: "Legal Calculator", bCalc: "CALCULATE", 
-                tagC: "In Progress", vCert: "View IT Certificate →", vB2: "View B2 Certificate →"
-            },
-            de: {
-                navP: "Portfolio", navA: "Über mich", navC: "Kontakt", tCont: "Kontaktieren Sie mich",
-                desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland.",
-                hder: "Rechtswissenschaften", tagA: "Offizielle Anerkennung", tDocs: "Dokumente ansehen →",
-                hidi: "Sprachen", hit: "IT-Ausbildung", cv: "Lebenslauf", letter: "Anschreiben",
-                hLegal: "LegalTech Tool", mTitle: "Rechtsrechner", bCalc: "BERECHNEN", 
-                tagC: "In Ausbildung", vCert: "IT-Zertifikat ansehen →", vB2: "B2-Zertifikat ansehen →"
-            }
-        };
+        // Funciones Generales
+        function abrirModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function cerrarModales() { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.add('hidden')); }
 
-        function cambiarIdioma(lang) {
-            const t = textos[lang];
-            const setT = (id, text) => { const el = document.getElementById(id); if(el) el.innerText = text; };
-
-            setT('nav-portfolio', t.navP);
-            setT('nav-acerca', t.navA);
-            setT('nav-contacto', t.navC);
-            setT('portfolio-title', t.navP);
-            setT('t-contactate', t.tCont);
-            setT('t-descripcion', t.desc);
-            setT('t-h-derecho', t.hder);
-            setT('tag-anerkennung', t.tagA);
-            setT('t-ver-docs', t.tDocs);
-            setT('t-h-it', t.hit);
-            setT('tag-curso', t.tagC);
-            setT('t-ver-cert', t.vCert);
-            setT('t-h-legaltech', t.hLegal);
-            setT('t-ver-b2', t.vB2);
-            setT('t-cv', t.cv);
-            setT('t-letter', t.letter);
-            setT('t-modal-title', t.mTitle);
-            setT('btn-calc', t.bCalc);
-
-            document.querySelectorAll('.btn-idioma').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(lang + '-btn').classList.add('active');
-        }
-
-        function abrirCalculadora() { document.getElementById('modal-calc').classList.remove('hidden'); }
-        function cerrarCalculadora() { document.getElementById('modal-calc').classList.add('hidden'); }
-        
-        function ejecutarCalculo() {
-            const f = document.getElementById('fecha-inicio').value;
-            const d = parseInt(document.getElementById('dias-plazo').value);
+        // Lógica Calculadora
+        function runCalc() {
+            const f = document.getElementById('calc-fecha').value;
+            const d = parseInt(document.getElementById('calc-dias').value);
             if(!f || isNaN(d)) return;
             let date = new Date(f);
             let count = 0;
@@ -200,13 +133,41 @@
                 date.setDate(date.getDate() + 1);
                 if(date.getDay() !== 0 && date.getDay() !== 6) count++;
             }
-            document.getElementById('fecha-final').innerText = date.toLocaleDateString();
-            document.getElementById('resultado-calc').classList.remove('hidden');
+            const res = document.getElementById('res-calc');
+            res.innerText = "Vence: " + date.toLocaleDateString();
+            res.classList.remove('hidden');
         }
 
-        window.onload = function() {
-            cambiarIdioma('es');
-        };
+        // Lógica Tickets
+        function addTicket() {
+            const user = document.getElementById('t-user').value;
+            const prio = document.getElementById('t-prioridad').value;
+            const desc = document.getElementById('t-desc').value;
+            if(!user || !desc) return;
+
+            const ticket = document.createElement('div');
+            ticket.className = "p-3 border rounded-xl text-xs flex justify-between items-center bg-white shadow-sm";
+            ticket.innerHTML = `<div><b class="text-pink-500">${prio}</b> | <b>${user}</b>: ${desc}</div> 
+                                <button onclick="this.parentElement.remove()" class="text-gray-300">✕</button>`;
+            document.getElementById('ticket-list').prepend(ticket);
+            
+            // Limpiar campos
+            document.getElementById('t-user').value = "";
+            document.getElementById('t-desc').value = "";
+        }
+
+        // Lógica DSGVO
+        function genDSGVO() {
+            let text = "DATENSCHUTZERKLÄRUNG (Muster):\n\n";
+            if(document.getElementById('c-form').checked) text += "- Datos recogidos mediante formulario según Art. 6 DSGVO.\n";
+            if(document.getElementById('c-analytics').checked) text += "- Uso de cookies de análisis. Se requiere consentimiento previo.\n";
+            if(document.getElementById('c-news').checked) text += "- Tratamiento de datos para envío de comunicaciones comerciales.\n";
+            if(text === "DATENSCHUTZERKLÄRUNG (Muster):\n\n") text = "Por favor, seleccione al menos una opción.";
+            
+            const res = document.getElementById('res-dsgvo');
+            res.innerText = text;
+            res.classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
