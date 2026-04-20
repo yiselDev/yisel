@@ -54,7 +54,6 @@
         <h2 id="portfolio-title" class="text-4xl font-bold mb-12 scroll-mt-32">Portfolio</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-            
             <div class="tarjeta-profesional border-2 border-black">
                 <div>
                     <h2 id="t-h-derecho" class="text-2xl font-bold mb-4 italic">Grado en Derecho</h2>
@@ -66,7 +65,7 @@
                         <li class="hover:text-pink-500 cursor-pointer" onclick="window.open('anerkennung 3.pdf')">• Anerkennung 3</li>
                     </ul>
                 </div>
-                <p id="t-ver-docs" class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter">Abrir convalidaciones →</p>
+                <p id="t-ver-docs" class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter italic">Abrir convalidaciones →</p>
             </div>
 
             <div class="tarjeta-profesional border-2 border-pink-100" onclick="window.open('Zertifikat_Frau_Ramírez_07.10.24 (3).pdf')">
@@ -115,8 +114,8 @@
     <div id="modal-calc" class="fixed inset-0 bg-black/60 z-[60] hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-[40px] max-w-md w-full p-10 shadow-2xl relative border-t-8 border-pink-400">
             <button onclick="cerrarCalculadora()" class="absolute top-6 right-6 text-gray-400 hover:text-black text-xl">✕</button>
-            <h3 id="t-modal-title" class="text-3xl font-bold mb-2 italic text-gray-800 italic">Legal Calculator</h3>
-            <p id="t-modal-desc" class="text-gray-400 text-sm mb-8 italic">Cálculo de plazos (Días hábiles)</p>
+            <h3 id="t-modal-title" class="text-3xl font-bold mb-2 italic text-gray-800">Legal Calculator</h3>
+            <p id="t-modal-desc" class="text-gray-400 text-sm mb-8">Cálculo de plazos (Días hábiles)</p>
             <div class="space-y-6">
                 <div>
                     <label id="t-label-fecha" class="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-widest italic">Fecha de Notificación</label>
@@ -135,7 +134,7 @@
         </div>
     </div>
 
-    <footer id="contacto-final" class="py-20 px-6 scroll-mt-20 italic">
+    <footer id="contacto-final" class="py-20 px-6 scroll-mt-20">
         <div class="max-w-7xl mx-auto text-center">
             <h2 id="t-contactate" class="text-4xl font-bold mb-8 italic">Contáctate conmigo</h2>
             <div class="inline-block bg-white border-2 border-pink-200 rounded-[30px] p-10 shadow-xl">
@@ -181,7 +180,10 @@
 
         function cambiarIdioma(lang) {
             const t = textos[lang];
-            const setT = (id, text) => { const el = document.getElementById(id); if(el) el.innerText = text; };
+            const setT = (id, text) => { 
+                const el = document.getElementById(id); 
+                if(el) el.innerText = text; 
+            };
 
             setT('nav-portfolio', t.navP);
             setT('nav-acerca', t.navA);
@@ -211,7 +213,7 @@
             setT('btn-calc', t.bCalc);
 
             document.querySelectorAll('.btn-idioma').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`${lang}-btn`).classList.add('active');
+            document.getElementById(lang + '-btn').classList.add('active');
         }
 
         function abrirCalculadora() { document.getElementById('modal-calc').classList.remove('hidden'); }
@@ -230,6 +232,11 @@
             document.getElementById('fecha-final').innerText = date.toLocaleDateString();
             document.getElementById('resultado-calc').classList.remove('hidden');
         }
+
+        // ESTA LÍNEA ES LA QUE FALTABA:
+        window.onload = function() {
+            cambiarIdioma('es');
+        };
     </script>
 </body>
 </html>
