@@ -77,4 +77,163 @@
                 <div>
                     <h2 id="t-h-legaltech" class="text-2xl font-bold mb-4 italic">LegalTech Tool</h2>
                     <span class="tag-destacado" style="background: #ff9a9e; color: white;">JS / LOGIC</span>
-                    <p id="t-d-legaltech" class="text-gray-600 text-sm mt-4">Calculadora de plazos procesales con lógica de días hábiles.</
+                    <p id="t-d-legaltech" class="text-gray-600 text-sm mt-4">Calculadora de plazos procesales con lógica de días hábiles.</p>
+                </div>
+                <p id="t-probar" class="text-[10px] text-pink-400 mt-4 uppercase font-bold tracking-tighter">Probar herramienta →</p>
+            </div>
+
+            <div class="tarjeta-profesional">
+                <div>
+                    <h2 id="t-h-idiomas" class="text-2xl font-bold mb-6 italic">Idiomas</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3"><span id="tag-nativo" class="tag-destacado" style="background:#eef2ff; color:#4f46e5">Nativo</span> <p class="font-semibold text-gray-700">Español</p></div>
+                        <div class="flex items-center gap-3"><span class="tag-destacado">B2</span> <p class="font-semibold text-gray-700">Deutsch</p></div>
+                        <div class="flex items-center gap-3"><span class="tag-destacado">A2</span> <p class="font-semibold text-gray-700">English</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-profesional bg-black text-white flex flex-row justify-between items-center border-none">
+                <h3 id="t-cv" class="text-2xl font-serif">Curriculum Vitae</h3>
+                <span class="text-3xl">↓</span>
+            </a>
+
+            <a href="carta_presentacion.pdf" target="_blank" class="tarjeta-profesional bg-gray-100 flex flex-row justify-between items-center border-none">
+                <h3 id="t-letter" class="text-2xl font-serif text-gray-800">Anschreiben</h3>
+                <span class="text-3xl">✉️</span>
+            </a>
+        </div>
+    </main>
+
+    <div id="modal-calc" class="fixed inset-0 bg-black/60 z-[60] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-[40px] max-w-md w-full p-10 shadow-2xl relative border-t-8 border-pink-400">
+            <button onclick="cerrarCalculadora()" class="absolute top-6 right-6 text-gray-400 hover:text-black text-xl">✕</button>
+            <h3 id="t-modal-title" class="text-3xl font-bold mb-2 italic text-gray-800">Legal Calculator</h3>
+            <p id="t-modal-desc" class="text-gray-400 text-sm mb-8">Cálculo de plazos (Días hábiles)</p>
+            <div class="space-y-6">
+                <div>
+                    <label id="t-label-fecha" class="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-widest">Fecha de Notificación</label>
+                    <input type="date" id="fecha-inicio" class="w-full border-2 border-gray-100 rounded-2xl p-4 outline-none focus:border-pink-300 transition">
+                </div>
+                <div>
+                    <label id="t-label-plazo" class="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-widest">Días de Plazo</label>
+                    <input type="number" id="dias-plazo" placeholder="Ej: 3" class="w-full border-2 border-gray-100 rounded-2xl p-4 outline-none focus:border-pink-300 transition">
+                </div>
+                <button onclick="ejecutarCalculo()" id="btn-calc" class="w-full bg-black text-white rounded-2xl py-5 font-bold hover:bg-pink-400 transition shadow-lg">CALCULAR</button>
+                <div id="resultado-calc" class="hidden mt-6 p-6 bg-gray-50 rounded-3xl text-center">
+                    <p id="t-label-vence" class="text-xs text-gray-400 font-bold uppercase mb-1">Vencimiento:</p>
+                    <p id="fecha-final" class="text-3xl font-bold text-pink-500"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contacto-final" class="py-20 px-6 scroll-mt-20">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 id="t-contactate" class="text-4xl font-bold mb-8">Contáctate conmigo</h2>
+            <div class="inline-block bg-white border-2 border-pink-200 rounded-[30px] p-10 shadow-xl">
+                <p class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">📞 +49 174 1826368</p>
+                <p class="text-2xl md:text-3xl text-pink-500 font-semibold underline italic">✉️ yisel0271@gmail.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const textos = {
+            es: {
+                navP: "Portfolio", navA: "Acerca de mí", navC: "Contacto", tCont: "Contáctate conmigo",
+                desc: "Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).",
+                hder: "Grado en Derecho", dder: "Título homologado en Alemania. Clic para ver.",
+                hidi: "Idiomas", hit: "Educación IT", cv: "Curriculum Vitae", letter: "Carta de Presentación",
+                hLegal: "LegalTech Tool", dLegal: "Calculadora de plazos con lógica de días hábiles.",
+                mTitle: "Calculadora Legal", mDesc: "Cálculo de plazos (Días hábiles)", lFecha: "Fecha de Notificación", 
+                lPlazo: "Días de Plazo", lVence: "Vencimiento:", bCalc: "CALCULAR", tagA: "Anerkennung Oficial",
+                tagC: "En Curso", tagN: "Nativo", vDip: "Ver Diploma →", vCert: "Certificados →", vProb: "Probar herramienta →"
+            },
+            en: {
+                navP: "Portfolio", navA: "About me", navC: "Contact", tCont: "Contact me",
+                desc: "Law Graduate with Anerkennung in Germany (Level between Bachelor and Master).",
+                hder: "Bachelor of Laws", dder: "Degree recognized in Germany. Click to view.",
+                hidi: "Languages", hit: "IT Education", cv: "Resume", letter: "Cover Letter",
+                hLegal: "LegalTech Tool", dLegal: "Deadline calculator with business days logic.",
+                mTitle: "Legal Calculator", mDesc: "Procedural deadline calculation", lFecha: "Notification Date", 
+                lPlazo: "Days of Deadline", lVence: "Deadline:", bCalc: "CALCULATE", tagA: "Official Recognition",
+                tagC: "In Progress", tagN: "Native", vDip: "View Diploma →", vCert: "Certificates →", vProb: "Try tool →"
+            },
+            de: {
+                navP: "Portfolio", navA: "Über mich", navC: "Kontakt", tCont: "Kontaktieren Sie mich",
+                desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland (Niveau zwischen Bachelor und Master).",
+                hder: "Rechtswissenschaften", dder: "Anerkannter Abschluss in Deutschland. Klicken.",
+                hidi: "Sprachen", hit: "IT-Ausbildung", cv: "Lebenslauf", letter: "Anschreiben",
+                hLegal: "LegalTech Tool", dLegal: "Fristenrechner mit Werktagslogik.",
+                mTitle: "Rechtsrechner", mDesc: "Berechnung von Prozessfristen", lFecha: "Zustellungsdatum", 
+                lPlazo: "Fristtage", lVence: "Fristende:", bCalc: "BERECHNEN", tagA: "Offizielle Anerkennung",
+                tagC: "In Ausbildung", tagN: "Muttersprache", vDip: "Diplom ansehen →", vCert: "Zertifikate →", vProb: "Tool testen →"
+            }
+        };
+
+        function cambiarIdioma(lang) {
+            const t = textos[lang];
+            
+            // Función auxiliar para cambiar texto por ID si existe
+            const setT = (id, text) => {
+                const el = document.getElementById(id);
+                if(el) el.innerText = text;
+            };
+
+            setT('nav-portfolio', t.navP);
+            setT('nav-acerca', t.navA);
+            setT('nav-contacto', t.navC);
+            setT('portfolio-title', t.navP);
+            setT('t-contactate', t.tCont);
+            setT('t-descripcion', t.desc);
+            setT('t-h-derecho', t.hder);
+            setT('t-d-derecho', t.dder);
+            setT('t-ver-diploma', t.vDip);
+            setT('tag-anerkennung', t.tagA);
+            setT('t-h-it', t.hit);
+            setT('tag-curso', t.tagC);
+            setT('t-ver-cert', t.vCert);
+            setT('t-h-legaltech', t.hLegal);
+            setT('t-d-legaltech', t.dLegal);
+            setT('t-probar', t.vProb);
+            setT('t-h-idiomas', t.hidi);
+            setT('tag-nativo', t.tagN);
+            setT('t-cv', t.cv);
+            setT('t-letter', t.letter);
+            setT('t-modal-title', t.mTitle);
+            setT('t-modal-desc', t.mDesc);
+            setT('t-label-fecha', t.lFecha);
+            setT('t-label-plazo', t.lPlazo);
+            setT('t-label-vence', t.lVence);
+            setT('btn-calc', t.bCalc);
+
+            // Estética botones idioma
+            document.querySelectorAll('.btn-idioma').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`${lang}-btn`).classList.add('active');
+        }
+
+        function abrirCalculadora() { 
+            document.getElementById('modal-calc').classList.remove('hidden'); 
+        }
+        function cerrarCalculadora() { 
+            document.getElementById('modal-calc').classList.add('hidden'); 
+            document.getElementById('resultado-calc').classList.add('hidden');
+        }
+        
+        function ejecutarCalculo() {
+            const f = document.getElementById('fecha-inicio').value;
+            const d = parseInt(document.getElementById('dias-plazo').value);
+            if(!f || isNaN(d)) return alert("Completa los datos");
+            let date = new Date(f);
+            let count = 0;
+            while(count < d) {
+                date.setDate(date.getDate() + 1);
+                if(date.getDay() !== 0 && date.getDay() !== 6) count++;
+            }
+            document.getElementById('fecha-final').innerText = date.toLocaleDateString();
+            document.getElementById('resultado-calc').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
