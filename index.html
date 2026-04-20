@@ -54,23 +54,29 @@
         <h2 id="portfolio-title" class="text-4xl font-bold mb-12 scroll-mt-32">Portfolio</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-            <div class="tarjeta-profesional border-2 border-black" onclick="window.open('reconocimiento_derecho.pdf')">
+            
+            <div class="tarjeta-profesional border-2 border-black">
                 <div>
                     <h2 id="t-h-derecho" class="text-2xl font-bold mb-4 italic">Grado en Derecho</h2>
                     <span id="tag-anerkennung" class="tag-destacado" style="background: black; color: white;">Anerkennung Oficial</span>
-                    <p id="t-d-derecho" class="text-gray-600 text-sm mt-4">Título homologado en Alemania. Nivel Bachelor/Master.</p>
+                    <ul class="mt-4 space-y-2 text-xs font-medium text-gray-600">
+                        <li class="hover:text-pink-500 cursor-pointer" onclick="window.open('convalidacion de titulo (2).pdf')">• Convalidación de Título</li>
+                        <li class="hover:text-pink-500 cursor-pointer" onclick="window.open('reconocimiento 1.pdf')">• Reconocimiento 1</li>
+                        <li class="hover:text-pink-500 cursor-pointer" onclick="window.open('anerkennung 2.pdf')">• Anerkennung 2</li>
+                        <li class="hover:text-pink-500 cursor-pointer" onclick="window.open('anerkennung 3.pdf')">• Anerkennung 3</li>
+                    </ul>
                 </div>
-                <p id="t-ver-diploma" class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter">Ver Diploma →</p>
+                <p id="t-ver-docs" class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter">Abrir convalidaciones →</p>
             </div>
 
-            <div class="tarjeta-profesional border-2 border-pink-100" onclick="window.open('certificados_it.pdf')">
+            <div class="tarjeta-profesional border-2 border-pink-100" onclick="window.open('Zertifikat_Frau_Ramírez_07.10.24 (3).pdf')">
                 <div>
                     <h2 id="t-h-it" class="text-2xl font-bold mb-4 italic text-gray-400">Educación IT</h2>
                     <span id="tag-curso" class="tag-destacado">En Curso</span>
-                    <h3 class="font-bold text-lg mt-2">Fachinformatikerin Systemintegration</h3>
-                    <p id="t-d-it" class="text-gray-500 text-xs mt-2">Umschulung en sistemas y redes.</p>
+                    <h3 class="font-bold text-lg mt-2 italic">Fachinformatikerin Systemintegration</h3>
+                    <p id="t-d-it" class="text-gray-500 text-xs mt-2 italic">Umschulung en sistemas y redes.</p>
                 </div>
-                <p id="t-ver-cert" class="text-[10px] text-pink-400 mt-4 uppercase font-bold tracking-tighter">Certificados →</p>
+                <p id="t-ver-cert" class="text-[10px] text-pink-400 mt-4 uppercase font-bold tracking-tighter italic">Ver Certificado IT →</p>
             </div>
 
             <div class="tarjeta-profesional border-2 border-pink-200" onclick="abrirCalculadora()">
@@ -82,15 +88,16 @@
                 <p id="t-probar" class="text-[10px] text-pink-400 mt-4 uppercase font-bold tracking-tighter">Probar herramienta →</p>
             </div>
 
-            <div class="tarjeta-profesional">
+            <div class="tarjeta-profesional" onclick="window.open('Certificado B2.pdf')">
                 <div>
                     <h2 id="t-h-idiomas" class="text-2xl font-bold mb-6 italic">Idiomas</h2>
                     <div class="space-y-4">
                         <div class="flex items-center gap-3"><span id="tag-nativo" class="tag-destacado" style="background:#eef2ff; color:#4f46e5">Nativo</span> <p class="font-semibold text-gray-700">Español</p></div>
-                        <div class="flex items-center gap-3"><span class="tag-destacado">B2</span> <p class="font-semibold text-gray-700">Deutsch</p></div>
-                        <div class="flex items-center gap-3"><span class="tag-destacado">A2</span> <p class="font-semibold text-gray-700">English</p></div>
+                        <div class="flex items-center gap-3"><span class="tag-destacado">B2</span> <p class="font-semibold text-gray-700 italic">Deutsch</p></div>
+                        <div class="flex items-center gap-3"><span class="tag-destacado italic">A2</span> <p class="font-semibold text-gray-700 italic">English</p></div>
                     </div>
                 </div>
+                <p id="t-ver-b2" class="text-[10px] text-gray-400 mt-4 uppercase font-bold tracking-tighter italic">Ver Certificado B2 →</p>
             </div>
 
             <a href="curriculum_yisel.pdf" target="_blank" class="tarjeta-profesional bg-black text-white flex flex-row justify-between items-center border-none">
@@ -108,19 +115,19 @@
     <div id="modal-calc" class="fixed inset-0 bg-black/60 z-[60] hidden flex items-center justify-center p-4">
         <div class="bg-white rounded-[40px] max-w-md w-full p-10 shadow-2xl relative border-t-8 border-pink-400">
             <button onclick="cerrarCalculadora()" class="absolute top-6 right-6 text-gray-400 hover:text-black text-xl">✕</button>
-            <h3 id="t-modal-title" class="text-3xl font-bold mb-2 italic text-gray-800">Legal Calculator</h3>
-            <p id="t-modal-desc" class="text-gray-400 text-sm mb-8">Cálculo de plazos (Días hábiles)</p>
+            <h3 id="t-modal-title" class="text-3xl font-bold mb-2 italic text-gray-800 italic">Legal Calculator</h3>
+            <p id="t-modal-desc" class="text-gray-400 text-sm mb-8 italic">Cálculo de plazos (Días hábiles)</p>
             <div class="space-y-6">
                 <div>
-                    <label id="t-label-fecha" class="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-widest">Fecha de Notificación</label>
+                    <label id="t-label-fecha" class="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-widest italic">Fecha de Notificación</label>
                     <input type="date" id="fecha-inicio" class="w-full border-2 border-gray-100 rounded-2xl p-4 outline-none focus:border-pink-300 transition">
                 </div>
                 <div>
-                    <label id="t-label-plazo" class="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-widest">Días de Plazo</label>
+                    <label id="t-label-plazo" class="block text-xs font-bold uppercase text-gray-500 mb-2 tracking-widest italic">Días de Plazo</label>
                     <input type="number" id="dias-plazo" placeholder="Ej: 3" class="w-full border-2 border-gray-100 rounded-2xl p-4 outline-none focus:border-pink-300 transition">
                 </div>
-                <button onclick="ejecutarCalculo()" id="btn-calc" class="w-full bg-black text-white rounded-2xl py-5 font-bold hover:bg-pink-400 transition shadow-lg">CALCULAR</button>
-                <div id="resultado-calc" class="hidden mt-6 p-6 bg-gray-50 rounded-3xl text-center">
+                <button onclick="ejecutarCalculo()" id="btn-calc" class="w-full bg-black text-white rounded-2xl py-5 font-bold hover:bg-pink-400 transition shadow-lg italic">CALCULAR</button>
+                <div id="resultado-calc" class="hidden mt-6 p-6 bg-gray-50 rounded-3xl text-center italic">
                     <p id="t-label-vence" class="text-xs text-gray-400 font-bold uppercase mb-1">Vencimiento:</p>
                     <p id="fecha-final" class="text-3xl font-bold text-pink-500"></p>
                 </div>
@@ -128,9 +135,9 @@
         </div>
     </div>
 
-    <footer id="contacto-final" class="py-20 px-6 scroll-mt-20">
+    <footer id="contacto-final" class="py-20 px-6 scroll-mt-20 italic">
         <div class="max-w-7xl mx-auto text-center">
-            <h2 id="t-contactate" class="text-4xl font-bold mb-8">Contáctate conmigo</h2>
+            <h2 id="t-contactate" class="text-4xl font-bold mb-8 italic">Contáctate conmigo</h2>
             <div class="inline-block bg-white border-2 border-pink-200 rounded-[30px] p-10 shadow-xl">
                 <p class="text-2xl md:text-3xl font-bold text-gray-800 mb-4">📞 +49 174 1826368</p>
                 <p class="text-2xl md:text-3xl text-pink-500 font-semibold underline italic">✉️ yisel0271@gmail.com</p>
@@ -143,43 +150,38 @@
             es: {
                 navP: "Portfolio", navA: "Acerca de mí", navC: "Contacto", tCont: "Contáctate conmigo",
                 desc: "Licenciada en Derecho con Anerkennung en Alemania (Nivel entre Bachelor y Master).",
-                hder: "Grado en Derecho", dder: "Título homologado en Alemania. Clic para ver.",
+                hder: "Grado en Derecho", tagA: "Anerkennung Oficial", tDocs: "Abrir convalidaciones →",
                 hidi: "Idiomas", hit: "Educación IT", cv: "Curriculum Vitae", letter: "Carta de Presentación",
                 hLegal: "LegalTech Tool", dLegal: "Calculadora de plazos con lógica de días hábiles.",
                 mTitle: "Calculadora Legal", mDesc: "Cálculo de plazos (Días hábiles)", lFecha: "Fecha de Notificación", 
-                lPlazo: "Días de Plazo", lVence: "Vencimiento:", bCalc: "CALCULAR", tagA: "Anerkennung Oficial",
-                tagC: "En Curso", tagN: "Nativo", vDip: "Ver Diploma →", vCert: "Certificados →", vProb: "Probar herramienta →"
+                lPlazo: "Días de Plazo", lVence: "Vencimiento:", bCalc: "CALCULAR", 
+                tagC: "En Curso", tagN: "Nativo", vCert: "Ver Certificado IT →", vProb: "Probar herramienta →", vB2: "Ver Certificado B2 →"
             },
             en: {
                 navP: "Portfolio", navA: "About me", navC: "Contact", tCont: "Contact me",
                 desc: "Law Graduate with Anerkennung in Germany (Level between Bachelor and Master).",
-                hder: "Bachelor of Laws", dder: "Degree recognized in Germany. Click to view.",
+                hder: "Bachelor of Laws", tagA: "Official Recognition", tDocs: "Open validation docs →",
                 hidi: "Languages", hit: "IT Education", cv: "Resume", letter: "Cover Letter",
                 hLegal: "LegalTech Tool", dLegal: "Deadline calculator with business days logic.",
                 mTitle: "Legal Calculator", mDesc: "Procedural deadline calculation", lFecha: "Notification Date", 
-                lPlazo: "Days of Deadline", lVence: "Deadline:", bCalc: "CALCULATE", tagA: "Official Recognition",
-                tagC: "In Progress", tagN: "Native", vDip: "View Diploma →", vCert: "Certificates →", vProb: "Try tool →"
+                lPlazo: "Days of Deadline", lVence: "Deadline:", bCalc: "CALCULATE", 
+                tagC: "In Progress", tagN: "Native", vCert: "View IT Certificate →", vProb: "Try tool →", vB2: "View B2 Certificate →"
             },
             de: {
                 navP: "Portfolio", navA: "Über mich", navC: "Kontakt", tCont: "Kontaktieren Sie mich",
                 desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland (Niveau zwischen Bachelor und Master).",
-                hder: "Rechtswissenschaften", dder: "Anerkannter Abschluss in Deutschland. Klicken.",
+                hder: "Rechtswissenschaften", tagA: "Offizielle Anerkennung", tDocs: "Anerkennungsunterlagen →",
                 hidi: "Sprachen", hit: "IT-Ausbildung", cv: "Lebenslauf", letter: "Anschreiben",
                 hLegal: "LegalTech Tool", dLegal: "Fristenrechner mit Werktagslogik.",
                 mTitle: "Rechtsrechner", mDesc: "Berechnung von Prozessfristen", lFecha: "Zustellungsdatum", 
-                lPlazo: "Fristtage", lVence: "Fristende:", bCalc: "BERECHNEN", tagA: "Offizielle Anerkennung",
-                tagC: "In Ausbildung", tagN: "Muttersprache", vDip: "Diplom ansehen →", vCert: "Zertifikate →", vProb: "Tool testen →"
+                lPlazo: "Fristtage", lVence: "Fristende:", bCalc: "BERECHNEN", 
+                tagC: "In Ausbildung", tagN: "Muttersprache", vCert: "IT-Zertifikat ansehen →", vProb: "Tool testen →", vB2: "B2-Zertifikat ansehen →"
             }
         };
 
         function cambiarIdioma(lang) {
             const t = textos[lang];
-            
-            // Función auxiliar para cambiar texto por ID si existe
-            const setT = (id, text) => {
-                const el = document.getElementById(id);
-                if(el) el.innerText = text;
-            };
+            const setT = (id, text) => { const el = document.getElementById(id); if(el) el.innerText = text; };
 
             setT('nav-portfolio', t.navP);
             setT('nav-acerca', t.navA);
@@ -188,9 +190,8 @@
             setT('t-contactate', t.tCont);
             setT('t-descripcion', t.desc);
             setT('t-h-derecho', t.hder);
-            setT('t-d-derecho', t.dder);
-            setT('t-ver-diploma', t.vDip);
             setT('tag-anerkennung', t.tagA);
+            setT('t-ver-docs', t.tDocs);
             setT('t-h-it', t.hit);
             setT('tag-curso', t.tagC);
             setT('t-ver-cert', t.vCert);
@@ -199,6 +200,7 @@
             setT('t-probar', t.vProb);
             setT('t-h-idiomas', t.hidi);
             setT('tag-nativo', t.tagN);
+            setT('t-ver-b2', t.vB2);
             setT('t-cv', t.cv);
             setT('t-letter', t.letter);
             setT('t-modal-title', t.mTitle);
@@ -208,23 +210,17 @@
             setT('t-label-vence', t.lVence);
             setT('btn-calc', t.bCalc);
 
-            // Estética botones idioma
             document.querySelectorAll('.btn-idioma').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`${lang}-btn`).classList.add('active');
         }
 
-        function abrirCalculadora() { 
-            document.getElementById('modal-calc').classList.remove('hidden'); 
-        }
-        function cerrarCalculadora() { 
-            document.getElementById('modal-calc').classList.add('hidden'); 
-            document.getElementById('resultado-calc').classList.add('hidden');
-        }
+        function abrirCalculadora() { document.getElementById('modal-calc').classList.remove('hidden'); }
+        function cerrarCalculadora() { document.getElementById('modal-calc').classList.add('hidden'); }
         
         function ejecutarCalculo() {
             const f = document.getElementById('fecha-inicio').value;
             const d = parseInt(document.getElementById('dias-plazo').value);
-            if(!f || isNaN(d)) return alert("Completa los datos");
+            if(!f || isNaN(d)) return;
             let date = new Date(f);
             let count = 0;
             while(count < d) {
