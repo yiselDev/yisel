@@ -55,7 +55,7 @@
         .modal-overlay.active { display: flex; }
         
         .btn-idioma { transition: 0.3s; border: 1px solid #eee; padding: 5px 12px; border-radius: 12px; font-size: 11px; font-weight: 600; }
-        .btn-idioma.active { background: #2d3436; color: white; }
+        .btn-idioma.active { background: #2d3436; color: white; border-color: #2d3436; }
     </style>
 </head>
 <body>
@@ -87,4 +87,191 @@
                 <div class="flex gap-4 justify-center md:justify-start flex-wrap">
                     <span class="text-[10px] bg-gray-100 px-3 py-1 rounded-full font-bold uppercase">ES: Nativo</span>
                     <span class="text-[10px] bg-gray-100 px-3 py-1 rounded-full font-bold uppercase">DE: B2 Zertifikat</span>
-                    <span class="text-[10px] bg-gray-100 px-3 py-
+                    <span class="text-[10px] bg-gray-100 px-3 py-1 rounded-full font-bold uppercase">EN: A2</span>
+                </div>
+            </div>
+            <div class="relative hidden md:block">
+                <div class="aspect-[3/4] rounded-[40px] overflow-hidden shadow-2xl bg-gray-200">
+                    <img src="foto.jpg" alt="Yisel Ramirez" class="w-full h-full object-cover" onerror="this.style.display='none'">
+                    </div>
+            </div>
+        </header>
+
+        <section id="portfolio" class="scroll-mt-32 mb-40">
+            <h2 id="portfolio-title" class="text-4xl font-bold mb-16 text-center italic text-pink-400 border-b pb-4">Portfolio</h2>
+            <div class="grid-proyectos">
+                <div class="tarjeta-pro" onclick="window.open('convalidacion-titulo.pdf')">
+                    <div>
+                        <span class="tag bg-gray-100 text-gray-500">Legal</span>
+                        <h3 class="text-2xl font-bold mb-4 italic" id="t-h-derecho">Formación Jurídica</h3>
+                        <p class="text-sm text-gray-400" id="t-p-derecho">Grado en Derecho con reconocimiento oficial en Alemania.</p>
+                    </div>
+                    <span class="text-[10px] font-black border-b-2 border-black pb-1 self-start uppercase mt-6" id="t-ver-doc">Ver Documento →</span>
+                </div>
+
+                <div class="tarjeta-pro" onclick="window.open('certificado-it.pdf')">
+                    <div>
+                        <span class="tag bg-pink-50 text-pink-400">Tech</span>
+                        <h3 class="text-2xl font-bold mb-4 italic" id="t-h-it">Sistemas e IT</h3>
+                        <p class="text-sm text-gray-400" id="t-p-it">Certificación técnica en administración de sistemas e infraestructura.</p>
+                    </div>
+                    <span class="text-[10px] font-black border-b-2 border-black pb-1 self-start uppercase mt-6" id="t-ver-cert">Ver Certificado →</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="lab" class="scroll-mt-32 mb-40">
+            <h2 id="lab-title" class="text-4xl font-bold mb-16 text-center italic text-gray-800 border-b pb-4">Lab & Sandbox</h2>
+            <div class="grid-proyectos">
+                <div class="tarjeta-pro" onclick="abrirModal('modal-calc')">
+                    <div>
+                        <span class="tag bg-black text-white">Tool</span>
+                        <h3 class="text-2xl font-bold mb-4 italic">Legal Calculator</h3>
+                        <p class="text-sm text-gray-400" id="t-p-calc">Calculadora lógica para plazos procesales legales.</p>
+                    </div>
+                    <span class="text-pink-500 font-bold text-[10px] uppercase mt-6" id="t-open-tool">Abrir Herramienta →</span>
+                </div>
+
+                <div class="tarjeta-pro">
+                    <div>
+                        <span class="tag bg-black text-white">System</span>
+                        <h3 class="text-2xl font-bold mb-4 italic">Ticket System</h3>
+                        <p class="text-sm text-gray-400" id="t-p-ticket">Consola técnica para gestión de incidencias IT.</p>
+                    </div>
+                    <span class="text-pink-500 font-bold text-[10px] uppercase mt-6" id="t-coming-1">Próximamente →</span>
+                </div>
+
+                <div class="tarjeta-pro">
+                    <div>
+                        <span class="tag bg-black text-white">Legal Tech</span>
+                        <h3 class="text-2xl font-bold mb-4 italic">DSGVO Assistant</h3>
+                        <p class="text-sm text-gray-400" id="t-p-dsgvo">Generador automático de cláusulas de privacidad.</p>
+                    </div>
+                    <span class="text-pink-500 font-bold text-[10px] uppercase mt-6" id="t-coming-2">Próximamente →</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="mb-40 pt-20 border-t border-gray-100 text-center">
+            <h2 id="t-contactate" class="text-5xl font-bold mb-12 italic">¿Hablamos?</h2>
+            <div class="space-y-4">
+                <p class="text-3xl font-light underline decoration-pink-300">yisel0271@gmail.com</p>
+                <p class="text-xl text-gray-400 font-bold tracking-widest">+49 174 1826368</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal-calc" class="modal-overlay" onclick="cerrarModales()">
+        <div class="bg-white p-8 rounded-[32px] max-w-md w-full mx-4 shadow-2xl" onclick="event.stopPropagation()">
+            <h3 class="text-2xl font-bold mb-2 italic text-pink-400">Fristenrechner</h3>
+            <p id="t-calc-desc" class="text-xs text-gray-500 mb-6">Calcula el fin de un plazo legal (§ 187 BGB).</p>
+            
+            <div class="space-y-4 text-left">
+                <div>
+                    <label id="t-calc-start" class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Fecha de inicio</label>
+                    <input type="date" id="fecha-inicio" class="w-full p-3 border border-gray-100 rounded-xl mt-1 outline-none focus:border-pink-300">
+                </div>
+                <div>
+                    <label id="t-calc-days" class="text-[10px] font-bold uppercase tracking-widest text-gray-400">Días</label>
+                    <input type="number" id="dias-plazo" class="w-full p-3 border border-gray-100 rounded-xl mt-1 outline-none focus:border-pink-300">
+                </div>
+                <button onclick="calcularPlazo()" id="t-calc-btn" class="w-full bg-black text-white p-4 rounded-xl font-bold hover:bg-pink-400 transition-colors uppercase text-xs tracking-widest">
+                    Calcular
+                </button>
+                <div id="resultado-calc" class="hidden mt-6 p-4 bg-gray-50 rounded-2xl border-l-4 border-pink-400">
+                    <p id="t-calc-res" class="text-[10px] font-bold text-gray-400 uppercase">Vencimiento:</p>
+                    <p id="fecha-final" class="text-xl font-bold text-black"></p>
+                </div>
+            </div>
+            <button onclick="cerrarModales()" class="mt-8 text-[10px] font-bold text-gray-400 hover:text-black uppercase tracking-widest">Cerrar</button>
+        </div>
+    </div>
+
+    <script>
+        const textos = {
+            es: { 
+                navA: "Sobre mí", navP: "Portfolio", navL: "Lab", navC: "Contacto",
+                desc: "Licenciada en Derecho con homologación en Alemania. Especializada en la intersección entre el marco legal y la infraestructura de sistemas.",
+                hder: "Formación Jurídica", hit: "Sistemas e IT", tCont: "¿Hablamos?",
+                pDer: "Grado en Derecho con reconocimiento oficial en Alemania.",
+                pIt: "Certificación técnica en administración de sistemas e infraestructura.",
+                pCalc: "Calculadora lógica para plazos procesales legales.",
+                pTicket: "Consola técnica para gestión de incidencias IT.",
+                pDsgvo: "Generador automático de cláusulas de privacidad.",
+                vDoc: "Ver Documento →", vCert: "Ver Certificado →", oTool: "Abrir Herramienta →",
+                cDesc: "Calcula el fin de un plazo legal (§ 187 BGB).", cStart: "Fecha de inicio", cDays: "Días", cBtn: "Calcular", cRes: "Vencimiento:", cNext: "Próximamente →"
+            },
+            de: { 
+                navA: "Über mich", navP: "Portfolio", navL: "Lab", navC: "Kontakt",
+                desc: "Rechtswissenschaftlerin mit Anerkennung in Deutschland. Spezialisiert auf die Schnittstelle zwischen Recht und Systeminfrastruktur.",
+                hder: "Rechtswissenschaft", hit: "IT & Systeme", tCont: "Kontakt",
+                pDer: "Rechtswissenschaftlicher Abschluss mit offizieller Anerkennung in Deutschland.",
+                pIt: "Technische Zertifizierung in Systemadministration und Infrastruktur.",
+                pCalc: "Logik-Rechner für rechtliche Fristen.",
+                pTicket: "Technische Konsole für IT-Incident-Management.",
+                pDsgvo: "Automatischer Generator für Datenschutzklauseln.",
+                vDoc: "Dokument ansehen →", vCert: "Zertifikat ansehen →", oTool: "Tool öffnen →",
+                cDesc: "Berechnet das Ende einer gesetzlichen Frist (§ 187 BGB).", cStart: "Startdatum", cDays: "Tage", cBtn: "Berechnen", cRes: "Fristende:", cNext: "Demnächst →"
+            },
+            en: {
+                navA: "About me", navP: "Portfolio", navL: "Lab", navC: "Contact",
+                desc: "Law graduate with official recognition in Germany. Specialized in the intersection between legal frameworks and system infrastructure.",
+                hder: "Legal Background", hit: "IT & Systems", tCont: "Let's talk",
+                pDer: "Law degree with official recognition in Germany.",
+                pIt: "Technical certification in system administration and infrastructure.",
+                pCalc: "Logic calculator for legal procedural deadlines.",
+                pTicket: "Technical console for IT incident management.",
+                pDsgvo: "Automatic privacy clause generator.",
+                vDoc: "View Document →", vCert: "View Certificate →", oTool: "Open Tool →",
+                cDesc: "Calculates the end of a legal deadline (§ 187 BGB).", cStart: "Start Date", cDays: "Days", cBtn: "Calculate", cRes: "Deadline:", cNext: "Coming Soon →"
+            }
+        };
+
+        function cambiarIdioma(lang) {
+            const t = textos[lang];
+            document.getElementById('nav-acerca').innerText = t.navA;
+            document.getElementById('nav-portfolio').innerText = t.navP;
+            document.getElementById('nav-lab').innerText = t.navL;
+            document.getElementById('nav-contacto').innerText = t.navC;
+            document.getElementById('t-descripcion').innerText = t.desc;
+            document.getElementById('t-h-derecho').innerText = t.hder;
+            document.getElementById('t-h-it').innerText = t.hit;
+            document.getElementById('t-p-derecho').innerText = t.pDer;
+            document.getElementById('t-p-it').innerText = t.pIt;
+            document.getElementById('t-p-calc').innerText = t.pCalc;
+            document.getElementById('t-p-ticket').innerText = t.pTicket;
+            document.getElementById('t-p-dsgvo').innerText = t.pDsgvo;
+            document.getElementById('t-ver-doc').innerText = t.vDoc;
+            document.getElementById('t-ver-cert').innerText = t.vCert;
+            document.getElementById('t-open-tool').innerText = t.oTool;
+            document.getElementById('t-contactate').innerText = t.tCont;
+            document.getElementById('t-coming-1').innerText = t.cNext;
+            document.getElementById('t-coming-2').innerText = t.cNext;
+            
+            // Textos calculadora
+            document.getElementById('t-calc-desc').innerText = t.cDesc;
+            document.getElementById('t-calc-start').innerText = t.cStart;
+            document.getElementById('t-calc-days').innerText = t.cDays;
+            document.getElementById('t-calc-btn').innerText = t.cBtn;
+            document.getElementById('t-calc-res').innerText = t.cRes;
+
+            document.querySelectorAll('.btn-idioma').forEach(b => b.classList.remove('active'));
+            document.getElementById(lang + '-btn').classList.add('active');
+        }
+
+        function abrirModal(id) { document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function cerrarModales() { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active')); document.body.style.overflow = 'auto'; }
+
+        function calcularPlazo() {
+            const inicio = document.getElementById('fecha-inicio').value;
+            const dias = parseInt(document.getElementById('dias-plazo').value);
+            if (inicio && !isNaN(dias)) {
+                let fecha = new Date(inicio);
+                fecha.setDate(fecha.getDate() + dias);
+                document.getElementById('fecha-final').innerText = fecha.toLocaleDateString('de-DE');
+                document.getElementById('resultado-calc').classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
